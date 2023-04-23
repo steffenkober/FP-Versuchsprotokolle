@@ -1,4 +1,4 @@
-all: build/vXXX.pdf
+all: build/v21.pdf
 
 
 TeXOptions = -lualatex \
@@ -13,11 +13,11 @@ build/plot.pdf: plot.py ../matplotlibrc ../header-matplotlib.tex | build
 	# and set the matplotlibrc
 	TEXINPUTS=$$(pwd)/..: MATPLOTLIBRC=../matplotlibrc python plot.py
 
-# hier weitere Abhängigkeiten für build/vXXX.pdf deklarieren:
-build/vXXX.pdf: build/plot.pdf
+# hier weitere Abhängigkeiten für build/v21.pdf deklarieren:
+build/v21.pdf: build/plot.pdf
 
-build/vXXX.pdf: FORCE | build
-	latexmk $(TeXOptions) vXXX.tex
+build/v21.pdf: FORCE | build
+	latexmk $(TeXOptions) v21.tex
 	
 FORCE:
 
