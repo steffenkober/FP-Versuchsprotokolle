@@ -43,7 +43,7 @@
 
 % load english (for abstract) and ngerman language
 % the main language has to come last
-\usepackage[american, ngerman]{babel}
+\usepackage[ngerman, american]{babel}
 
 % intelligent quotation marks, language and nesting sensitive
 \usepackage[autostyle]{csquotes}
@@ -79,7 +79,7 @@
 %------------------------------------------------------------------------------
 
 \usepackage[
-  locale=DE,
+  locale=UK,
   separate-uncertainty=true,
   per-mode=symbol-or-fraction,
 ]{siunitx}
@@ -132,7 +132,7 @@
 ]{biblatex}
 \addbibresource{../references.bib}  % the bib file to use
 \addbibresource{../programme.bib}
-\DefineBibliographyStrings{german}{andothers = {{et\,al\adddot}}}  % replace u.a. with et al.
+\DefineBibliographyStrings{english}{andothers = {{et\,al\adddot}}}  % replace u.a. with et al.
 
 
 % Last packages, do not change order or insert new packages after these ones
@@ -151,8 +151,8 @@
   Steffen Kober\\%
   \href{mailto:steffen.kober@tu-dortmund.de}{steffen.kober@tu-dortmund.de}%
 }
-\title{V60 - Der Diodenlaser}
-\date{Durchführung: XX.XX.XXXX \hspace{3em} Abgabe: YY.YY.YYYY}
+\title{V47 - Molwärme von Cu}
+\date{Durchführung: 24.04.2023 \hspace{3em} Abgabe: 05.05.2023}
 
 
 % tu logo on top of the titlepage
@@ -174,7 +174,7 @@
 % Hier beginnt der Inhalt mit Seite 1 in arabischen Ziffern
 \input{content/01_zielsetzung.tex}
 \input{content/02_theorie.tex}
-\input{content/03_durchführung.tex}
+\input{content/03_durchfuehrung.tex}
 \input{content/04_auswertung.tex}
 \input{content/05_diskussion.tex}
 %\mainmatter
