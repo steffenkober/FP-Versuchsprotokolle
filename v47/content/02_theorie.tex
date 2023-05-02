@@ -79,7 +79,7 @@ energy of an sample as shown in equation \ref{eqn:inner_E_clas}.
 
 \begin{equation}
     \label{eqn:inner_E_clas}
-    E = N_{\mathrm{dof}}^{'} N_{\mathrm{atoms}} \frac{1}{2}k_\mathrm{B}T = \frac{6}{2}k_\mathrm{B}T = 3k_\mathrm{B}T
+    E = N_{\mathrm{dof}}^{'} N_{\mathrm{atoms}} \frac{1}{2}k_\mathrm{B}T = \frac{6}{2}Nk_\mathrm{B}T = 3Nk_\mathrm{B}T
 \end{equation}
 
 Now the specific heat capacity can be calculated using equation \ref{eqn:heat_cap_v}, which results in \ref{eqn:dulong_petit}.
@@ -110,10 +110,105 @@ of classically continuous phenomena a new idea for the calculation of the inner 
 
 \section{Quantummechanical Theory of the Heat Capacity}
 \label{sec:quantum}
-Now we want to look at a quantized nature of lattice vibrations, so called \textit{Phonons}. Even so the Dulong-Petit model cannot describe the heat capacity for low temperatures, the approach over the energy 
-lattice vibrations is not incorrect. If we describe the vibrations not as classcial oscillators, but as quantummechanical oscillators. Therefore the states in the low temperature regime 
-are quantized, because $\hbar\omega >> k_\mathrm{B}T$.
-%kurze liste für reihenfolge der themen
-%sec:übergang zu quantenmechanischer betrachtung, phononen dispersion und allg innere energie def
-%sec:einsteinnäherung
-%sec:Debye näherung
+Now we want to look at the quantized nature of lattice vibrations, so called \textit{Phonons}. Even so the Dulong-Petit model cannot describe the heat capacity for low temperatures,
+the approach over the energy of lattice vibrations is not incorrect. We can describe the vibrations not as classcial oscillators, but as quantummechanical oscillators. Therefore the 
+states in the low temperature regime are quantized, because $\hbar\omega >> k_\mathrm{B}T$. With this idea we can describe the solid state as an system of $3N$ harmonic oscillators.
+To calculate the inner energy of such a system we can use Bose-Einstein-statistics. The inner energy in the low temperature regime is fundamentally dependent on the phonon dispersion.
+In a solid state system there are always $3N - 3$ optical modes and $3$ acoustic modes. The common dispersion relation of phonons is shown in \autoref{fig:phonondispersion}. The general
+approach to calculate the inner energy of this system would be using $D(E)\mathrm{d}E = Z(\vec{k})\mathrm{d^3}\vec{k}$ and integrating over the energy to get the inner energy. But 
+calculating this without approximations is not possible.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{content/V47_pictures/phonondispersion.png}
+    \caption{In this figure we can see the phonon dispersionrelation for acoustic and optical modes. \cite{grossmarx}}
+    \label{fig:phonondispersion}
+\end{figure}
+
+There are two common approximations to calculate the inner energy of a solid. The \enquote{Einstein-Approximation} and the \enquote{Debye-Approximation}.
+
+\section{Einstein Approximation}
+\label{sec:einstein}
+The Einstein Approximation is based in the simple idea, that all the $3N$ phonon modes of the lattice have the same constant frequency $\omega_\mathrm{E}$. This means, that we have
+state density given by equation \ref{eqn:den_einstein}.
+\begin{equation}
+    \label{eqn:den_einstein}
+    D(\omega) = 3N\delta(\omega - \omega_\mathrm{E})
+\end{equation}
+With this state density we can calculate the inner energy with the before mentioned approach, which yields 
+$\langle E \rangle = 3N\hbar\omega_\mathrm{E}(\frac{1}{2}+\frac{1}{e^{\hbar\omega_\mathrm{E}/k_\mathrm{B}T}-1})$. From this we can calculate the specific heat capacity with equation 
+\ref{eqn:state_func}. To make so solution easier we define the \enquote{Einstein-temperature} $\Theta_\mathrm{E} = \frac{\hbar\omega}{K_\mathrm{B}}$. The specific heat capacity 
+calculated using the Einstein-Approach results in equation \ref{eqn:einstein_heatcap}.
+\begin{equation}
+    \label{eqn:einstein_heatcap}
+    C_{\mathrm{V}}^{\mathrm{E}} = 3Nk_\mathrm{B}\left(\frac{\Theta_\mathrm{E}}{T}\right)^2\frac{e^{\frac{\Theta_\mathrm{E}}{T}}}{\left(e^{\frac{\Theta_\mathrm{E}}{T}}-1\right)^2}
+\end{equation} 
+
+From equation \ref{eqn:einstein_heatcap} we can discuss the high and low temperature limits. These are given by the following equation.
+
+\begin{equation*}
+    C_{\mathrm{V}}^{\mathrm{E}} =
+    \begin{cases}
+        3Nk_\mathrm{B}\left(\frac{\Theta_\mathrm{E}}{T}\right)^2 e^{\frac{\Theta_\mathrm{E}}{T}} & \text{for } T <<  \Theta_\mathrm{E} \\
+        3Nk_\mathrm{B} & \text{for } T >>  \Theta_\mathrm{E}
+    \end{cases}
+\end{equation*}
+
+In the first case we see, that in this approximation we get an strong drop of the heat capacity for low temperatures. From measurements we know, that the heat capacity follows an $T^3$ proportionality,
+which is not the result. But in generel this is an better description of the nature than Dulong-Petit. As for the other case, which is the \textit{calssical limit}, we optain the 
+Law of Dulong-Petit. This shows, that even with this strong approximation we still get a better result than the classical approach.
+
+\section{Debye-Approximation}
+\label{sec:debye}
+The Debye-Approximation has the idea to look at the low temperature limit, because this is where the classcial theory deviates from the measurement. In the low temperature regime the 
+occupation of optical phonon modes is low. Due to that it is a good approximation to just use the $3$ acoustic phonon modes. The dispersion of acoustic phonons is proportional to  
+$\lvert\text{sin}x\rvert$. For small temperatures the argument of the sinus is very small. Due to the small angle approximation it is valid to assume a linear dispersion for acoustic
+phonons. Also the sum over all wavevectors can go over to an integral og the first Brillouin-Zone. This is the Debye Approximation. Due to the finiteness of a solid we can define
+a cutoff frequency $w_{mathrm{D}}$ which is given by equation \ref{eqn:cutoff_freq}.
+\begin{equation}
+    \label{eqn:cutoff_freq}
+    \int_0^{w_{\mathrm{D}}}D(\omega)\mathrm{d}\omega = 3N_\mathrm{L}
+\end{equation}
+
+In this equation $N_\mathrm{L}$ is the Loschmidt-constant. We can calculate the state density $D(\omega)$ using the approach with the linear dispersion. We know, that the state 
+density in frequency domain is given by equation \ref{eqn:freq_dens}.
+\begin{equation}
+    \label{eqn:freq_dens}
+    Z(\omega)\mathrm{d}\omega = \frac{V}{2\pi^2}\omega^2\left(\frac{1}{v_{\text{long}}^3}+\frac{2}{v_{\text{long}}^3}\right)
+\end{equation} 
+
+Since we only look at the longitudinal(acoustic) modes we can rewrite equation \ref{eqn:freq_dens} using the Debye frequency $\omega_\mathrm{D}$. This formula is shown in equation \ref{eqn:Z_W}.
+\begin{equation}
+    \label{eqn:Z_w}
+    Z(\omega)\mathrm{d}\omega = \frac{9N_\mathrm{L}}{\omega_{\mathrm{D}}^3}\omega^2\mathrm{d}\omega
+\end{equation}
+With this state density we can calculate the energy of the solid and by deriving that for the temperature we can optain the heat capacity in the Debye-model. It is shown in equation 
+\ref{eqn:heatcap_debye}.
+\begin{equation}
+    \label{eqn:heatcap_debye}
+    C_{\mathrm{V}}^{\mathrm{D}} = \frac{\partial}{\partial T}\frac{9N_\mathrm{L}}{\omega_{\mathrm{D}}^3} \int_0^{\omega_{\mathrm{D}}}\frac{\omega^3}{e^{\hbar\omega/k_\mathrm{B}T}-1}
+\end{equation}
+
+From this equation we can discuss the two limits. The formula for each limit is shown in equation \ref{eqn:deb_limits}. We see, that the debye approximation results in an $\propto T^3$, 
+which describes the natrue very good. Also the classical limit is the Dulong-Petits law.
+\begin{equation}
+    \label{eqn:deb_limits}
+    C_{\mathrm{V}}^{\mathrm{D}} =
+    \begin{cases}
+        \frac{12\pi^4}{5}Nk_\mathrm{B}\left(\frac{T}{\Theta_\mathrm{D}}\right)^3 & \text{for } T <<  \Theta_\mathrm{D} \\
+        3Nk_\mathrm{B} & \text{for } T >>  \Theta_\mathrm{D}
+    \end{cases}
+\end{equation}
+
+\section{Comparrison of the Debye and Einstein Model}
+\label{sec:comp_DE}
+Both the Einstein and Debye-model use simple approximations to calculate the specific heat capacity. As seen in \autoref{fig:comp} the Debye model describes the nature better than Einstein, 
+but for the extent of the approximations Einstein made both models have their own advantage for the low temperature regime. For high temperatures both models are equal. \autoref{fif:comp}
+also shows the heat capacity for an free electron gas. A metal, such as copper, can be described using the free electron gas. Therefore we can see, that effects of the electron gas 
+only plya a role in the very low temperature regime.
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{content/V47_pictures/comp.PNG}
+    \caption{In this figure we can see the function of the heat capacity for classical calculation and in the Einstein/Debye model.}
+    \label{fig:comp}
+\end{figure}
