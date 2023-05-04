@@ -101,8 +101,13 @@ an estimation via the equation
 \begin{equation}
     \alpha(T) = \frac{\alpha_i - \alpha_{i-1}}{T_i - T_{i-1}}\left(T - T_{i-1} \right) + \alpha_{i-1}
 \end{equation}
-was performed. The results of $\alpha$ and $C_V$ can be seen in \autoref{tab:cv}
-
+was performed. The results of $\alpha$ and $C_V$ can be seen in \autoref{tab:cv}. In addition figure \ref{fig:c_v_plot} shows the measured temperature dependece of the specific heat capacity for constant volume.
+\begin{figure}
+    \centering
+    \includegraphics{build/c_v_plot.pdf}
+    \caption{Specific heat capacity $C_\mathrm{V} dependet on the temperature$.}
+    \label{fig:c_v}
+\end{figure}
 \begin{table}[htbp] 
     \centering 
     \begin{tabular}{cc c| ccc} 
@@ -129,11 +134,11 @@ was performed. The results of $\alpha$ and $C_V$ can be seen in \autoref{tab:cv}
 
 \section{The Debye temperature of copper}
 
-To determine the debye temperature $\theta_D$ of the sample, \autoref{pic:debye} is needed. It yields the value for $\frac{\theta_D}{T}$ for a certain $C_V$.
+To determine the debye temperature $\theta_D$ of the sample, \autoref{fig:debye} is needed. It yields the value for $\frac{\theta_D}{T}$ for a certain $C_V$.
 The result is then multiplied by the temperature the $C_V$ was calculated for. This gives the debye temperature $\theta_D$. The values can be seen in \autoref{tab:debye}.\\
 The mean and error of the debye temperature is 
 \begin{equation}
-    \theta_D = 288.67 \pm 8.62 \, .
+    \theta_D = 288.67 \pm 8.62 \, K.
 \end{equation}
 \begin{table}[htbp] 
     \centering 
@@ -156,3 +161,24 @@ The mean and error of the debye temperature is
     \caption[Tabelle]{Calculated values for the Debye temperature.} 
     \label{tab:debye} 
 \end{table}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.6]{content/V47_pictures/debyetemp.PNG}
+    \caption{This is a table to calculate the debye temperature.}
+    \label{fig:debye}
+  \end{figure}
+
+\section{Theoretical calculation of Debye-frequency and the Debye-temperature}
+\label{sec:theo}
+The theoretical value of the debye-frequency can be calculated using equation \ref{eqn:omega_D}. 
+\begin{equation}
+    \label{eqn:omega_D}
+    \omega_\mathrm{D}^3 = \frac{18\pi^2N_\mathrm{A}}{V_0}\left(\frac{1}{v_{\mathrm{long}}^3}+\frac{2}{v_{\mathrm{trans}}^3}\right)^{-1}
+\end{equation}
+This equation derives from equation \ref{eqn:freq_dens}, by calculating the density state function $Z(\omega)$. In this equation $v_{\mathrm{long}}$ is the logitudinal phase velocity and
+$v_{\mathrm{trans}}$ is the transversal phase velocity\cite{v47}. $N_\mathrm{A} = \qty{6.022e23}{\per\mol}$ is the \textit{Avogadro constant} and $V_0$ the molar volume of the sample.
+The theoretical value of the debye-frequency is $\omega_\mathrm{D} = \qty{4.35e13}{\per\second}$. From this the debye-temperature can be calculated using equation \ref{eqn:theta_d}.
+With the boltzmann constant this results in $\Theta_\mathrm{D} = \qty{332.18}{\kelvin}$
+
+  

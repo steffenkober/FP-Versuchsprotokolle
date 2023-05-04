@@ -44,6 +44,12 @@ heat capacity with a fitting thermodynamic state functions.
     C_\mathrm{V} = \left.\frac{\partial E}{\partial T} \right\vert_\mathrm{V} \,\,\,,\,\,\, C_\mathrm{p} = \left.\frac{\partial H}{\partial T} \right\vert_\mathrm{p}
 \end{equation}
 
+The specific heat capacity for constant pressure can also be calculated by equation \ref{eqn:molheatcap}. This equation is a more practical way of calculating the heat capacity. In 
+this equation $E$ is the added energy of the system, which is described in chapter \ref{cha:experiment}, $M$ the molar mass, $m$ the mass of a sample and $\Delta T$ is the raise in temperature.
+\begin{equation}
+    \label{eqn:molheatcap}
+    C\mathrm{p} = \frac{ME}{m\Delta T}
+\end{equation}
 \section{Comparisson of $C_\mathrm{V}$ and $C_\mathrm{p}$}
 From measurements it is known, that $C_\mathrm{V}$ and $C_\mathrm{p}$ differ to some extend. The reason for this is, that for a constant pressure $p$ the volume $V$ of the sample 
 changes, thus work has to be put into the deformation of the solid. This creates a loss of energy that does not exist for a constant volume. This is an isentropic process, therefore 
@@ -177,7 +183,7 @@ density in frequency domain is given by equation \ref{eqn:freq_dens}.
     Z(\omega)\mathrm{d}\omega = \frac{V}{2\pi^2}\omega^2\left(\frac{1}{v_{\text{long}}^3}+\frac{2}{v_{\text{long}}^3}\right)
 \end{equation} 
 
-Since we only look at the longitudinal(acoustic) modes we can rewrite equation \ref{eqn:freq_dens} using the Debye frequency $\omega_\mathrm{D}$. This formula is shown in equation \ref{eqn:Z_W}.
+Since we only look at the longitudinal(acoustic) modes we can rewrite equation \ref{eqn:freq_dens} using the Debye frequency $\omega_\mathrm{D}$. This formula is shown in equation \ref{eqn:Z_w}.
 \begin{equation}
     \label{eqn:Z_w}
     Z(\omega)\mathrm{d}\omega = \frac{9N_\mathrm{L}}{\omega_{\mathrm{D}}^3}\omega^2\mathrm{d}\omega
@@ -200,6 +206,12 @@ which describes the natrue very good. Also the classical limit is the Dulong-Pet
     \end{cases}
 \end{equation}
 
+The upper equation is defined in units of $\frac{T}{\Theta_\mathrm{D}}$. It is in units of the debye-temperatur, which is defined in equation \ref{eqn:theta_d}.
+\begin{equation}
+    \label{eqn:theta_d}
+    \Theta_\mathrm{D} = \frac{\hbar\omega_\mathrm{D}}{k\mathrm{B}}
+\end{equation} 
+ It is a material specific value, characterizing its thermodynamic quantities.
 \section{Comparrison of the Debye and Einstein Model}
 \label{sec:comp_DE}
 Both the Einstein and Debye-model use simple approximations to calculate the specific heat capacity. As seen in \autoref{fig:comp} the Debye model describes the nature better than Einstein, 
