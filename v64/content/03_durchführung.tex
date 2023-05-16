@@ -1,2 +1,45 @@
 \chapter{Durchführung}
 \label{cha:Durchführung}
+Für die Druchführung dieses Versuches wird ein \textit{Sagnac-Interferometer} verwendet. Der Versuchsaufbau ist \autoref{fig:Aufbau} zu entnehmen. In dieser Abbildung \ref{fig:Aufbau}
+ist grundlegend das Sagnac-Interferometer dargestellt, sowie die Laserquelle. Bei der Laserquelle handelt es sich um einen $\ce{HeNe}$-Laser mit der Wellenlänge $\lambda = \qty{632.990}{\nano\metre}$\cite{v64}.
+Außerdem ist in \autoref{fig:Aufbau} eine Translations-Stage beim Spiegel \textit{M2} eingezeichnet. Anhand dieser Stage sollen später die Strahlengänge getrennt werden. Nach dem
+Spiegel \textit{M2} trifft der Laserstrahl auf einen Strahlteilerwürfel, kurz \textit{PBSC}. Die Funktionsweise eines Strahlteilerwürfels wurde bereits in \autoref{sec:Sagnac} erklärt.
+Nachdem der Strahl nun aufgeteilt wurde durchlaufen die Strahlen zunächst die Spiegel $\textit{M}_A$, $\textit{M}_B$ und $\textit{M}_C$ jeweils in entgegengesetzter Richtung. 
+Danach treffen beide Strahlen im selben Punkt erneut auf dem \textit{PBSC} wodurch beide Strahlen dann in Richtung \textit{Output} reflektiert werden. Dabei verlaufen die Strahlen 
+identisch und können somit detektiert werden. Der Detektor besteht selbst zunächst aus einem weiteren \textit{PBSC}. Der transmittierte Strahl läuft dann sofort in eine Photodiode,
+wohingegen der andere Strahl ein kurzes Stück versetzt über einen Spiegel in eine andere Photodiode geleitet wird. Diese Aufspaltung des Detektors liefert die Grundlage für die 
+Differenzspannungsmethode. Nun kann mit der Justage begonnen werden. Theoretisch müsste der gesamte Versuchsaufbau nun in $\qty{45}{\degree}$ aufgabaut werden. Da allerdings schon
+kleine Schwankungen für relativ große Änderungen im Strahlengang sorgen muss man die Spiegel durch Justageschrauben noch passend ausrichten, damit die Strahlen wirklich in einem 
+Punkt enden. Zu Beginn der Justage wird zunächst ein Polarisationsfilter hinter den Laser gestellt, damit wir direkt einen um $\qty{45}{\degree}$ zur vertikalen gedreht polarisierten
+Strahl haben.  Ein zweiter Polarisationsfilter wird dann vor den Detektor eingebaut damit die Interferenzeffekte, anhand dessen wir das Experiment gestalten, überhaupt erst auftreten.
+Denn aus dem \textit{PBSC} kommen zwei Strahlen, welche um $\qty{90}{\degree}$ zueinander polarisiert sind, weshalb diese noch nicht interferieren können. Mit einem Filter um $\qty{45}{\degree}$
+tritt das Phänomen dann aber auf. Nun wird zunächst der Strahlengang perfekt angepasst, sodass Interferenzeffekte sichtbar sind und ein möglicher auftretender Streifen im Muster
+verschwindet. Nun können die Strahlengänge getrennt werden, indem man den Spiegel \textit{M2} mit der Stage verschiebt, sodass der Laser nicht mehr mittig auf den \textit{PBSC} trifft.
+Dadurch entstehen zwei verschobene Vierecke, welche jedoch dennoch im gleichen Punkt enden. Dann wird noch eine Doppelglasplatte eingebaut, welche auf einem Rotationshalter steht. Mit 
+dieser kann die Phase der Strahlen beeinflusst werden, sodass maximale und minimale Intensitäten erreicht werden können. Ist nun alles angepasst kann man zunächst einmal den hinteren 
+Polarisationsfilter entfehrnen und beide Dioden am Oszilloskop betrachten. Dort sollte die beiden Strahlen Phasenverschoben angezeigt werden. Ist dies der Fall ist der Aufbau korrekt
+und messbereit. Für besondere Stabilität der Messung kann eine Haube auf den Aufbau gesetzt werden, welcher Luftschwankungen minimiert.
+
+\section{Bestimmung des Kontrastes eines Sagnac-Interferometers}
+\label{sec:kontrast}
+Zur experimentellen Bestimmung des Kontrastes soll zunächst nur eine Photodiode verwendet werden. Der Kontrast wurde bereits in \autoref{sec:kontrast} diskutiert und ist durch Formel \ref{eqn:kontrast}
+gegeben. Der Kontrast soll nun in Abhänigkeit des Polarisationswinkels des ersten Polarisators gemessen werden. Dabei soll ein Winkelbereich von $\qty{0}{\degree}-\qty{180}{\degree}$ in 
+$\qty{15}{\degree}$-Schritten abgemessen werden. Für jeden Schritt wird die maximale Intensität $I_\mathrm{max}$ und die minimale Intensität $I\_mathrm{min}$ gemssen. Diesen können durch 
+die eingebaute Doppelscheibe erzeugt werden und an der Diode abgelesen werden. Aus dieser Messung wird dann der maximale Kontrast bestimmt und der Polarisationsfilter dann auf den 
+reziproken Winkel eingestellt.
+
+\section{Bestimmung des Brechungsindex von Glas}
+\label{sec:n_glas}
+Nun wird die Differenzspannungsmethode verwendet um den Brechungsindex von Glas zu bestimmen. Dazu werden nun beide Photodioden verwendet. Die Differenzspannungsmethode ist eine stabile
+und robuste Methode, da mit dieser Störeffekte rausgerechnet werden. Zunächst werden die beiden Dioden an das Oszilloskop angeschlossen und dann die Einstellungen des Interferometry 
+Contollers verändert, sodass das Signal sehr deutlich ist. Dies ist nötig, da ansonsten Rauschen für falsche Zählraten sorgt. Die Differenzspannungsmethode verwendet nun dass durch
+die beiden Photodioden die Strahlen jewils getrennt voneinander aufgenommen werden. Das heißt, dass die Strahlen auch den exakt selben Störungen ausgesetzt waren. Durch bildung der 
+Differenz der beiden Signal, was der Interferometry Contoller macht, kann dann eine Zählung der Intensitätsmaxima bzw. Minima stattfinden. Um nun den Brechungsindex von Glas zu bestimmen 
+sollen nun genau die Interferenzmaxima gezählt werden, welche entstehen, während man den Glashalter dreht. Durch die Drehung entsteht ein Phasenversatz wodurch dann die Maxima entstehen.
+Es werden nun 10 Messungen über einen Winkelbereich von $\qty{10}{\degree}$ durchgeführt.
+
+\section{Bestimmung des Brechungsindex von Luft}
+\label{sec:n_luft}
+Zuletzt wird nun der Brechungsindex von Luft bestimmt. Dazu wird zunächst eine Gaszelle in einen der Strahlen eingebaut. Dann wird die Zelle evakuiert bis der Druck auf circa $\qty{0.5}{\milli\bar}$
+gefallen ist. Dann wird langsam Luft in die Zelle gelassen und dabei die Anzahl der Intensitätsmaxima gemessen. Es sollten $\qty{50}{\milli\bar}$-Schritte gemacht werden. Der Counter darf 
+während der Messung nicht zurückgesetzt werden. Diese Messung wiederholt man drei mal und notiert sich jeweils die Raumtemperatur, da diese für die Analyse wichtig ist.\cite{v64}
