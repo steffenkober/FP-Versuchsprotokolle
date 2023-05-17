@@ -17,7 +17,7 @@ p, N_luft_1, N_luft_2, N_luft_3 = np.genfromtxt("content/messdaten_luft.txt", un
 def kontrast(I_min,I_max):
               return (I_max - I_min)/(I_max+I_min)
 def kontrast_theorie(Phi,a):
-              return a*np.abs(np.cos(phi)*np.sin(phi))
+              return a*np.abs(np.cos(Phi*np.pi/180)*np.sin(Phi*np.pi/180))
 
 
 #fit
@@ -25,15 +25,17 @@ kontrast_exp = kontrast(U_min,U_max)
 
 params,pcov = op.curve_fit(kontrast_theorie,phi,kontrast_exp)
 
+print(params)
 
 
 
 #plotting
 #kontrast
 x_phi = np.linspace(0,180,10000)
-plt.plot(x_phi,kontrast_theorie(x_phi,params), color = "cornflowerblue", label = "Theoriewerte")
+plt.plot(x_phi,kontrast_theorie(x_phi,params[0]), color = "cornflowerblue", label = "Theoriewerte")
 plt.plot(phi,kontrast_exp, color = "firebrick",label="Messdaten")
-plt.savefig("build/temp.pdf")
+plt.show()
+#plt.savefig("build/temp.pdf")
 
 #x = np.linspace(0, 9, 1000)
 #y = x ** np.sin(x)
