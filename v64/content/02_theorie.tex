@@ -65,6 +65,7 @@ gemessen werden.
 Die Qualität eines Interferometers kann durch seinen Kontrast/seine Sichtbarkeit beschrieben werden. Diese gibt wieder, wie deutlich sich die Intensität des
 Interferenzmaximas und die des -minimas voneinander unterschieden. Er kann berechnet werden durch
 \begin{equation}
+    \label{eqn:kontrast}
     K = \frac{I_{max} - I_{min}}{I_{max} + I_{min}}.
 \end{equation}
 Um den Kontrast mithilfe dieser Formel berechnen zu können, muss die Intensität experimentell ermittelt werden. Um den Kontrast theoretisch vorhersagen
@@ -152,6 +153,7 @@ Dadurch findet eine Phasenverschiebung gegenüber des unbeeinflussten Strahls st
 \end{equation}
 mit der Dicke $L$ des Mediums. Die Phasenverschiebung kann wieder über die Maximaanzahl ausgedrückt werden nach \autoref{eq:Maxima}:
 \begin{equation}
+    \label{eqn:luft}
     n = \frac{M \lambda_{vac}}{L} + 1.
 \end{equation}
 Mit dem Lorentz-Lorenz-Gesetz lässt sich der Brechungsindex zudem über die Polarisierbarkeit des Mediums bestimmen:
@@ -161,6 +163,7 @@ Mit dem Lorentz-Lorenz-Gesetz lässt sich der Brechungsindex zudem über die Pol
 wobei $A$ die Molrefraction, $p$ der Druck, $R$ die Gaskonstante und $T$ die Raumtemperatur ist. Dies lässt sich mit einer Taylorentwicklung 
 um $n=1$ herum zu 
 \begin{equation}
+    \label{eqn:lorentz}
     n = \frac{3}{2} \frac{A p}{R T} + 1
 \end{equation}
 umformen. Diese Umformung ist in diesem Fall gültig, da Luft untersucht wird und $n_{Luft} \approx 1$.

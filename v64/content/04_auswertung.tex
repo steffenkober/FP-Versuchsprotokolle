@@ -10,10 +10,90 @@ Die Fehlerrechnung wird in \textit{Python} unter Verwendung des Paketes \textit{
 
 \section{Kontrastmessung}
 \label{sec:kontrastmessung}
-Nun wird der Kontrast in Abhängigkeit des Polarisationswinkels bestimmt. 
+Nun wird der Kontrast in Abhängigkeit des Polarisationswinkels bestimmt. Wie bereits in \autoref{sec:Kontrast} diskutiert wird der Kontrast durch Gleichung \ref{eqn:kontrast} berechnet.
+Im selben Abschnitt wurde dann auch die Proportionalität der Intensität zum Winkel erklärt. Führt man diese Proportionalität in Gleichung \ref{eqn:kontrast} ein erhält man eine 
+theoretische Winkelabhänigkeit des Kontrastes, dessen Form in durch Gleichung \ref{eqn:kontrast_phi} gegeben ist. Die Messwerte sind in Abbildung \ref{fig:kontrast} dargestellt. Mittels
+einer Regression durch \textit{Scipy}\cite{scipy} wurde der Parameter a zu $a = \num{5415645646 \pm 5465465465}$ bestimmt. 
+
+\begin{equation}
+  \label{eqn:kontrast_phi}
+  K = a\lvert \cos\Phi\sin\Phi\rvert  
+\end{equation}
 \begin{figure}
     \centering
     \includegraphics{kontrast.pdf}
-    \caption{Plot.}
-    \label{fig:plot}
+    \caption{In dieser Abbildung wird die Winkelabhänigkeit des Kontrastes eines Sagnac-Interferometers dargestellt.}
+    \label{fig:kontrast}
 \end{figure}
+
+Aus den Messdaten in Abbildung \ref{fig:kontrast} lässt sich einer maximaler Kontrast $K_\mathrm{max} = $ entnehmen, welcher bei einem Winkel $\Phi = \qty{45245465}{\degree}$ auftritt.
+Außerdem treten weitere Maxima des Kontrastes bei vielfachen des Winkels auf. Dieses Verhalten ist in anbetracht des periodischen Verhaltens dieses Phänomens logisch. 
+Für die folgenden Messungen wurde der Kontrast nun auf das Maxima eingestellt, wie bereits in \autoref{cha:Durchführung} erwähnt. Im folgenden wird die Differenzspannungsmethode 
+verwendet.
+
+\section{Brechungsindex von Glas}
+\label{sec:n_glas}
+Der Brechungsindex von Glas wird durch zwei Glasplättchen, welche jeweils in einem der Strahlengänge liegen gemessen. Der Brechungsindex lässt sich nach Modifikation von Gleichung 
+\ref{eq:Phi} durch Gleichung \ref{eq:Maxima} beschrieben. In dieser Gleichung ist $T = \qty{1}{\milli\metre}$ die Dicke eine Glasplatte, $M$ die Anzahl der Interferenzmaxima oder 
+Minima, $\lambda_\mathrm{vac} = \qty{632.990}{\milli\metre}$ die Wellenlänge des Lichtes im Vakuum, $\Theta_0 = \qty{\pm 10}{\degree}$ die Drehung der Spiegel und 
+$\Theta = \qty{10}{\degree}$ ist der Drehwinkel des Doppelglashalters. Damit lässt sich der Brechungsindex berechnen. Die aufgenommenen Daten werden in Tabelle \ref{tab:n_glas} 
+dargestellt.
+
+\begin{table}[htbp] 
+  \centering 
+  \begin{tabular}{c c} 
+      \toprule $M$ & $n_\mathrm{Glas}$\\ 
+      \midrule 
+      31 & 1.4751 \\
+      31 & 1.4751 \\
+      36 & 1.5975 \\
+      34 & 1.5462 \\
+      34 & 1.5462 \\
+      32 & 1.4981 \\
+      33 & 1.5218 \\
+      32 & 1.4981 \\
+      32 & 1.4981 \\
+      35 & 1.5715 \\
+
+      \bottomrule 
+  \end{tabular} 
+  \caption[Tabelle]{In dieser Tabelle sind die experimentell bestimmten Brechungsindex der Glasplättchen aufgetragen.} 
+  \label{tab:n_glas} 
+\end{table}
+
+Der mittlere Brechungsindex ergibt sich zu $\overline{n}_\mathrm{Glas} = \num{1.5228 \pm 0.0124}$.
+
+\section{Brechungsindex von Luft}
+\label{sec:n_luft}
+Zuletzt wird der Brechungsindex von Luft bestimmt. Dazu wurde eine Gaszelle mit der Länge $L = \qty{100 \pm 0.1}{\milli\metre}$ verwendet. Die Messungen wurden bei einer Umgebungstemperatur 
+von $T = \qty{22}{\degree\celsius}$ aufgenommen. Die Druckmessung wurde bei einem Druck von 
+$p_0 = \qty{10}{\milli\bar}$ begonnen und dann wurden bis zu einem Umgebungsdruck $p = \qty{960}{\milli\bar}$ die Intensitätsmaxima $M$ gemessen. Der Brechungsindex von Luft wird gemäß 
+Gleichung \ref{eqn:n_luft} berechnet. Die gemessenen Werte sind in Tabelle \ref{tab:n_luft} dargestellt.
+
+\begin{table}[htbp] 
+  \centering 
+  \begin{tabular}{c c} 
+      \toprule $M$ & $n_\mathrm{Luft}$\\ 
+      \midrule 
+      31 & 1.4751 \\
+      31 & 1.4751 \\
+      36 & 1.5975 \\
+      34 & 1.5462 \\
+      34 & 1.5462 \\
+      32 & 1.4981 \\
+      33 & 1.5218 \\
+      32 & 1.4981 \\
+      32 & 1.4981 \\
+      35 & 1.5715 \\
+      
+      \bottomrule 
+  \end{tabular} 
+  \caption[Tabelle]{In dieser Tabelle ist der experimentell bestimmte Brechungsindex von Luft dargestellt.} 
+  \label{tab:n_luft} 
+\end{table}
+
+Daraus ergibt sich ein mittlerer Brechungsindex von Luft zu $n_\mathrm{Luft} = 45646$. Der Theoriewert zum Brechungsindex von Luft ist durch $n_{\mathrm{L,Theo}} = 546541$ \cite{Ingenieurwissen}
+gegeben.
+
+Nun kann mittels der Lorentz-Lorenz-Gleichung \ref{eqn:lorentz} ein Fit der Parameter an den theoretischen Verlauf bestimmt werden. Dabei ergibt sich die Molrefraction $A = iwas$.
+der Theoriewert der Molrefraction lautet $A_\mathrm{Theo} = iwasanders$
