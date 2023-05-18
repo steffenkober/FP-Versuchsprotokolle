@@ -87,11 +87,13 @@ und
 wobei $E_0$ die Gesamtamplitude der einlaufenden Welle ist. Eingsetzt in \autoref{eq:prop} ergibt das
 \begin{align}
     I   \propto& \langle \mid E_0 cos{(\phi)} \cos{(\omega t)} + E_0 sin{(\phi)} \cos{(\omega t + \delta)} \mid^2 \rangle \\
-        \propto& E_0^2 \langle \left(\mid cos^2{(\phi)} \cos^2{(\omega t)} +  2 cos{(\phi)} \cos{(\omega t)} sin{(\phi)} \cos{(\omega t + \delta)} +  sin^2{(\phi)} \cos^2{(\omega t + \delta)} \mid \right) \rangle.
+        \propto& E_0^2 \langle \left(\mid cos^2{(\phi)} \cos^2{(\omega t)} +  2 cos{(\phi)} \cos{(\omega t)} sin{(\phi)} \cos{(\omega t + \delta)} \\
+                &+  sin^2{(\phi)} \cos^2{(\omega t + \delta)} \mid \right) \rangle.
 \end{align}
 Die Maxima und Minima ergeben sich wie in \autoref{eq:konstr} und \autoref{eq:destr} erwähnt:
 \begin{align}
-    I_{max} \propto&  \langle E_0^2 \left(\mid cos^2{(\phi)} \cos^2{(\omega t)} +  2 cos{(\phi)} \cos{(\omega t)} sin{(\phi)} \cos{(\omega t + 2 \pi n)} +  sin^2{(\phi)} \cos^2{(\omega t + 2 \pi n)} \mid \right) \rangle  \\
+    I_{max} \propto&  \langle E_0^2 \left(\mid cos^2{(\phi)} \cos^2{(\omega t)} +  2 cos{(\phi)} \cos{(\omega t)} sin{(\phi)} \cos{(\omega t + 2 \pi n)} 
+                    &+  sin^2{(\phi)} \cos^2{(\omega t + 2 \pi n)} \mid \right) \rangle  \\
             \propto&  \langle E_0^2 \left(\mid cos^2{(\phi)} \cos^2{(\omega t)} +  2 cos{(\phi)} \cos{(\omega t)} sin{(\phi)} \cos{(\omega t)} +  sin^2{(\phi)} \cos^2{(\omega t)} \mid \right) \rangle \\
             \propto&  \langle E_0^2 \cos^2{(\omega t)} \left(\mid cos^2{(\phi)} +  2 cos{(\phi)}sin{(\phi)} +  sin^2{(\phi)} \mid \right) \rangle,
 \end{align}
@@ -128,7 +130,7 @@ und andererseits eine Phasenverschiebung durch die Lichtbrechung an dem Glasplä
 Winkel ergibt sich 
 \begin{equation}
     \label{eq:Phi}
-    \Delta \Phi = \frac{2\pi}{\lambda_{vac}}L\frac{n-1}{2n} \left((\Theta+Theta_0)^2 - (\Theta-\Theta_0)^2 \right).
+    \Delta \Phi = \frac{2\pi}{\lambda_{vac}}L\frac{n-1}{2n} \left((\Theta+\Theta_0)^2 - (\Theta-\Theta_0)^2 \right).
 \end{equation}
 $L$ ist die Dicke des Mediums, $\lambda_{vac}$ die Wellenlänge im Vakuum, $c$ die Lichtgeschwindigkeit und $Delta \Phi$ die Phasenverschiebung.\\
 Hier wird außerdem berücksichtigt, dass die Glasplätchen einen Winkel von $\Theta_0 = \pm 10^\circ$ zueinander haben.\\
@@ -136,8 +138,8 @@ Mithilfe einer Diode und eines Modern Interferometry Controller \cite{v64} könn
 \begin{align}
 \label{eq:Maxima}
     M   &= \frac{\Delta\Phi}{2\pi} \Leftrightarrow \Delta\Phi = 2M\pi  \\
-        &\Rightarrow  \frac{M\lambda_{vac}}{L \left((\Theta+Theta_0)^2 - (\Theta-\Theta_0)^2 \right)} = \frac{n-1}{n} \\
-        &n = \frac{1}{1- \frac{M \lambda_{vac}}{2 T \Theta \Theta_0}} 
+        &\Rightarrow  \frac{M\lambda_{vac}}{L \left((\Theta+\Theta_0)^2 - (\Theta-\Theta_0)^2 \right)} = \frac{n-1}{n} \\
+        &n = \frac{1}{1- \frac{M \lambda_{vac}}{2 L \Theta \Theta_0}} 
 \end{align}
 berechnet werden. Das wird dann in \autoref{eq:Phi} eingesetzt und nach $n$ umgestellt.\\
 
