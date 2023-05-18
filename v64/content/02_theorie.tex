@@ -50,7 +50,7 @@ welches in \autoref{fig:Aufbau} schematisch gezeigt ist.\\
     \label{fig:Aufbau}
 \end{figure}
 Das Sagnac Interferometer besteht aus zwei Spiegeln (M1 und M2), welche den Laser in das eigentliche Interferometer ablenken. Dieser trifft dann 
-zuerst auf einen Polarisationfilter mit Polarisationswinkel $phi$, sodass das Licht gleich linear polarisiert ist.\\
+zuerst auf einen Polarisationfilter mit Polarisationswinkel $\phi$, sodass das Licht gleich linear polarisiert ist.\\
 Dann trifft der Laserstrahl auf einen Strahlteilerwürfel (PBSC), welcher den Strahl in zwei orthogonal zueinander verlaufende Strahlen aufteilt. Diese Strahlen werden durch
 den Würfel zudem orthogonal zueinander polarisiert. Der transmittierte Strahl wird parallel zur Einfallsebene und der reflektierte Strahl senkrecht
 zur Einfallsebene polarisiert.\\
@@ -78,33 +78,33 @@ wobei $E_1$ und $E_2$ die Amplituden der einzelnen Wellen, $\omega$ die Kreisfre
 Durch den Polarisationfilter und PBSC gilt
 für die einzelnen Amplituden der Wellen
 \begin{equation}
-    E_1 = E_0 cos{(\phi)}
+    E_1 = E_0 \cos{(\phi)}
 \end{equation}
 und
 \begin{equation}
-    E_2 = E_0 sin{(\phi)},
+    E_2 = E_0 \sin{(\phi)},
 \end{equation}
 wobei $E_0$ die Gesamtamplitude der einlaufenden Welle ist. Eingsetzt in \autoref{eq:prop} ergibt das
 \begin{align}
-    I   \propto& \langle \mid E_0 cos{(\phi)} \cos{(\omega t)} + E_0 sin{(\phi)} \cos{(\omega t + \delta)} \mid^2 \rangle \\
-        \propto& E_0^2 \langle \left(\mid cos^2{(\phi)} \cos^2{(\omega t)} +  2 cos{(\phi)} \cos{(\omega t)} sin{(\phi)} \cos{(\omega t + \delta)} \\
-                &+  sin^2{(\phi)} \cos^2{(\omega t + \delta)} \mid \right) \rangle.
+    I   \propto& \langle \mid E_0 \cos{(\phi)} \cos{(\omega t)} + E_0 \sin{(\phi)} \cos{(\omega t + \delta)} \mid^2 \rangle \\
+        \propto& E_0^2 \langle (\mid \cos^2{(\phi)} \cos^2{(\omega t)} +  2 \cos{(\phi)} \cos{(\omega t)} \sin{(\phi)} \cos{(\omega t + \delta)} \\
+                &+  \sin^2{(\phi)} \cos^2{(\omega t + \delta)} \mid ) \rangle.
 \end{align}
 Die Maxima und Minima ergeben sich wie in \autoref{eq:konstr} und \autoref{eq:destr} erwähnt:
 \begin{align}
-    I_{max} \propto&  \langle E_0^2 \left(\mid cos^2{(\phi)} \cos^2{(\omega t)} +  2 cos{(\phi)} \cos{(\omega t)} sin{(\phi)} \cos{(\omega t + 2 \pi n)} 
-                    &+  sin^2{(\phi)} \cos^2{(\omega t + 2 \pi n)} \mid \right) \rangle  \\
-            \propto&  \langle E_0^2 \left(\mid cos^2{(\phi)} \cos^2{(\omega t)} +  2 cos{(\phi)} \cos{(\omega t)} sin{(\phi)} \cos{(\omega t)} +  sin^2{(\phi)} \cos^2{(\omega t)} \mid \right) \rangle \\
-            \propto&  \langle E_0^2 \cos^2{(\omega t)} \left(\mid cos^2{(\phi)} +  2 cos{(\phi)}sin{(\phi)} +  sin^2{(\phi)} \mid \right) \rangle,
+    I_{max} \propto&  \langle E_0^2 (\mid \cos^2{(\phi)} \cos^2{(\omega t)} +  2 \cos{(\phi)} \cos{(\omega t)} \sin{(\phi)} \cos{(\omega t + 2 \pi n)} \\
+                    &+  \sin^2{(\phi)} \cos^2{(\omega t + 2 \pi n)} \mid ) \rangle  \\
+            \propto&  \langle E_0^2 \left(\mid \cos^2{(\phi)} \cos^2{(\omega t)} +  2 \cos{(\phi)} \cos{(\omega t)} \sin{(\phi)} \cos{(\omega t)} +  \sin^2{(\phi)} \cos^2{(\omega t)} \mid \right) \rangle \\
+            \propto&  \langle E_0^2 \cos^2{(\omega t)} \left(\mid \cos^2{(\phi)} +  2 \cos{(\phi)}sin{(\phi)} +  \sin^2{(\phi)} \mid \right) \rangle,
 \end{align}
 wobei der Betrag des zeitlichen Mittels von $\cos^2{(\omega t)} = \frac{1}{2}$ und $cos^2{(\phi)} + sin^2{(\phi)} = 1$ ist. Somit ergibt sich
 \begin{equation}
-    I_{max} \propto I_{Laser} \left( 1 + 2 cos{(\phi)}sin{(\phi)} \right).
+    I_{max} \propto I_{Laser} \left( 1 + 2 \cos{(\phi)}\sin{(\phi)} \right).
 \end{equation}
 $I_{Laser} = \frac{1}{2} E_0^2$ ist hier die mittlere Ausgangsintensität des Lasers.\\
 Durch den gleichen Weg ergibt sich für die destruktive Interferenz
 \begin{equation}
-    I_{min} \propto I_{Laser} \left( 1 - 2 cos{(\phi)}sin{(\phi)} \right),
+    I_{min} \propto I_{Laser} \left( 1 - 2 \cos{(\phi)}\sin{(\phi)} \right),
 \end{equation}
 da $\cos{(\omega t + (2n+1)\pi)} = -\cos{(\omega t)} $.\\
 Anhand dieser Gleichungen ist bei jedem vielfachen von $\frac{\pi}{2}$ ein maximaler Kontrast zu erwarten.\\
