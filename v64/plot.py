@@ -25,6 +25,10 @@ def kontrast_theorie(Phi,a):
 kontrast_exp = kontrast(U_min,U_max)
 
 params,pcov = op.curve_fit(kontrast_theorie,phi,kontrast_exp)
+print("kontrast parameter a = ",params[0])
+print("maximum des kontrastes:",kontrast_exp[4:6])
+print("winkel des maximums:",phi[4:6])
+
 
 lambda_vac = 632.990*10**(-9)
 Theta0 =10*(2*np.pi/360)
@@ -52,8 +56,8 @@ plt.ylabel('M')
 plt.legend()
 plt.grid()
 #plt.show()
-plt.savefig("build/MaxN.png")
-
+plt.savefig("build/MaxN.pdf")
+plt.close()
 L1 = 0.1
 
 def n_gas1(M):
@@ -83,8 +87,8 @@ plt.ylabel('n')
 plt.legend()
 plt.grid()
 #plt.show()
-plt.savefig("build/ngas.png")
-
+plt.savefig("build/ngas.pdf")
+plt.close()
 
 T_1 = 22 + 273.15 #Kelvin
 T_0= 15 + 273.15 #Kelvin
@@ -134,9 +138,9 @@ plt.plot(p_lin, n_luft(p_lin, *param3),'-',  label='Fit für Versuchreihe 3')
 plt.xlabel(r"$p \, / \, \mathrm{mbar}$")
 plt.ylabel('n')
 plt.legend()
-plt.savefig("build/Fits.png")
+plt.savefig("build/Fits.pdf")
 #plt.show()
-
+plt.close()
 def n_luft1(a,b):
     return (a * p_0)/(R * T_0) + b
 
@@ -145,17 +149,17 @@ print(n_luft1(a2,b2))
 print(n_luft1(a3,b3))
 
 print((n_luft1(a1,b1) + n_luft1(a2,b2) + n_luft1(a3,b3))/3)
-'''
+
 #plotting
 #kontrast
 x_phi = np.linspace(0,180,10000)
 plt.plot(x_phi,kontrast_theorie(x_phi,params[0]), color = "cornflowerblue", label = "Theoriewerte")
-plt.plot(phi,kontrast_exp, color = "firebrick",label="Messdaten")
+plt.plot(phi,kontrast_exp, color = "firebrick",label="Messdaten",marker="x",linewidth="0")
 plt.legend()
 plt.grid()
 plt.ylabel(r'$\mathrm{Kontrast}$')
 plt.xlabel(r'$\phi\,\, \mathrm{in} \,\,^\circ$')
 
 #plt.show()
-#plt.savefig("build/Kontrast.pdf")
-'''
+plt.savefig("build/Kontrast.pdf")
+plt.close()
