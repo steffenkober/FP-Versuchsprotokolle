@@ -163,3 +163,22 @@ plt.xlabel(r'$\phi\,\, \mathrm{in} \,\,^\circ$')
 #plt.show()
 plt.savefig("build/Kontrast.pdf")
 plt.close()
+
+#abweichungen 
+n_glas_exp_test = ufloat(1.5228, 0.0124)
+n_glas_exp = 1.5228
+n_glas_theo_test = ufloat(1.52,0)
+abw_n_glas = np.abs(n_glas_exp - 1.52)/1.52
+abw_n_glas_test = np.abs(n_glas_exp_test - n_glas_theo_test)/n_glas_theo_test
+print("abw_n_glas =",abw_n_glas)
+print("abw_n_glas =",abw_n_glas_test)
+
+
+
+n_luft_exp_test = ufloat(1.0002762, 0.0000011)
+n_luft_theo_test = ufloat(1.000292,0)
+n_luft_exp = 1.0002762
+abw_n_luft = np.abs(n_luft_exp - 1.000292)/1.000292
+abw_n_luft_test = np.abs(n_luft_exp_test - n_luft_theo_test)/n_luft_theo_test
+print("abw_n_luft =",abw_n_luft)
+print("abw_n_luft =",abw_n_luft_test)
