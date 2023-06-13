@@ -7,6 +7,7 @@ Als Messstellen wurden die Maxima und jeweils die Hälften der Maxima links und 
 Aus den drei Datenpunkten lassen sich für die Moden selber eine Parabelgleichung aufstellen und für die Frequenzbänder eine kubische Parabel.\\
 Die aufgenommen Messwerte lassen sich in \autoref{tab:versuch1} finden. Mithilfe von \textit{python}, den libraries \textit{uncertainties}\cite{uncertainties} und
 \textit{matplotlib}\cite{matplotlib} werden die Parameter bestimmt, Ungenauigkeiten berechnet und die Funktionen grafisch dargestellt.\\
+Da die meisten Messwerte lediglich abgelesen werden ist hier der systematische Fehler unbekannt und wird im Folgenden vernachlässigt.\\
 \begin{table}[htbp] 
     \centering 
     \begin{tabular}{c c c} 
@@ -66,15 +67,15 @@ an einem \textit{dip} gemessen.
 \section{Wellenlängenmessung}
 
 Der Detektor wurde von einem Minimum in das nächste geschoben und die Positionen als Messwerte $x_1$ und $x_2$ notiert. Diese lassen sich in \autoref{tab:versuch2} finden.\\
-Die Hohlleitungswellenlänge $\Delta \lambda_g$ berechnet sich aus dem doppelten Abstand des $\Delta x$. Die Frequenz $f_2$ lässt sich anschließend mithilfe von \autoref{eq:frqy} berechnen.
+Die Hohlleitungswellenlänge $\lambda_g$ berechnet sich aus dem doppelten Abstand des $\Delta x$. Die Frequenz $f_2$ lässt sich anschließend mithilfe von \autoref{eqn:TE01} berechnen.
 Das Ergebnis lässt sich ebenfalls in \autoref{tab:versuch2} finden.\\
 
 \begin{table}[htbp] 
     \centering 
     \begin{tabular}{c c c c c} 
-        \toprule $x_1 / \mathrm{mm}$ & $x_2 / \mathrm{mm}$ & $\Delta x / \mathrm{mm}$ & $\Delta \lambda_g / \mathrm{mm}$ & $f_2 / \mathrm{GHz}$ \\ 
+        \toprule $x_1 / \mathrm{mm}$ & $x_2 / \mathrm{mm}$ & $\Delta x / \mathrm{mm}$ & $\lambda_g / \mathrm{mm}$ & $f_2 / \mathrm{GHz}$ \\ 
         \midrule 
-        $79,1$  &  $104,1$ &  $25$ & $50$ &$ 8.885  \pm 0,01$ \\
+        $79,1$  &  $104,1$ &  $25$ & $50$ &$ 8,885  \pm 0,01$ \\
         \bottomrule 
     \end{tabular} 
     \caption[Tabelle]{Positionen der Minima zum Berechnen der Wellenlänge und Frequenz} 
