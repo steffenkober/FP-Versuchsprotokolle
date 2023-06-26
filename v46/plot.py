@@ -1,21 +1,47 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-x = np.linspace(0, 10, 1000)
-y = x ** np.sin(x)
 
-plt.subplot(1, 2, 1)
-plt.plot(x, y, label='Kurve')
-plt.xlabel(r'$\alpha \mathbin{/} \unit{\ohm}$')
-plt.ylabel(r'$y \mathbin{/} \unit{\micro\joule}$')
-plt.legend(loc='best')
+####################################################
+#Definition der Funktionen
+####################################################
+def bogenmin_zu_rad(zahl):
+              return (np.floor(zahl)+(zahl - np.floor(zahl))*100/60)*np.pi/180
 
-plt.subplot(1, 2, 2)
-plt.plot(x, y, label='Kurve')
-plt.xlabel(r'$\alpha \mathbin{/} \unit{\ohm}$')
-plt.ylabel(r'$y \mathbin{/} \unit{\micro\joule}$')
-plt.legend(loc='best')
+def quadratic(x,a,b,c):
+              return a*x**2+b*x+c
 
-# in matplotlibrc leider (noch) nicht möglich
-plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-plt.savefig('build/plot.pdf')
+def linear(x,a,b):
+              return a*x+b
+
+####################################################
+####################################################
+
+
+
+####################################################
+#Einlesen der Messdaten
+####################################################
+z, B = np.genfromtxt("content/Messdaten_B_Feld.txt", unpack=True)
+lambdas, u_theta_1_rein, u_theta_2_rein = np.genfromtxt("content/Messdaten_GaAs_hochrein.txt", unpack=True)
+theta_1_rein = bogenmin_zu_rad(u_theta_1_rein)
+theta_2_rein = bogenmin_zu_rad(u_theta_2_rein)
+d_rein = 5.11*10**-3 # meter
+u_theta_1_12, u_theta_2_12 = np.genfromtxt("content/Messdaten_GaAs_n_dot_1_2.txt", unpack=True)
+theta_1_12 = bogenmin_zu_rad(u_theta_1_12)
+theta_2_12 = bogenmin_zu_rad(u_theta_2_12)
+d_12 = 1.36*10**-3 # meter
+N_12 = 1.2*10**18*10**6 #1/m^3
+u_theta_1_28, u_theta_2_28 = np.genfromtxt("content/Messdaten_GaAs_n_dot_2_8.txt", unpack=True)
+theta_1_28 = bogenmin_zu_rad(u_theta_1_28)
+theta_2_28 = bogenmin_zu_rad(u_theta_2_28)
+d_28 = 1.296*10**-3 # meter
+N_28 = 2.8*10**18*10**6 #1/m^3
+####################################################
+####################################################
+print(theta_1_12)
+
+
+
+
+
