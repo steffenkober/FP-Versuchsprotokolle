@@ -1,5 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import scipy.optimize as op
+import uncertainties.unumpy as unp
+from uncertainties import ufloat
+import scipy.constants as const
 
 
 ####################################################
@@ -39,9 +43,25 @@ d_28 = 1.296*10**-3 # meter
 N_28 = 2.8*10**18*10**6 #1/m^3
 ####################################################
 ####################################################
-print(theta_1_12)
 
 
+####################################################
+#Magnetfeld Untersuchung
+####################################################
 
+plt.plot(z, B, marker = "x", color = "cornflowerblue", label = "Messwerte", lw = 0)
+plt.plot(z, B, color = "gray",lw = 0.5)
+plt.plot(98,430,marker = o, color="firebrick",label="Maximum = \qty{430}{\milli\tesla}")
+plt.grid()
+plt.xlabel(r"$z \mathbin{/} \unit{\milli\metre}$")
+plt.ylabel(r"$B \mathbin{/} \unit{\milli\tesla}$")
+plt.ylim(0, 440)
+plt.xlim(70, 135)
+plt.legend()
+plt.tight_layout()
 
+plt.savefig('build/magnetfeld.pdf')
+plt.close()
+####################################################
+####################################################
 
