@@ -1,2 +1,134 @@
 \chapter{Auswertung}
 \label{cha:Auswertung}
+\section{Untesuchung des verwendeten Magnetfeldes}
+\label{sec:magn}
+Zunächst wurde das Magnetfeld des verwendeten Magneten untersucht. Der Fokus bei dieser Untersuchung liegt weniger aufm dem Verlauf des Magnetfeldes als auf dem Maximum. 
+Aufgrund der Geometrie des Aufbaus liegt die Probe genau im Maximum des Feldes. 
+
+Die gemessenen Feldstärken sind in Abbildung \ref{fig:magnetfeld} dargestellt. 
+
+\begin{figure}
+              \centering
+              \includegraphics[width=.8\textwidth]{build/magnetfeld.pdf}
+              \caption{Grafische Darstellung der Messdaten zur Bestimmung der magnetischen Kraftflussdichte.}
+              \label{fig:magnetfeld}
+\end{figure}
+Das Maximum des Magnetfeldes liegt bei $B_\mathrm{max} = \qty{430}{\milli\tesla}$.
+
+\section{Bestimmung der effektiven Masse der Leitungselektronen}
+\label{sec:effektive_masse}
+Zur Bestimmung der effektiven Masse der Leitungselektronen werden drei \ce{GaAs} Proben untersucht. Für unterschiedliche Ladungsträgerdichten wird zunächst eine hochreine \ce{GaAs}
+Probe verwendet. Danach werden dann noch zwei unterschiedlich stark n-dotierte Proben verwendet. Eine Probe hat eine Dotierungsdichte von $N_{12} = \qty{1.2e18}{\per\cubic\centi\metre}$
+mit einer Dicke entlang des Infrarot von $L_{12} = \qty{1.36}{\milli\metre}$ und wird im folgendem durch den Index $12$ referenziert. Die andere dotierte Probe hat eine 
+Dotierungsdichte von $N_{28} = \qty{2.8e18}{\per\cubic\centi\metre}$ mit einer Dicke entlang des Infrarot von $L_{28} = \qty{1.296}{\milli\metre}$ und wird im folgendem durch den Index 
+$28$ referenziert. Die hochreine \ce{GaAs} Probe hat eine Dicke von $L_\mathrm{rein} = \qty{1.296}{\milli\metre}$ und wird im folgendem durch den index \enquote{rein} referenziert.
+
+Die Messwerte sind in den Tabellen \ref{tab:mw1}-\ref{tab:mw3} dargestellt. Aus diesen Messwerten wurde gemäß Gleichung \eqref{eqn:theta} der Faraday-Rotationswinkel errechnet und ebenfalls 
+in den Tabellen \ref{tab:mw1}-\ref{tab:mw3} dargestellt. In den selben Tabellen befinden sich auch die Wellenlängen der neun unterschiedlichen Interferenzfilter, 
+welche im Experiment verwendet wurden. 
+
+\begin{table}
+              \centering
+              \caption{Messwerte zur undotierten Probe und nach \autoref{eqn:theta} bestimmter Drehwinkel der Faradayrotation.}
+              \label{tab:mw1}
+              \begin{tabular}{c c c c}
+                \toprule
+                $\lambda \mathbin{/} \unit{\micro\meter}$ & $\theta_{1} \mathbin{/} \unit{\degree}$ & $\theta_{2} \mathbin{/} \unit{\degree}$ &%
+                 $\theta \mathbin{/} \unit{\degree}$ \\
+                \midrule
+                $1,06 $ & $4,36$ & $4,78$ & $0,21$ \\
+                $1,29 $ & $4,71$ & $4,45$ & $0,13$ \\
+                $1,45 $ & $4,49$ & $4,71$ & $0,11$ \\
+                $1,72 $ & $4,63$ & $4,47$ & $0,08$ \\
+                $1,96 $ & $4,42$ & $4,52$ & $0,05$ \\
+                $2,156$ & $4,49$ & $4,38$ & $0,05$ \\
+                $2,34 $ & $3,94$ & $4,01$ & $0,03$ \\
+                $2,51 $ & $3,53$ & $3,46$ & $0,03$ \\
+                $2,65 $ & $2,84$ & $2,93$ & $0,04$ \\
+                \bottomrule
+              \end{tabular}
+\end{table}
+
+\begin{table}
+              \centering
+              \caption{Messwerte zur Probe mit $N = \qty{1.2e18}{\centi\metre^{-3}}$ und nach \autoref{eqn:theta_diff} bestimmter Drehwinkel der Faradayrotation.}
+              \label{tab:mw2}
+              \begin{tabular}{c c c c}
+                \toprule
+                $\lambda \mathbin{/} \unit{\micro\meter}$ & $\theta_{1} \mathbin{/} \unit{\degree}$ & $\theta_{2} \mathbin{/} \unit{\degree}$ &%
+                 $\theta \mathbin{/} \unit{\degree}$ \\
+                \midrule
+                $1,06 $ & $2,69$ & $2,53$ & $0,08$ \\
+                $1,29 $ & $2,57$ & $2,71$ & $0,07$ \\
+                $1,45 $ & $2,58$ & $2,67$ & $0,04$ \\
+                $1,72 $ & $2,71$ & $2,60$ & $0,05$ \\
+                $1,96 $ & $2,83$ & $2,72$ & $0,05$ \\
+                $2,156$ & $2,74$ & $2,86$ & $0,06$ \\
+                $2,34 $ & $3,30$ & $3,18$ & $0,06$ \\
+                $2,51 $ & $3,54$ & $3,58$ & $0,02$ \\
+                $2,65 $ & $4,29$ & $4,22$ & $0,03$ \\
+                \bottomrule
+              \end{tabular}
+\end{table}
+
+\begin{table}
+              \centering
+              \caption{Messwerte zur Probe mit $N = \qty{2.8e18}{\centi\metre^{-3}}$ und nach \autoref{eqn:theta_diff} bestimmter Drehwinkel der Faradayrotation.}
+              \label{tab:mw3}
+              \begin{tabular}{c c c c}
+                \toprule
+                $\lambda \mathbin{/} \unit{\micro\meter}$ & $\theta_{1} \mathbin{/} \unit{\degree}$ & $\theta_{2} \mathbin{/} \unit{\degree}$ &%
+                 $\theta \mathbin{/} \unit{\degree}$ \\
+                \midrule
+                $1,06 $ & $4,47$ & $4,64$ & $0,09$ \\
+                $1,29 $ & $4,64$ & $4,45$ & $0,10$ \\
+                $1,45 $ & $4,47$ & $4,64$ & $0,09$ \\
+                $1,72 $ & $4,59$ & $4,42$ & $0,09$ \\
+                $1,96 $ & $4,31$ & $4,50$ & $0,10$ \\
+                $2,156$ & $4,50$ & $4,28$ & $0,11$ \\
+                $2,34 $ & $3,84$ & $4,08$ & $0,12$ \\
+                $2,51 $ & $3,80$ & $3,63$ & $0,09$ \\
+                $2,65 $ & $4,22$ & $4,43$ & $0,10$ \\
+                \bottomrule
+              \end{tabular}
+\end{table}
+
+Da der Faraday-Winkel sowohl von der Probendicke als auch von der Dotierungsdichte abhängt, muss die Faradayrotaion pro Einheitslänge errechnet werden. Dies geschieht durch 
+\begin{equation}
+              \Theta_\mathrm{frei} = \frac{\Theta}{L} - \frac{\Theta_\mathrm{rein}}{L_\mathrm{rein}} \,.
+\end{equation} 
+
+In dieser Gleichung is $\Theta$ ein gemesserner Winkel mit dotierter Probe der Dicke $L$.
+
+Aus der theoretischen Überlegung zu $\Theta_\mathrm{frei}$ folgte Gleichung \eqref{eqn:t_frei}. Diese Gleichung legt Nahe, dass $\Theta_\mathrm{frei} \propto \lambda^2$ ist. 
+Betracht man $\Theta_\mathrm{frei}$ als linear in $lambda^2$ kann die effektive Masse, welche in dem Proportionalitätsfaktor enthalten ist, bestimmt werden indem die Messwerte für 
+$\Theta_\mathrm{frei}$ linear an $lambda^2$ fittet. Formel \eqref{eqn:t_frei} weißt außerdem keinen Konstanten Term auf. Allerdings wird für den Fit eine konstante Variable hinzugefügt
+um statistische und systematische Unsicherheiten zu minimieren.
+
+Die lineare Regression wird mittels scipy \cite{scipy} berechnet. Die Messwerte von $\Theta_\mathrm{frei}$ sind in Abbildung \ref{fig:fit} zusammen mit den berechneten 
+Ausgleichsgeraden dargestelllt. 
+
+\begin{figure}
+              \centering
+              \includegraphics{effektive_masse_fit.pdf}
+              \caption{Werte der Faradayrotation pro Eineheitslänge $\theta_\text{frei}$ der dotierten Proben und ermittelte Ausgleichsgeraden.}
+              \label{fig:fit}
+\end{figure}
+
+Die rot markierten Messdaten wurden aus der folgenden Berechnung rausgenommen. Es ergeben sich die Parameter der Ausgleichsgeraden 
+\begin{align*}
+              a_{12} &= \qty{5.074+-1.490e12}{\metre^{-3}} &  a_{28} &= \qty{12.47+-1.35e12}{\metre^{-3}} \\
+              b_{12} &= \qty{9.403+-5.147}{\metre^{-1}} & b_{28} &= \qty{18.37+-4.65}{\metre^{-1}}.
+\end{align*}
+
+Wird $b$ vernachlässigt kann Gleichung \eqref{eqn:t_frei} durch den Ansatz der Regression nach 
+\begin{equation}
+              \label{eqn:t_final}
+              m^* = \sqrt{\frac{e**3NB}{8\pi^2\epsilon_0c^3na}}
+\end{equation}
+umgesformt werden. Aus dieser Gleichung kann dann die effektive Masse bestimmt werden. Für die beiden dotierten Proben ergibe sich 
+\begin{align*}
+              m_1 &= \qty{8.1+-1.2e-32}{\kilo\gram} & m_2 &=  \qty{7.9+-0.4e-32}{\kilo\gram}.
+\end{align*}
+Dabei wurde das im Abschnitt \ref{sec:magn} bestimmte maximale Magentfeld verwendet und der Brechungsindex von \ce{GaAs} als $n = \num{3.354}$.
+Der Mittwelwert lautet $\qty{8+-0.6e-32}{\kilo\gram}$.
