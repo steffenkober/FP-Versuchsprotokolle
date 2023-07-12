@@ -95,7 +95,7 @@ in einem rechteckigen Hohlleiter entstehen können. Dazu korrespondiert die krit
               \lambda_g = \frac{2}{\sqrt{\frac{m}{a}^2+\frac{n}{b}^2}}%n ergänzen
 \end{equation}
 
-Daber sind $a$ und $b$ die Seitenlängen des in Abbildung \ref{fig:hohlleiter} dargestellten Hohlleiters. Diese Grenzwellenlänge gilt für $\textbf{TEM}_m$, wobei der index $n$ die Zahl 
+Daber sind $a$ und $b$ die Seitenlängen des in Abbildung \ref{fig:hohlleiter} dargestellten Hohlleiters. Diese Grenzwellenlänge gilt für $\textbf{TEM}_{m,n}$, wobei der index $n$ die Zahl 
 der Mode ist. Das heißt eine Mode wird durch $m,n$ charakterisiert. Unterhalb dieser Wellenlänge kann die Wellenlänge im Hohlleiter durch die Wellenlänge im freien Raum durch 
 \begin{equation}
               \label{eqn:lambda_g}
@@ -117,7 +117,7 @@ für die jeweilige Anwendung nutzen. Das Reflexklystron ist dabei eine Entwicklu
 \label{subsec:aufbau_klystron}
 Eine Skizze des Aufbaus wird in Abbildung \ref{fig:reflexklystron} dargestellt. Es besteht aus einer Glühkathode und einer Refloktoranode und zwei Hohlraumresonatorkammern. Hinter 
 der Kathode liegt ein Beschleunigungsgitter an. Danach treffen die beschleunigten Elektronen auf den Hohlraumresonator. Nachdem dieser durchlaufen wurde, treffen die Elektronen auf 
-den Reflektor anhand desse diese umgekhert werden und erneut auf den Hohlraumresonator treffen. Dies ist ein fortlaufender Prozess. Eine Hohlraumkammer dient dabei als wirklicher 
+den Reflektor anhand desse diese umgekehrt werden und erneut auf den Hohlraumresonator treffen. Dies ist ein fortlaufender Prozess. Eine Hohlraumkammer dient dabei als wirklicher 
 Hohlraumresonator und die andere als Auskopplungskammer.
 \begin{figure}
               \centering
@@ -127,9 +127,9 @@ Hohlraumresonator und die andere als Auskopplungskammer.
 \end{figure}
 \subsection{Funktionsweise des Reflexklystrons}
 \label{subsec:funktion}
-Wie bereits erwähnt durchläuft der Elektronenstrahl zunächst den mit einer stehenden Welle gespeisten Hohlraumresonator. Die Elektronen werden dabei Geschwindigkeitsmoduliert.
+Wie bereits erwähnt durchläuft der Elektronenstrahl zunächst den Hohlraumresonator. Die Elektronen werden dabei Geschwindigkeitsmoduliert.
 Das geschieht jenach lokaler Feldstärke der stehenden Welle. Da die Elektronen also unterschiedlich stark in ihrer Geschwindigkeit moduliert werden, ist das gleichbedeutent mit einer
-Dichtemodulation des Elektronenstrahls. Dies nennt man \textit{bunching}. Dieser dichtemodulierte Elektronenstrahl trifft nun auf den Reflektor und wir umgekhert. Nun durchläuft er 
+Dichtemodulation des Elektronenstrahls. Dies nennt man \textit{bunching}. Dieser dichtemodulierte Elektronenstrahl trifft nun auf den Reflektor und wir umgekehrt. Nun durchläuft er 
 erneut de stehende Welle. Nun können zwei Effekte auftreten. Jenachdem, ob der \textit{gebunchte} Elektronenstrahl nun auf ein Maximum oder Minimum trifft kann ein dämpfender oder 
 resonanter Effekt auftreten. Trifft der \textit{gebunchte} Strahl mit einem Maximum an Elektronen nun auf ein Maximum des $\vec{E}$-Feldes, also auf ein positives Feld, so wird 
 Energie in die Stehwelle eingekoppelt. Es tritt also eine resonante Wechselwirkung auf. Andernfalls kann ein Maximum des \textit{gebunchte} Strahls auf ein minimales Feld, also 
@@ -148,7 +148,7 @@ ebenfalls die Höhe des Reflektors oder andere geometrische Eigenschaften verän
 \subsection{Moden im Klystron}
 \label{subsec:moden}
 Für einen optimal Energieübertrag muss daher die geometrische Bedingung $t = T_0\left(n+\sfrac{3}{4}\right)$ erfüllt sein. Mit dieser Bedingung folgen Moden, welche in Abbildung 
-\ref{fig:moden} dargestellt werden. 
+\ref{fig:moden} dargestellt werden.  Dabei ist $T_0$ die Periodendauer der Hohlraumresonatorfrequenz und $n \in \mathrm{N}$.
 
 \begin{figure}
               \centering
@@ -157,7 +157,7 @@ Für einen optimal Energieübertrag muss daher die geometrische Bedingung $t = T
               \label{fig:moden}
 \end{figure}
 
-Dabei wird in dem oberen Graphen deutlich, dass der Energieübertrag parabelförmig um ein Maximum stattfindet. Außerdem ist zu beachten, dass die unterschiedlichen Energieüberträge 
+Dabei wird in dem Graphen aus Abbildung \ref{fig:moden} deutlich, dass der Energieübertrag parabelförmig um ein Maximum stattfindet. Außerdem ist zu beachten, dass die unterschiedlichen Energieüberträge 
 ebenfalls etwas die Frequenz der Welle verändern. Deshalb wird ein Frequenzmesser eingebaut, welcher einen kleinen Teil der Energie auskoppelt, um so die Frequenz messen zu können.
 Der Frequenzmesser ist vor der Sonde plaziert, daher ist aufgrund der Entkopplung ein kleiner Spannungseinbruch sichtbar. Dies ermöglicht überhaupt erst die Frequenzmessung.
 
@@ -165,6 +165,6 @@ Der Frequenzmesser ist vor der Sonde plaziert, daher ist aufgrund der Entkopplun
 \label{sec:einwegrichter}
 
 Zuletzt wird nun der Einwegrichter eklärt. Dieser wird innerhalb des Hohlleiters verwendet, damit die Strahlung nur in eine Richtung propagieren kann. Der Einwegrichter besteht aus 
-einem Permanentmagneten. Durch den Farady-Effekt lenkt dieser die Strahlung ab. Beiden Strahlenrichtungen werden aber betragsmäßg gleich abgelenkt. Daher wird zusätzlich ein 
-Strahlen-Tor verwendet um eine Absorption in eine Richtung zu erhlten und Transmission in die entgegengesetzte.
+einem Permanentmagneten und einem absorbierendem Material. Mit Hilfe des Farady-Effektes und Feldveränderungsisolatoren lenkt dieser die Strahlung ab. Beiden Strahlenrichtungen werden aber betragsmäßg gleich abgelenkt. Daher wird zusätzlich ein 
+Strahlen-Tor verwendet um eine Absorption in eine Richtung zu erhalten und Transmission in die entgegengesetzte.
 
