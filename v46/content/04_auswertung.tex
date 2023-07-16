@@ -1,11 +1,9 @@
 \chapter{Auswertung}
 \label{cha:Auswertung}
-\section{Untesuchung des verwendeten Magnetfeldes}
+\section{Untersuchung des verwendeten Magnetfeldes}
 \label{sec:magn}
-Zunächst wurde das Magnetfeld des verwendeten Magneten untersucht. Der Fokus bei dieser Untersuchung liegt weniger aufm dem Verlauf des Magnetfeldes als auf dem Maximum. 
-Aufgrund der Geometrie des Aufbaus liegt die Probe genau im Maximum des Feldes. 
 
-Die gemessenen Feldstärken sind in Abbildung \ref{fig:magnetfeld} dargestellt. 
+Zunächst wurde das Magnetfeld des verwendeten Magneten auf sein Maximum untersucht. Die gemessenen Feldstärken sind in Abbildung \ref{fig:magnetfeld} dargestellt. 
 
 \begin{figure}
               \centering
@@ -17,11 +15,11 @@ Das Maximum des Magnetfeldes liegt bei $B_\mathrm{max} = \qty{430}{\milli\tesla}
 
 \section{Bestimmung der effektiven Masse der Leitungselektronen}
 \label{sec:effektive_masse}
-Zur Bestimmung der effektiven Masse der Leitungselektronen werden drei \ce{GaAs} Proben untersucht. Für unterschiedliche Ladungsträgerdichten wird zunächst eine hochreine \ce{GaAs}
+Zur Bestimmung der effektiven Masse der Leitungselektronen werden drei \ce{GaAs} Proben unterschiedlicher Dotierung untersucht. Zunächst wird eine hochreine \ce{GaAs}
 Probe verwendet. Danach werden dann noch zwei unterschiedlich stark n-dotierte Proben verwendet. Eine Probe hat eine Dotierungsdichte von $N_{12} = \qty{1.2e18}{\per\cubic\centi\metre}$
-mit einer Dicke entlang des Infrarot von $L_{12} = \qty{1.36}{\milli\metre}$ und wird im folgendem durch den Index $12$ referenziert. Die andere dotierte Probe hat eine 
-Dotierungsdichte von $N_{28} = \qty{2.8e18}{\per\cubic\centi\metre}$ mit einer Dicke entlang des Infrarot von $L_{28} = \qty{1.296}{\milli\metre}$ und wird im folgendem durch den Index 
-$28$ referenziert. Die hochreine \ce{GaAs} Probe hat eine Dicke von $L_\mathrm{rein} = \qty{1.296}{\milli\metre}$ und wird im folgendem durch den index \enquote{rein} referenziert.
+mit einer Dicke von $L_{12} = \qty{1.36}{\milli\metre}$ und wird im folgendem durch den Index $12$ referenziert. Die andere dotierte Probe hat eine 
+Dotierungsdichte von $N_{28} = \qty{2.8e18}{\per\cubic\centi\metre}$ mit einer Dicke von $L_{28} = \qty{1.296}{\milli\metre}$ und wird im folgendem durch den Index 
+$28$ referenziert. Die hochreine \ce{GaAs} Probe hat eine Dicke von $L_\mathrm{rein} = \qty{1.296}{\milli\metre}$ und wird im folgendem durch den Index \enquote{rein} referenziert.
 
 Die Messwerte sind in den Tabellen \ref{tab:mw1}-\ref{tab:mw3} dargestellt. Aus diesen Messwerten wurde gemäß Gleichung \eqref{eqn:theta} der Faraday-Rotationswinkel errechnet und ebenfalls 
 in den Tabellen \ref{tab:mw1}-\ref{tab:mw3} dargestellt. In den selben Tabellen befinden sich auch die Wellenlängen der neun unterschiedlichen Interferenzfilter, 
@@ -51,7 +49,7 @@ welche im Experiment verwendet wurden.
 
 \begin{table}
               \centering
-              \caption{Messwerte zur Probe mit $N = \qty{1.2e18}{\centi\metre^{-3}}$ und nach \autoref{eqn:theta_diff} bestimmter Drehwinkel der Faradayrotation.}
+              \caption{Messwerte zur Probe mit $N = \qty{1.2e18}{\centi\metre^{-3}}$ und nach \autoref{eqn:theta} bestimmter Drehwinkel der Faradayrotation.}
               \label{tab:mw2}
               \begin{tabular}{c c c c}
                 \toprule
@@ -73,7 +71,7 @@ welche im Experiment verwendet wurden.
 
 \begin{table}
               \centering
-              \caption{Messwerte zur Probe mit $N = \qty{2.8e18}{\centi\metre^{-3}}$ und nach \autoref{eqn:theta_diff} bestimmter Drehwinkel der Faradayrotation.}
+              \caption{Messwerte zur Probe mit $N = \qty{2.8e18}{\centi\metre^{-3}}$ und nach \autoref{eqn:theta} bestimmter Drehwinkel der Faradayrotation.}
               \label{tab:mw3}
               \begin{tabular}{c c c c}
                 \toprule
@@ -98,11 +96,11 @@ Da der Faraday-Winkel sowohl von der Probendicke als auch von der Dotierungsdich
               \Theta_\mathrm{frei} = \frac{\Theta}{L} - \frac{\Theta_\mathrm{rein}}{L_\mathrm{rein}} \,.
 \end{equation} 
 
-In dieser Gleichung is $\Theta$ ein gemesserner Winkel mit dotierter Probe der Dicke $L$.
+In dieser Gleichung ist $\Theta$ ein Winkel mit dotierter Probe der Dicke $L$.
 
 Aus der theoretischen Überlegung zu $\Theta_\mathrm{frei}$ folgte Gleichung \eqref{eqn:t_frei}. Diese Gleichung legt Nahe, dass $\Theta_\mathrm{frei} \propto \lambda^2$ ist. 
-Betracht man $\Theta_\mathrm{frei}$ als linear in $lambda^2$ kann die effektive Masse, welche in dem Proportionalitätsfaktor enthalten ist, bestimmt werden indem die Messwerte für 
-$\Theta_\mathrm{frei}$ linear an $lambda^2$ fittet. Formel \eqref{eqn:t_frei} weißt außerdem keinen Konstanten Term auf. Allerdings wird für den Fit eine konstante Variable hinzugefügt
+Wird $\Theta_\mathrm{frei}$ als linear in $\lambda^2$ betrachtet kann die effektive Masse, welche in dem Proportionalitätsfaktor enthalten ist, bestimmt werden indem die Messwerte für 
+$\Theta_\mathrm{frei}$ linear an $\lambda^2$ fittet. Formel \eqref{eqn:t_frei} weißt außerdem keinen Konstanten Term auf. Allerdings wird für den Fit eine konstante Variable hinzugefügt
 um statistische und systematische Unsicherheiten zu minimieren.
 
 Die lineare Regression wird mittels scipy \cite{scipy} berechnet. Die Messwerte von $\Theta_\mathrm{frei}$ sind in Abbildung \ref{fig:fit} zusammen mit den berechneten 
@@ -124,9 +122,9 @@ Die rot markierten Messdaten wurden aus der folgenden Berechnung rausgenommen. E
 Wird $b$ vernachlässigt kann Gleichung \eqref{eqn:t_frei} durch den Ansatz der Regression nach 
 \begin{equation}
               \label{eqn:t_final}
-              m^* = \sqrt{\frac{e**3NB}{8\pi^2\epsilon_0c^3na}}
+              m^* = \sqrt{\frac{e^3NB}{8\pi^2\epsilon_0c^3na}}
 \end{equation}
-umgesformt werden. Aus dieser Gleichung kann dann die effektive Masse bestimmt werden. Für die beiden dotierten Proben ergibe sich 
+umgeformt werden. Aus dieser Gleichung kann dann die effektive Masse bestimmt werden. Für die beiden dotierten Proben ergibt sich 
 \begin{align*}
               m_1 &= \qty{8.1+-1.2e-32}{\kilo\gram} & m_2 &=  \qty{7.9+-0.4e-32}{\kilo\gram}.
 \end{align*}
