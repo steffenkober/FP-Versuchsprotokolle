@@ -50,7 +50,7 @@ lambdas = lambdas*10**(-6)
 ####################################################
 
 plt.plot(z, B, marker = "x", color = "cornflowerblue", label = "Messwerte", lw = 0)
-plt.plot(z, B, color = "gray",lw = 0.5)
+#plt.plot(z, B, color = "gray",lw = 0.5)
 plt.plot(98,430,marker = "o", color="firebrick",label=r"Maximum $ = \qty{430}{\milli\tesla}$")
 plt.grid()
 plt.xlabel(r"$z \mathbin{/} \unit{\milli\metre}$")
