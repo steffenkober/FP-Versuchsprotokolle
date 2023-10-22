@@ -1,9 +1,51 @@
-\chapter{Auswertung}
+\chapter{Data Analysis}
 \label{cha:Auswertung}
+The data was measuered with the setup discussed in the chapters \ref{cha:Theorie} and \ref{cha:Durchführung}. The duration of the data collection was $\qty{70.26}{\hour}$. In this 
+time $N_{\mathrm{start}} = \num{3427476}$ start signals and $N_{\mathrm{stop}} = \num{1818}$ stop signals were detected by the setup. The search time was set to 
+$T_\mathrm{search} = \qty{10}{\micro\second}$.
 
-\begin{figure}
+\section{Determination of the Resolution Time}
+\label{sec:resoltion time}
+To determine the resolution time of the setup a delay time $T_\mathrm{Delay}$ is introduced to the two different photomultipliers. This is necessary to phase the photomultipliers,
+since signals are only counted when both multipliers give a signal. As a counting experiment the data should comply with the possion distribution. Hence, the errors are given 
+by $\sqrt{N}$. The measerd counts dependet on the delay time are shown in table \ref{tab:t_d}. In this table a negative delay time corresponds to one photomultiplier and a positive 
+delay time to the second one. 
+
+\begin{table}
+    \tiny
     \centering
-    \includegraphics{plot.pdf}
-    \caption{Plot.}
-    \label{fig:plot}
-\end{figure}
+    \caption{Zählraten $N$ der Koinzidenz gegen verschiedene Verzögerungszeiten $T_\text{VZ}$ der Leitungen. Eine negative Verzögerungszeit beschreibt eine größere Verzögerung der Leitung zum linken PMT.
+    Es sind zwei Messreihen zu verschiedenen Zählzeiten aufgetragen.}
+    \label{tab:Mess1}
+    \begin{tabular}{c c c}
+      \toprule
+      {$ T_\text{D} \mathbin{/} \unit{\nano\second}$} & {$N$} & {$T_\mathrm{N} \mathbin{/} \unit{\second}$} \\
+      \midrule
+    0  & 153 & 20 \\
+    1  & 159 & 20 \\
+    2  & 146 & 20 \\
+    3  & 131 & 20 \\
+    4  & 148 & 20 \\
+    5  & 136 & 20 \\
+    6  & 114 & 20 \\
+    7  & 85 & 20 \\
+    8  & 65 & 20 \\
+    9  & 36 & 20 \\
+    10 & 19 & 20 \\
+    11 & 22 & 40 \\
+    12 & 8  & 60 \\
+    13 & 3  & 60 \\
+    -1 & 148 & 20 \\
+    -2 & 153 & 30 \\
+    -3 & 104 & 20 \\
+    -4 & 69 & 20 \\
+    -5 & 55 & 20 \\
+    -6 & 61 & 20 \\
+    -7 & 40 & 20 \\
+    -8 & 14 & 20 \\
+    -9 & 16 & 40 \\
+    -10& 11 & 60 \\
+    -11& 3 & 60 \\
+    \bottomrule
+    \end{tabular}
+\end{table}
