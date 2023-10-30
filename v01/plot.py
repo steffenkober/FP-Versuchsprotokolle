@@ -5,6 +5,7 @@ import uncertainties.unumpy as unp
 from uncertainties.unumpy import nominal_values as noms
 from uncertainties.unumpy import std_devs as devs
 import scipy.optimize as op
+from uncertainties import ufloat
 
 
 #Auflösungzeit
@@ -113,3 +114,10 @@ plt.grid()
 plt.tight_layout()
 plt.savefig("build/fit.pdf")
 plt.close()
+
+#deviations
+lifetime_lit = ufloat(2.1969811, 0.0000022)
+lifetime = ufloat(params[1], err[1])
+print(lifetime,lifetime_lit)
+dev = abs(lifetime-lifetime_lit)/lifetime_lit
+print(dev)

@@ -1,22 +1,50 @@
 \chapter{Data Analysis}
 \label{cha:Auswertung}
-The data was measuered with the setup discussed in the chapters \ref{cha:Theorie} and \ref{cha:Durchführung}. The duration of the data collection was $\qty{70.26}{\hour}$. In this 
+The data was measuered with the setup discussed in the chapters \ref{cha:Theorie} and \ref{cha:Durchführung}. The duration of the data collection was $T_\mathrm{Dur} = \qty{70.26}{\hour}$. In this 
 time $N_{\mathrm{start}} = \num{3427476}$ start signals and $N_{\mathrm{stop}} = \num{1818}$ stop signals were detected by the setup. The search time was set to 
 $T_\mathrm{search} = \qty{10}{\micro\second}$.
+
+\section{Estimation of a Constant Background Detection}
+\label{sec:background}
+
+To estimate the background rate in this experiment the mean amount of muons has to be calculated. It is given by 
+\begin{equation}
+    \label{eqn:muon_amount}
+    \nu = \frac{N_\mathrm{start}}{T_\mathrm{Dur}} = \qty{13.55}{\per\second} .
+\end{equation}
+Since this is a counting experiment the counts should be possion distributed and the probability, that $k$ muons hit the detector while it is measering is given by
+\begin{equation}
+    \label{eqn:prob}
+    P_{T_\mathrm{search}\nu}(k) = \frac{(T_\mathrm{search}\nu)^k}{k!}\mathrm{e}^{T_\mathrm{search}\nu} .
+\end{equation}
+
+The function \ref{eqn:prob} is proportional to the factorial of $k$, so every order above $k=1$ is negligible. The propability of one additional muon entering the chamber in the 
+search time is 
+\begin{equation*}
+    P_{T_\mathrm{search}\nu}(k=1) = \qty{0.013}{\percent} .
+\end{equation*}
+
+From this the estimation of the background rate $U_0$ is given by 
+\begin{equation}
+    \label{eqn:background}
+    U_0 = \frac{N_\mathrm{start}P_{T_\mathrm{search}\nu}(k=1)}{N_\mathrm{channel}} = \qty{1.08}{counts\per channel} .
+\end{equation}
+
+In this equation $N_\mathrm{channel} = 430$ is the amount of channels.
 
 \section{Determination of the Resolution Time}
 \label{sec:resoltion time}
 To determine the resolution time of the setup a delay time $T_\mathrm{Delay}$ is introduced to the two different photomultipliers. This is necessary to phase the photomultipliers,
 since signals are only counted when both multipliers give a signal. As a counting experiment the data should comply with the possion distribution. Hence, the errors are given 
-by $\sqrt{N}$. The measerd counts dependet on the delay time are shown in table \ref{tab:t_d}. In this table a negative delay time corresponds to one photomultiplier and a positive 
+by $\sqrt{N}$. The measerd counts dependend on the delay time are shown in table \ref{tab:t_d}. In this table a negative delay time corresponds to one photomultiplier and a positive 
 delay time to the second one. 
 
 \begin{table}
     \tiny
     \centering
-    \caption{Zählraten $N$ der Koinzidenz gegen verschiedene Verzögerungszeiten $T_\text{VZ}$ der Leitungen. Eine negative Verzögerungszeit beschreibt eine größere Verzögerung der Leitung zum linken PMT.
-    Es sind zwei Messreihen zu verschiedenen Zählzeiten aufgetragen.}
-    \label{tab:Mess1}
+    \caption{Measured Counts $N$ dependend on the delay time $T_\text{D}$. $T_\mathrm{N}$ is the duration of the measurement. A negative delay time corresponds to one photomultiplier
+    and a positive delay time to the second one.}
+    \label{tab:t_d}
     \begin{tabular}{c c c}
       \toprule
       {$ T_\text{D} \mathbin{/} \unit{\nano\second}$} & {$N$} & {$T_\mathrm{N} \mathbin{/} \unit{\second}$} \\
@@ -49,3 +77,94 @@ delay time to the second one.
     \bottomrule
     \end{tabular}
 \end{table}
+
+The data is also shown in figure \ref{fig:t_d}. In this figure the course of the data shows a plateau from $\qty{-1}{\nano\second}$ to $\qty{5}{\nano\second}$ at around $\num{7.2}$.
+The resolution time corresponds to the full width at half maximum (FWHM) of the data. As shown in figure \ref{fig:t_d} the resolution time for this setup is $\qty{12}{\nano\second}$.
+
+\begin{figure}
+    \centering
+    \includegraphics[width = .8\textwidth]{plot1.pdf}
+    \caption{temp}
+    \label{fig:t_d}
+\end{figure}
+
+\section{Calibration of the Multichannel Analyser}
+\label{sec:MCA}
+
+As discussed erlier the TAC converts the temporal distance of the signals into an amplitude. The multichannel analyser (MCA) converts this amplitude into counts amoung different 
+channels. The number of the categorized channel has a correlation to the measured lifetime of the muons. This correlation has to be determined before the measurement. The measured 
+data of the time dependece of the MCA is given in table \ref{tab:MCA}. For better visualization the data is plotted in figure \ref{fig:MCA}. 
+
+\begin{table}
+    \tiny
+    \centering
+    \caption{Channel number correspondend to the temporal pulse distance.}
+    \label{tab:MCA}
+    \begin{tabular}{S[table-format = 3.0] S[table-format = 1.1]}
+      \toprule
+      {Kanal} & {$t \mathbin{/} \unit{\micro\second}$} \\
+      \midrule
+       16 & 0,5 \\
+       39 & 1,0 \\
+       62 & 1,5 \\
+       85 & 2,0 \\
+      108 & 2,5 \\
+      131 & 3,0 \\
+      154 & 3,5 \\
+      177 & 4,0 \\
+      200 & 4,5 \\
+      223 & 5,0 \\
+      246 & 5,5 \\
+      269 & 6,0 \\
+      292 & 6,5 \\
+      315 & 7,0 \\
+      338 & 7,5 \\
+      361 & 8,0 \\
+      384 & 8,5 \\
+      407 & 9,0 \\
+      430 & 9,5 \\
+      \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{figure}
+    \centering
+    \includegraphics[width = .7\textwidth]{plot2.pdf}
+    \caption{Linear regression \cite{scipy} of the data to obtain a functional correlation between the channel number and the lifetime.}
+    \label{fig:MCA}
+\end{figure}
+
+A linear regression of the data is used to calculate parameters, which determine the functional correlation \ref{eqn:MCA} between the channel number $K$ and the time $t$.
+
+\begin{equation}
+    \label{eqn:MCA}
+    t[\unit{\micro\second}] = 0.021739K +  0.15217
+\end{equation}
+
+\section{Lifetime of Cosmic Muons}
+\label{sec:lifetime}
+
+The program used for the counting yields a data file in which the counts of each channel are saved. With the conversion function \ref{eqn:MCA} durations are calculated. The data 
+is shown in figure \ref{fig:lifetime}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width = .8\textwidth]{fit.pdf}
+    \caption{Data for the determination of the lifetime of cosmic muons. $N$ are the counts of muons and $t$ is time correspondend to the channel.}
+    \label{fig:lifetime}
+\end{figure}
+
+The counts of the muons should follow an exponential law. 
+
+\begin{equation}
+    \label{eqn:exp}
+    N(t) = N_0 \mathrm{e}^{-t/\tau} + U_0
+\end{equation}
+
+In this equation $N_0$ is the basis amount of muons, $\tau$ is the lifetime and $U_0$ is the constant background. $U_0$ was estimated in section \ref{sec: untergrundrate noch machen}.
+Using non linear regression from \textit{scipy} \cite{scipy} the parameters of the exponential law are determined. This yields the values
+\begin{align*}
+    N_0 &= \num{18.9 +- 0.7}, & \tau &= \qty{1.62 +- 0.11}{\micro\second}, & U_0 &= \num{1.4 +- 0.2}
+\end{align*}
+
+The regression is plotted in figure \ref{fig:lifetime}.
