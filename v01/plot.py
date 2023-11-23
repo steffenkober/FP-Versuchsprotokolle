@@ -25,7 +25,7 @@ plt.vlines([-4.5, 7.5], 0, plateau, colors = "cornflowerblue", lw = 1, ls = "das
 plt.grid()
 plt.legend()
 plt.xlabel(r"$T_\text{VZ} \mathbin{/} \unit{\nano\second}$")
-plt.ylabel("a.u.")
+plt.ylabel(r"$\text{Countrate} \mathbin{/} \unit{\per\second}$")
 plt.xlim(-15, 15)
 plt.tight_layout()
 plt.savefig('build/plot1.pdf')

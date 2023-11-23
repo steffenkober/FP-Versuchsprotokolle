@@ -78,20 +78,21 @@ delay time to the second one.
     \end{tabular}
 \end{table}
 
-The data is also shown in figure \ref{fig:t_d}. In this figure the course of the data shows a plateau from $\qty{-1}{\nano\second}$ to $\qty{5}{\nano\second}$ at around $\num{7.2}$.
-The resolution time corresponds to the full width at half maximum (FWHM) of the data. As shown in figure \ref{fig:t_d} the resolution time for this setup is $\qty{12}{\nano\second}$.
-
 \begin{figure}
     \centering
     \includegraphics[width = .8\textwidth]{plot1.pdf}
-    \caption{temp}
+    \caption{The dependece of the count rate to the delaytime. Negative delay corresponds to the delay of one cable and positive to the other cable. The dashed line shows the 
+    full width half at half maximum and the continuous blue line shows the plateau.}
     \label{fig:t_d}
 \end{figure}
+
+The data is also shown in figure \ref{fig:t_d}. In this figure the course of the data shows a plateau from $\qty{-1}{\nano\second}$ to $\qty{5}{\nano\second}$ at around $\qty{7.2}{\per\second}$.
+The resolution time corresponds to the full width at half maximum (FWHM) of the data. As shown in figure \ref{fig:t_d} the resolution time for this setup is $\qty{12}{\nano\second}$.
 
 \section{Calibration of the Multichannel Analyser}
 \label{sec:MCA}
 
-As discussed erlier the TAC converts the temporal distance of the signals into an amplitude. The multichannel analyser (MCA) converts this amplitude into counts amoung different 
+As discussed earlier the TAC converts the temporal distance of the signals into an amplitude. The multichannel analyser (MCA) converts this amplitude into counts amoung different 
 channels. The number of the categorized channel has a correlation to the measured lifetime of the muons. This correlation has to be determined before the measurement. The measured 
 data of the time dependece of the MCA is given in table \ref{tab:MCA}. For better visualization the data is plotted in figure \ref{fig:MCA}. 
 
@@ -130,7 +131,7 @@ data of the time dependece of the MCA is given in table \ref{tab:MCA}. For bette
 \begin{figure}
     \centering
     \includegraphics[width = .7\textwidth]{plot2.pdf}
-    \caption{Linear regression \cite{scipy} of the data to obtain a functional correlation between the channel number and the lifetime.}
+    \caption{Linear regression\cite{scipy} of the data to obtain a functional correlation between the channel number and the lifetime.}
     \label{fig:MCA}
 \end{figure}
 
@@ -161,7 +162,7 @@ The counts of the muons should follow an exponential law.
     N(t) = N_0 \mathrm{e}^{-t/\tau} + U_0
 \end{equation}
 
-In this equation $N_0$ is the basis amount of muons, $\tau$ is the lifetime and $U_0$ is the constant background. $U_0$ was estimated in section \ref{sec: untergrundrate noch machen}.
+In this equation $N_0$ is the basis amount of muons, $\tau$ is the lifetime and $U_0$ is the constant background. $U_0$ was estimated in section \ref{sec:background}.
 Using non linear regression from \textit{scipy} \cite{scipy} the parameters of the exponential law are determined. This yields the values
 \begin{align*}
     N_0 &= \num{18.9 +- 0.7}, & \tau &= \qty{1.62 +- 0.11}{\micro\second}, & U_0 &= \num{1.4 +- 0.2}
