@@ -1,2 +1,56 @@
 \chapter{Diskussion}
 \label{cha:Diskussion}
+
+\section{Energiekalibration}
+
+Die Analyse des Europium-152 Spektrums ergab einen Zusammenhang zwischen Kanalnummer und Energiewert zu
+\begin{equation}
+    \mathrm{E(Kanal)} = \qty{0.2075 \pm 0.0001}{} \cdot \mathrm{Kanal} + \qty{-1.259 \pm 0.219}{}.
+\end{equation}
+Die geringe Unsicherheit des ersten Koeffizienten spricht für eine hohe Genauigkeit. Der zweite Koeffizient hat allerdings
+eine Abweichung von circa $\qty{17}{\%}$ zum Koeffizienten selber. Dies und der Fakt, dass der Koeffizient negativ ist, deutet
+auf einen systematischen Fehler des Detektors hin. Es wäre nämlich zu erwarten, dass Kanalnummer $0$ einer Energie von $\qty{0}{\kilo\electronvolt}$
+oder zumindest einem positiven Energiewert zuzuordnen ist. Durch den negativen Faktor würde hier allerdings ein negativer Energiewert
+resultieren, was unphysikalisch ist. Da der Parameter nichtsdestotrotz sehr gering ist, ist diese Fehlerquelle zu vernachlässigen.
+
+\section{Vollenergienachweiswahrscheinlichkeit}
+
+Weitergehend wurde durch die Analyse des Europium-152 eine Funktion für die Vollenergienachweiswahrscheinlichkeit in Abhängigkeit der Energie gefunden:
+\begin{equation}
+    Q(E) = \qty{110.6 \pm 41.3}{}\cdot E^{\qty{-1.053 \pm 0.064}{}} \qty{}{\per\kilo\electronvolt}.
+\end{equation}
+Auffällig ist hier die große Standardabweichung von etwa $\qty{37}{\%}$ des ersten Parameters. Grund hierfür muss eine fehlerhafte Berechnung des 
+Vollenergienachweiswahrscheinlichkeit sein oder der systematische Fehler, welcher bereits bei der Bestimmung des Energie-Kanal-Zusammenhangs auftrat.
+Die Vollenergienachweiswahrscheinlichkeit könnte aufgrund ungenauer Berechnung des Raumwinkels oder der Bestimmung des Linieninhalts resultieren.
+Die hohe Unsicherheit des ersten Parameters wird an in der Analyse folgende Berechnungen vererbt werden, wodurch hohe Ungenauigkeiten entstehen.
+
+\section{Monochromatisches Gammaspektrum eines Caesium-137-Strahlers}
+
+Ein Vergleich der Quotienten der Halbwerts- und Zehntelwertsbreite einer Normalverteilung und der Messwerte zeigt, dass die Messwerte sehr gut mit einer
+Normalverteilung beschrieben werden. Hier liegt erst in der sechsten Nachkommastelle eine Abweichung vor.\\
+Die berechneten Parameter der Normalverteilung zeigen ebenfalls geringe Abweichungen auf:
+\begin{align}
+    a &= \qty{10370 \pm 40}{},\\
+    \mu &= \qty{3193 \pm 0}{},\\
+    \sigma &= \qty{4.740 \pm 0.019}{}.
+\end{align}
+Bei der Bestimmung der Ausgleichsfunktion des Compton-Kontinuums tritt ebenfalls eine geringe Abweichung des Parameters auf:
+\begin{equation}
+    a = \qty{9.205 \pm 0.080}{}.
+\end{equation}
+Dadurch, dass nur ein Parameter gefittet wird, ist die Funktion zudem extra genau.\\
+Durch diese sehr genau bestimmten Funktionen kann der Linieninhalt des FEP und des Compton-Kontinuums mit einer Ungenauigkeit von kleiner als $\qty{1e-8}{}$
+bestimm werden. Ein Vergleich dieser Linieninhalte zeigt eine Proportionlität des Inhalts des Compton-Kontinuums von $\qty{3.53}{}$ gegenüber dem Photopeak. Anhand der Berechnung der Absorptionswahrscheinlichkeit
+würde allerdings eine Proportionlität von $\qty{26}{}$ erwartet werden. Diese Abweichung ist extrem hoch und muss durch Effekte entstehen, welche in dieser Analyse nicht berücksichtigt wurden.
+Mögliche Gründe wären hier eine ungenaue Bestimmung des Linieninhalts des Compton-Kontinuums aufgrund der Störeffekte im Niederenergiebereich.
+
+\section{Aktivitätsbestimmung von Barium-133}
+
+Die Linieninhalte der FEP konnten erneut mit hoher Genauigkeit bestimmt werden. Auffällig sind hier lediglich die hohe Ungenauigkeit der Aktivitätsbestimmung. Diese ist 
+ein Folgeeffekt der ungenauen Parameterbestimmung bei der Ausgleichsfunktion der Vollenergienachweiswahrscheinlichkeit. Eine Beseitigung des oben genannten systematischen 
+Fehlers könnte die Genauigkeit hier um ein Vielfaches erhöhen.
+
+\section{Nuklididentifizierung und Aktivitätsbestimmung von Uranophan}
+
+Durch eine Analyse des Gammaspektrums des Uranophan ließen sich die Nuklide Radium-226, Blei-214 und Bismut-214 ausfindig machen, welche allesamt zur natürlichen Zerfallskette
+des Uran zu Radium gehören. Die hohen Unsicherheiten der Aktivität sind erneut auf die ungenaue Bestimmung des Parameters bei der Vollenergienachweiswahrscheinlichkeit zurückzuführen.
