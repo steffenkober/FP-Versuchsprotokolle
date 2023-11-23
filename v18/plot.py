@@ -12,6 +12,8 @@ measuretime_uran = 2246
 measuretime_barium = 2876
 measuretime_caesium = 3075
 
+plt.rcParams['figure.figsize'] = [15, 5]
+
 ##BACKGROUND
 
 background = np.array(np.genfromtxt("daten/Background_031302_230606.txt", unpack = True, dtype = int))
@@ -25,11 +27,19 @@ channels_backgr = np.arange(0, len(background), 1)
 # SAVE AS PDF:
 #############
 '''
-plt.plot(channels_backgr, background_norm)
+#plt.figure().set_figwidth(15)
+#plt.figure().set_figheight(5)
+plt.plot(channels_backgr, background, c = "midnightblue", marker = '.', markersize = 1, lw = 0.1, label = r"Messdaten Hintergrund")
 #plt.yscale("log")
 plt.grid()
 plt.xlim(0, 8000)
-plt.show()
+plt.ylabel(r"Impulse", fontsize="15")
+plt.xlabel(r"Kanäle", fontsize="15")
+plt.legend(fontsize="15")
+plt.tight_layout()
+plt.savefig('plots/background_channel.pdf')
+#plt.show()
+plt.close()
 '''
 
 ##EUROPIUM 152
@@ -43,92 +53,68 @@ channels = np.arange(0, len(EU_152), 1)
 
 EU_152_no_backgr = EU_152 - background_norm*measuretime_europium
 
-peak1_eu_count = 0
-peak2_eu_count = 0
-peak3_eu_count = 0
-peak4_eu_count = 0
-peak5_eu_count = 0
-peak6_eu_count = 0
-peak7_eu_count = 0
-peak8_eu_count = 0
-peak9_eu_count = 0
-peak10_eu_count = 0
+def gauss_function(x, a, mu, sigma):
+    return (a/np.sqrt(2 * np.pi * sigma**2))*np.exp(-(x-mu)**2/(2*sigma**2))
+def ugauss_function(x, a, mu, sigma):
+    return (a/unp.sqrt(2 * np.pi * sigma**2))*unp.exp(-(x-mu)**2/(2*sigma**2))
 
-#peaks = 
+peak1_eu_channel = 250 +  np.where(EU_152_no_backgr[250:750] == EU_152_no_backgr[250:750].max())[0][0]
+peak2_eu_channel = 1000 + np.where(EU_152_no_backgr[1000:1500] == EU_152_no_backgr[1000:1500].max())[0][0]
+peak3_eu_channel = 1500 +  np.where(EU_152_no_backgr[1500:1900] == EU_152_no_backgr[1500:1900].max())[0][0]
+peak4_eu_channel = 1900 + np.where(EU_152_no_backgr[1900:2050] == EU_152_no_backgr[1900:2050].max())[0][0] 
+peak5_eu_channel = 2050 + np.where(EU_152_no_backgr[2050:2270] == EU_152_no_backgr[2050:2270].max())[0][0] 
+peak6_eu_channel = 3400 + np.where(EU_152_no_backgr[3400:4000] == EU_152_no_backgr[3400:4000].max())[0][0] 
+peak7_eu_channel = 4500 + np.where(EU_152_no_backgr[4500:4800] == EU_152_no_backgr[4500:4800].max())[0][0] 
+peak8_eu_channel = 5100 + np.where(EU_152_no_backgr[5100:5300] == EU_152_no_backgr[5100:5300].max())[0][0] 
+peak9_eu_channel = 5300 + np.where(EU_152_no_backgr[5300:5500] == EU_152_no_backgr[5300:5500].max())[0][0] 
+peak10_eu_channel = 6500 + np.where(EU_152_no_backgr[6500:7000] == EU_152_no_backgr[6500:7000].max())[0][0] 
 
-for i in EU_152_no_backgr[250:750]:
-    peak1_eu_channel = 250 +  np.where(EU_152[250:750] == EU_152[250:750].max())[0][0]
-    if i > (EU_152[250:750].max()/2):
-        peak1_eu_count += i
+params18, pcov18 = op.curve_fit(gauss_function,  channels[1000:1500], EU_152_no_backgr[1000:1500], p0=[1., peak2_eu_channel, 1.])
+params19, pcov19 = op.curve_fit(gauss_function,  channels[1500:1900], EU_152_no_backgr[1500:1900], p0=[1., peak3_eu_channel, 1.])
+params20, pcov20 = op.curve_fit(gauss_function,  channels[1900:2050], EU_152_no_backgr[1900:2050], p0=[1., peak4_eu_channel, 1.])
+params21, pcov26 = op.curve_fit(gauss_function,  channels[2050:2270], EU_152_no_backgr[2050:2270], p0=[1., peak5_eu_channel, 1.])
+params22, pcov21 = op.curve_fit(gauss_function,  channels[3400:4000], EU_152_no_backgr[3400:4000], p0=[1., peak6_eu_channel, 1.])
+params23, pcov22 = op.curve_fit(gauss_function,  channels[4500:4800], EU_152_no_backgr[4500:4800], p0=[1., peak7_eu_channel, 1.])
+params24, pcov23 = op.curve_fit(gauss_function,  channels[5100:5300], EU_152_no_backgr[5100:5300], p0=[1., peak8_eu_channel, 1.])
+params25, pcov24 = op.curve_fit(gauss_function,  channels[5300:5500], EU_152_no_backgr[5300:5500], p0=[1., peak9_eu_channel, 1.])
+params26, pcov25 = op.curve_fit(gauss_function,  channels[6500:7000], EU_152_no_backgr[6500:7000], p0=[1., peak10_eu_channel, 1.])
 
-for i in EU_152_no_backgr[1000:1500]:
-    peak2_eu_channel = 1000 + np.where(EU_152[1000:1500] == EU_152[1000:1500].max())[0][0]
-    if i > (EU_152[1000:1500].max()/2):
-        peak2_eu_count += i
-
-for i in EU_152_no_backgr[1500:1900]:
-    peak3_eu_channel = 1500 +  np.where(EU_152[1500:1900] == EU_152[1500:1900].max())[0][0]
-    if i > (EU_152[1500:1900].max()/2):
-        peak3_eu_count += i
-
-for i in EU_152_no_backgr[1900:2050]:
-    peak4_eu_channel = 1900 + np.where(EU_152[1900:2050] == EU_152[1900:2050].max())[0][0] 
-    if i > (EU_152[1900:2050].max()/2):
-        peak4_eu_count += i
-
-for i in EU_152_no_backgr[2050:2270]:
-    peak5_eu_channel = 2050 + np.where(EU_152[2050:2270] == EU_152[2050:2270].max())[0][0] 
-    if i > (EU_152[2050:2270].max()/2):
-        peak5_eu_count += i
-
-for i in EU_152_no_backgr[3400:4000]:
-    peak6_eu_channel = 3400 + np.where(EU_152[3400:4000] == EU_152[3400:4000].max())[0][0] 
-    if i > (EU_152[3400:4000].max()/2):
-        peak6_eu_count += i
-
-for i in EU_152_no_backgr[4500:4800]:
-    peak7_eu_channel = 4500 + np.where(EU_152[4500:4800] == EU_152[4500:4800].max())[0][0] 
-    if i > (EU_152[4500:4800].max()/2):
-        peak7_eu_count += i
-
-for i in EU_152_no_backgr[5100:5300]:
-    peak8_eu_channel = 5100 + np.where(EU_152[5100:5300] == EU_152[5100:5300].max())[0][0] 
-    if i > (EU_152[5100:5300].max()/2):
-        peak8_eu_count += i
-
-for i in EU_152_no_backgr[5300:5500]:
-    peak9_eu_channel = 5300 + np.where(EU_152[5300:5500] == EU_152[5300:5500].max())[0][0] 
-    if i > (EU_152[5300:5500].max()/2):
-        peak9_eu_count += i
-    
-for i in EU_152_no_backgr[6500:7000]:
-    peak10_eu_channel = 6500 + np.where(EU_152[6500:7000] == EU_152[6500:7000].max())[0][0] 
-    if i > (EU_152[6500:7000].max()/2):
-        peak10_eu_count += i
+peak2_eu_count = integrate.quad(gauss_function, 1178, 1194, args=(params18[0], params18[1], params18[2])) 
+peak3_eu_count = integrate.quad(gauss_function, 1653, 1674, args=(params19[0], params19[1], params19[2])) 
+peak4_eu_count = integrate.quad(gauss_function, 1974, 1993, args=(params20[0], params20[1], params20[2])) 
+peak5_eu_count = integrate.quad(gauss_function, 2135, 2155, args=(params21[0], params21[1], params21[2]))
+peak6_eu_count = integrate.quad(gauss_function, 3743, 3771, args=(params22[0], params22[1], params22[2]))
+peak7_eu_count = integrate.quad(gauss_function, 4632, 4665, args=(params23[0], params23[1], params23[2]))
+peak8_eu_count = integrate.quad(gauss_function, 5224, 5254, args=(params24[0], params24[1], params24[2]))
+peak9_eu_count = integrate.quad(gauss_function, 5348, 5380, args=(params25[0], params25[1], params25[2]))
+peak10_eu_count = integrate.quad(gauss_function, 6771, 6806, args=(params26[0], params26[1], params26[2]))
 
 peaks_eu_channel = [peak1_eu_channel, peak2_eu_channel, peak3_eu_channel, peak4_eu_channel, peak5_eu_channel, peak6_eu_channel, peak7_eu_channel, peak8_eu_channel, peak9_eu_channel, peak10_eu_channel]
-peaks_eu_count = [peak1_eu_count, peak2_eu_count, peak3_eu_count, peak4_eu_count, peak5_eu_count, peak6_eu_count, peak7_eu_count, peak8_eu_count, peak9_eu_count, peak10_eu_count]
-stddev_peaks_eu_count = np.sqrt(peaks_eu_count)
+peaks_eu_count = [peak2_eu_count, peak3_eu_count, peak4_eu_count, peak5_eu_count, peak6_eu_count, peak7_eu_count, peak8_eu_count, peak9_eu_count, peak10_eu_count]
 
 
 print("------------------------------------------------------")
 print("Peak-channels Europium-152: ")
 print(peaks_eu_channel)
 print("\nCounts in peaks Europium-152: ")
-print(peaks_eu_count, stddev_peaks_eu_count)
-
+print(peaks_eu_count)
 print("------------------------------------------------------")
 
 #############
 # SAVE AS PDF:
 #############
-
 '''
-plt.plot(channels, EU_152)
-#plt.yscale("log")
+#plt.figure().set_figwidth(15)
+plt.plot(channels, EU_152_no_backgr, c = "midnightblue", lw = 0.1, marker = '.', markersize = 1, label = r"Messdaten Europium ohne Hintergrund")
 plt.grid()
 plt.xlim(0, 8000)
-plt.show()
+plt.ylabel(r"Impulse", fontsize="15")
+plt.xlabel(r"Kanäle", fontsize="15")
+plt.legend(fontsize="15")
+plt.tight_layout()
+plt.savefig('plots/europium_channel.pdf')
+#plt.show()
+plt.close()
 '''
 
 ##AUSGLEICHSGERADE
@@ -146,6 +132,7 @@ a1 = ufloat(params1[0], err1[0])
 b1 = ufloat(params1[1], err1[1])
 
 print("------------------------------------------------------")
+print("Ausgleichsgerade-Parameter:")
 print(f"a1 = {a1:.3e}")
 print(f"b1 = {b1:.3e}", "\n")
 print("------------------------------------------------------")
@@ -155,10 +142,16 @@ print("------------------------------------------------------")
 #############
 '''
 x = np.linspace(0, 8000, 8000)
-plt.plot( x , energy(x,*params1))
+plt.plot( x , energy(x,*params1),c='midnightblue', label=r"Ausgleichsgerade für den Kanal-Energie-Zusammenhang")
+plt.plot(peaks_eu_channel, energy_eu, marker='x', c='darkorange', lw=0, label=r"Peaks von Europium-152")
 plt.grid()
-plt.show()
-plt.savefig('plots/energy_for_channel.pdf')
+plt.xlim(0, 8000)
+plt.ylabel(r"Energie / keV", fontsize="15")
+plt.xlabel(r"Kanäle", fontsize="15")
+plt.legend(fontsize="15")
+plt.tight_layout()
+plt.savefig('plots/energy_channel.pdf')
+#plt.show()
 plt.close()
 '''
 ##VOLLENERGIENACHWEISWAHRSCHEINLICHKEIT
@@ -177,18 +170,22 @@ Akt_Eu = Akt(A_0_Eu, theta_Eu, 728524800)
 print("Activity Europium - 152: ", Akt_Eu)
 
 def omega(a, r):
-    return 2 * np.pi * (1 - (a / np.sqrt(a**2 + r**2)) )
+    return 2 * np.pi * (1 - (a / unp.sqrt(a**2 + r**2)) )
 
-Omega = omega(9.5 / 100, 2.25 / 100)
+Omega = omega(ufloat(8.51, 0.005) / 100, 2.25 / 100)
 
 Q_Eu = []
 
 for i in np.arange(1,10, 1):
-    Q_Eu.append(Q(ufloat(peaks_eu_count[i], stddev_peaks_eu_count[i]) , Akt_Eu, prob_eu[i] , measuretime_europium, Omega))
+    Q_Eu.append(Q(ufloat((peaks_eu_count[i-1][0]), (peaks_eu_count[i-1][1])), Akt_Eu, prob_eu[i] , measuretime_europium, Omega))
 
-print(Omega)
+print("------------------------------------------------------")
+print("Raumwinkel: ", Omega)
+print("Vollenergiewahrscheinlichkeit: ")
 print(Q_Eu)
+print("Pro Energie: ")
 print(energy_eu[1:])
+print("------------------------------------------------------")
 
 def potenz(x,a,b):
               return a * ((x)**b) 
@@ -200,18 +197,22 @@ b2 = ufloat(params2[1], err2[1])
 
 
 print("------------------------------------------------------")
+print("Parameter Potenzfunktion für Q: ")
 print(f"a2 = {a2:.3e}")
 print(f"b2 = {b2:.3e}", "\n")
-
 print("------------------------------------------------------")
 
 '''
 x = np.linspace(200, 1400, 1400)
-plt.plot( x , potenz(x,*params2))
-plt.plot( energy_eu[1:] , unp.nominal_values(Q_Eu), marker = 'x', lw = 0)
+plt.plot( x , potenz(x,*params2), c='midnightblue', label=r"Vollenergienachweiswahrscheinlichkeit")
+plt.plot( energy_eu[1:] , unp.nominal_values(Q_Eu), marker = 'x', lw = 0, c='darkorange', label=r"Messwerte Europium-152")
 plt.grid()
-plt.show()
+plt.ylabel(r"Q(E)", fontsize="15")
+plt.xlabel(r"Energie / keV", fontsize="15")
+plt.legend(fontsize="15")
+plt.tight_layout()
 plt.savefig('plots/quality.pdf')
+#plt.show()
 plt.close()
 '''
 ###CAESIUM 137
@@ -223,26 +224,25 @@ print(CS_137)
 channels_Cs = np.arange(0, len(CS_137), 1)
 
 CS_137_no_backgr = CS_137 - background_norm*measuretime_caesium
+energy_cs = energy(channels_Cs, a1, b1)
 
 '''
-plt.plot(channels_Cs, CS_137_no_backgr,marker = '.', markersize = 1.5,  lw = 0)
+plt.plot(channels_Cs, CS_137_no_backgr, marker='.', markersize = '1', c = "midnightblue", lw = 0.1, label = r"Messdaten Caesium-137")
 plt.yscale("log")
 plt.grid()
-plt.xlim(0, 8000)
-plt.show()
+plt.xlim(0, 3500)
+plt.ylabel(r"Impulse", fontsize="15")
+plt.xlabel(r"Kanäle", fontsize="15")
+plt.legend(fontsize="15")
+plt.tight_layout()
 plt.savefig('plots/caesium_channel.pdf')
+#plt.show()
 plt.close()
 '''
 
-
-def gauss_function(x, a, mu, sigma):
-    return (a/np.sqrt(2 * np.pi * sigma**2))*np.exp(-(x-mu)**2/(2*sigma**2))
-def ugauss_function(x, a, mu, sigma):
-    return (a/unp.sqrt(2 * np.pi * sigma**2))*unp.exp(-(x-mu)**2/(2*sigma**2))
-
 mu_cs = CS_137_no_backgr[3100:3300].max()
 
-p0 = [1.,3100 + np.where(CS_137_no_backgr[3100:3300] == CS_137_no_backgr[3100:3300].max())[0][0], 1.]
+p0 = [1.,3100 + np.where(CS_137_no_backgr[3100:3300] == CS_137_no_backgr[3100:3300].max())[0][0],  1.]
 params3, pcov3 = op.curve_fit(gauss_function,  channels_Cs[3100:3300], CS_137_no_backgr[3100:3300], p0=p0)
 err3 = np.sqrt(np.diag(pcov3))
 a3 = ufloat(params3[0], err3[0])
@@ -297,39 +297,31 @@ print("Delta Energie Gauss: ", Delta_E_gauss)
 print("Delta Energie exp: ", Delta_E_exp)
 print("------------------------------------------------------")
 
-#def inv_gauss_function1(x, a, mu, sigma):
-#    return (unp.sqrt(unp.log((a/unp.sqrt(2 * np.pi * sigma**2))/x)*2*sigma**2) + mu)
-    
-#def inv_gauss_function2(x, a, mu, sigma):
-#    return (- unp.sqrt(-unp.log(x/(a/unp.sqrt(2 * np.pi * sigma**2)))*2*sigma**2) + mu)
-
-#k_1_2_1 = unp.sqrt(unp.log(2)*2*sigma3**2) + mu3
-
 
 '''
 x = np.linspace(3100, 3300, 1000)
 k1 = np.linspace(unp.nominal_values(k_1_2_1), unp.nominal_values(k_1_2_2))
 k2 = np.linspace(unp.nominal_values(k_1_10_1), unp.nominal_values(k_1_10_2))
-plt.plot( x , gauss_function(x,*params3))
-plt.plot( k1 , unp.nominal_values(I_1_2_gauss)*np.ones(len(k1)))
-plt.plot( k2 , unp.nominal_values(I_1_10_gauss)*np.ones(len(k2)))
-
-plt.plot(channels_Cs[3100:3300], CS_137_no_backgr[3100:3300],marker = '.', markersize = 1.5,  lw = 0)
-
+plt.plot( x , gauss_function(x,*params3), c='midnightblue', label=r"Normalverteilung")
+plt.plot( k1 , unp.nominal_values(I_1_2_gauss)*np.ones(len(k1)), label=r"Halbwertsbreite")
+plt.plot( k2 , unp.nominal_values(I_1_10_gauss)*np.ones(len(k2)), label=r"Zehntelwertsbreite")
+plt.plot(channels_Cs[3100:3300], CS_137_no_backgr[3100:3300],marker = '.', markersize = 1, c = 'midnightblue',   lw = 0, label=r"Messdaten Caesium-137")
 plt.grid()
-plt.show()
-
+plt.ylabel(r"Impulse", fontsize="15")
+plt.xlabel(r"Kanäle", fontsize="15")
+plt.legend(fontsize="15")
+plt.tight_layout()
 plt.savefig('plots/caesium_channel_gauss_fit.pdf')
 plt.close()
 '''
 
 summed_imp = integrate.quad(gauss_function, 3150, 3250, args=(unp.nominal_values(a3), unp.nominal_values(mu3), unp.nominal_values(sigma3)))
-print(summed_imp)
 
-energy_cs = energy(channels_Cs, a1, b1)
 
-print(len(energy_cs))
-print(len(CS_137_no_backgr))
+
+
+#print(len(energy_cs))
+#print(len(CS_137_no_backgr))
 
 '''
 plt.plot(channels_Cs, CS_137_no_backgr, marker = '.', markersize = 1.5,  lw = 0)
@@ -348,38 +340,45 @@ plt.show()  #453 #300
 plt.savefig('plots/caesium_energy_compton.pdf')
 plt.close()
 '''
+
 #print(np.concatenate((unp.nominal_values(energy_cs[1300:2200]), unp.nominal_values(energy_cs[100:500])), axis=None))
 
 def nichtlin(x, a, b, c, k):
     return a*(x**3) + b*(x**2)+ c*x + k
 
+def compton(x, a, b):
+    return a*(2+(x/(3193 - x))**2 * (1/(b**2) + (3193-x)/3193 - (2/b)*(3193-x)/x))
+
 #p0 = [1.,3100 + np.where(CS_137_no_backgr[3100:3300] == CS_137_no_backgr[3100:3300].max())[0][0], 1.]
-params4, pcov4 = op.curve_fit(nichtlin,  unp.nominal_values(energy_cs[1300:2200]), CS_137_no_backgr[1300:2200])
+params4, pcov4 = op.curve_fit(compton,  channels_Cs[1300:2200], CS_137_no_backgr[1300:2200])
 err4 = np.sqrt(np.diag(pcov4))
 a4 = ufloat(params4[0], err4[0])
 b4 = ufloat(params4[1], err4[1])
-c4 = ufloat(params4[2], err4[2])
-k4 = ufloat(params4[3], err4[3])
-
+#c4 = ufloat(params4[2], err4[2])
+#k4 = ufloat(params4[3], err4[3])
+summed_comp = integrate.quad(compton, 1, 2200, args=(unp.nominal_values(a4), unp.nominal_values(b4)))
 
 print("------------------------------------------------------")
-#print(f"k4 = {k4:.3e}")
+print("Parameter des Wirkungsquerschnitts: ")
 print(f"a4 = {a4:.3e}")
 print(f"b4 = {b4:.3e}")
-print(f"c4 = {c4:.3e}")
-print(f"k4 = {k4:.3e}", "\n")
+print("Integrierter FEP Caesium-137: ", summed_imp)
+print("Integriertes Compton-Kontinuum: ", summed_comp)
 print("------------------------------------------------------")
 
+#, unp.nominal_values(c4), unp.nominal_values(k4)
 '''
-x = np.linspace(250, 470, 550)
-plt.plot( x , nichtlin(x, unp.nominal_values(a4), unp.nominal_values(b4), unp.nominal_values(c4), unp.nominal_values(k4)))
-plt.plot(unp.nominal_values(energy_cs[0:2500]), CS_137_no_backgr[0:2500],marker = '.', markersize = 1.5,  lw = 0)
+x = np.linspace(1, 470, 2500)
+plt.plot( x , compton(x, unp.nominal_values(a4), unp.nominal_values(b4)),c = 'darkorange', label=r"Wirkungsquerschnitt")
+plt.plot(unp.nominal_values(energy_cs[0:2500]), CS_137_no_backgr[0:2500],marker = '.', markersize = 1,  lw = 0, c = 'midnightblue',   label=r"Messdaten Caesium-137")
 plt.grid()
-plt.show()
-plt.savefig('plots/caesium_energy_fit_compton.pdf')
+plt.ylabel(r"Impulse", fontsize="15")
+plt.xlabel(r"Energie / keV", fontsize="15")
+plt.legend(fontsize="15")
+plt.tight_layout()
+plt.savefig('plots/caesium_compton_energy.pdf')
 plt.close()
 '''
-
 print("Compton-Kante: ", 470)
 print("Rückstreu-Kante: ", 190)
 print("Gamma-Quant Energie (aus Vollenergielinie): ", 626)
@@ -404,19 +403,15 @@ BA_133_no_backgr = BA_133 - background_norm*measuretime_barium
 energy_ba = energy(channels_ba, a1, b1)
 
 '''
-plt.plot(channels_ba, BA_133_no_backgr, marker = '.', markersize = 1.5,  lw = 1)
+plt.plot(unp.nominal_values(energy_ba[0:2000]), BA_133_no_backgr[0:2000], marker = '.', markersize = 1,  lw = 0.1, c = 'midnightblue',   label=r"Messdaten Barium-133")
+#plt.xlim(0,2000)
 plt.grid()
-plt.xlim(0, 2000)
-#plt.ylim(0, 60)
-plt.show()  #453 #300
-plt.savefig('plots/barium_channel.pdf')
-plt.close()
-
-plt.plot(unp.nominal_values(energy_cs), BA_133_no_backgr, marker = '.', markersize = 1.5,  lw = 1)
-plt.grid()
-plt.xlim(0, 500)
-#plt.ylim(0, 60)
-plt.show()  #453 #300
+#plt.yscale("log")
+plt.ylabel(r"Impulse", fontsize="15")
+plt.xlabel(r"Energie / keV", fontsize="15")
+plt.legend(fontsize="15")
+plt.tight_layout()
+#plt.show()
 plt.savefig('plots/barium_energy.pdf')
 plt.close()
 '''
@@ -457,20 +452,29 @@ Z_BA_133_2 = integrate.quad(gauss_function, 1445, 1488, args=(unp.nominal_values
 Z_BA_133_3 = integrate.quad(gauss_function, 1700, 1750, args=(unp.nominal_values(a7), unp.nominal_values(mu7), unp.nominal_values(sigma7)))
 Z_BA_133_4 = integrate.quad(gauss_function, 1837, 1872, args=(unp.nominal_values(a8), unp.nominal_values(mu8), unp.nominal_values(sigma8)))
 
+print("-------------------------")
+print("Linieninhalte pro Peak: ", Z_BA_133_1, Z_BA_133_2, Z_BA_133_3 ,Z_BA_133_4)
+print("Emissionswahrscheinlichkeit: ", 0.0713 , 0.1831, 0.6205, 0.0894)
+print("Energie der Peaks: ", (energy_ba[1340]), (energy_ba[1467]), (energy_ba[1723]), (energy_ba[1858]))
+print("Vollenergienachweiswahrscheinlichkeit der Peaks: ", potenz((energy_ba[1340]) , (a2), (b2)), potenz((energy_ba[1467]) , (a2), (b2)), potenz((energy_ba[1723]) , (a2), (b2)), potenz((energy_ba[1858]) , (a2), (b2)))
+print("-------------------------")
+
+
 def A(Z, Q, W, t, o):
-    return (Z * 4 * np.pi)/(Q * W * t * o)
+    return (Z * 4.0 * np.pi)/(Q * W * t * o)
 
-A_BA_133_1 = A(unp.nominal_values(Z_BA_133_1), potenz(unp.nominal_values(energy_ba[1340]) , unp.nominal_values(a2), unp.nominal_values(b2)), 0.0713, measuretime_barium, Omega)
-A_BA_133_2 = A(unp.nominal_values(Z_BA_133_2), potenz(unp.nominal_values(energy_ba[1467]) , unp.nominal_values(a2), unp.nominal_values(b2)), 0.1831, measuretime_barium, Omega)
-A_BA_133_3 = A(unp.nominal_values(Z_BA_133_3), potenz(unp.nominal_values(energy_ba[1723]) , unp.nominal_values(a2), unp.nominal_values(b2)), 0.6205, measuretime_barium, Omega)
-A_BA_133_4 = A(unp.nominal_values(Z_BA_133_4), potenz(unp.nominal_values(energy_ba[1858]) , unp.nominal_values(a2), unp.nominal_values(b2)), 0.0894, measuretime_barium, Omega)
+A_BA_133_1 = A((Z_BA_133_1[0]), potenz((energy_ba[1340]) , (a2), (b2)), 0.0713, measuretime_barium, Omega)
+A_BA_133_2 = A((Z_BA_133_2[0]), potenz((energy_ba[1467]) , (a2), (b2)), 0.1831, measuretime_barium, Omega)
+A_BA_133_3 = A((Z_BA_133_3[0]), potenz((energy_ba[1723]) , (a2), (b2)), 0.6205, measuretime_barium, Omega)
+A_BA_133_4 = A((Z_BA_133_4[0]), potenz((energy_ba[1858]) , (a2), (b2)), 0.0894, measuretime_barium, Omega)
 
-Akt_Ba = np.array([A_BA_133_1[0], A_BA_133_2[0], A_BA_133_3[0], A_BA_133_4[0]])
+Akt_Ba = np.array([A_BA_133_1, A_BA_133_2, A_BA_133_3, A_BA_133_4])
 
-print(unp.nominal_values(Akt_Ba))
+print("Aktivität Barium-133: ", (Akt_Ba))
 
-print("Aktivität Barium-133: ", unp.nominal_values(Akt_Ba).mean())
-print(unp.nominal_values(Akt_Ba).std())
+Akt_Ba1 = Akt_Ba.mean()
+print('{:.2f}'.format(Akt_Ba1))
+#print((Akt_Ba).std())
 
 ###########
 #Uran
@@ -483,18 +487,18 @@ channels_uran = np.arange(0, len(URAN), 1)
 URAN_no_backgr = URAN - background_norm*measuretime_uran
 
 energy_uran = energy(channels_uran, a1, b1)
-
-
-plt.plot(channels_uran, URAN_no_backgr, marker = '.', markersize = 1.5,  lw = 1)
+'''
+plt.plot(unp.nominal_values(energy_uran[0:6100]), URAN_no_backgr[0:6100], marker = '.', markersize = 1,  lw = 0.1, c = 'midnightblue',   label=r"Messdaten Uranophan")
 plt.grid()
-#plt.xlim(0, 2000)
-#plt.ylim(0, 60)
+#plt.yscale("log")
+plt.ylabel(r"Impulse", fontsize="15")
+plt.xlabel(r"Energie / keV", fontsize="15")
+plt.legend(fontsize="15")
 plt.tight_layout()
-#plt.savefig('plots/uran_channel.pdf')
-plt.show()
-
+plt.savefig('plots/uran_energy.pdf')
 plt.close()
-
+'''
+'''
 plt.plot(unp.nominal_values(energy_uran), URAN_no_backgr, marker = '.', markersize = 1.5,  lw = 1)
 plt.grid()
 #plt.xlim(0, 500)
@@ -504,7 +508,7 @@ plt.show()
 
 #plt.savefig('plots/uran_energy.pdf')
 #plt.close()
-
+'''
 
 p05 = [1.,902, 1.]
 p06 = [1.,1172, 1.]
@@ -516,8 +520,6 @@ p11 = [1.,4505, 1.]
 p12 = [1.,5399, 1.]
 p13 = [1.,5967, 1.]
 
-print(np.array([p05, p06, p07, p08, p09, p10, p11, p12, p13]))
-
 params9, pcov9   = op.curve_fit(gauss_function,  channels_uran[880:920], URAN_no_backgr[880:920], p0=p05)
 params10, pcov10 = op.curve_fit(gauss_function,  channels_uran[1150:1200], URAN_no_backgr[1150:1200], p0=p06)
 params11, pcov11 = op.curve_fit(gauss_function,  channels_uran[1407:1446], URAN_no_backgr[1407:1446], p0=p07)
@@ -528,7 +530,8 @@ params15, pcov15 = op.curve_fit(gauss_function,  channels_uran[4477:4528], URAN_
 params16, pcov16 = op.curve_fit(gauss_function,  channels_uran[5360:5440], URAN_no_backgr[5360:5440], p0=p12)
 params17, pcov17 = op.curve_fit(gauss_function,  channels_uran[5922:6010], URAN_no_backgr[5922:6010], p0=p13)
 
-
+print("Energien: ")
+print(energy(params9[1], a1, b1), energy(params10[1], a1, b1), energy(params11[1], a1, b1), energy(params12[1], a1, b1), energy(params13[1], a1, b1), energy(params14[1], a1, b1), energy(params15[1], a1, b1), energy(params16[1], a1, b1), energy(params17[1], a1, b1))
 
 '''
 x = np.linspace(500, 4000, 4000)
@@ -549,30 +552,36 @@ Z_URAN_238_7 = integrate.quad(gauss_function, 4489, 4520, args=(params15[0], par
 Z_URAN_238_8 = integrate.quad(gauss_function, 5380, 5421, args=(params16[0], params16[1], params16[2]))
 Z_URAN_238_9 = integrate.quad(gauss_function, 5945, 5988, args=(params17[0], params17[1], params17[2]))
 
-Z_URAN_238 = np.array([Z_URAN_238_1[0], Z_URAN_238_2[0], Z_URAN_238_3[0], Z_URAN_238_4[0], Z_URAN_238_5[0], Z_URAN_238_6[0], Z_URAN_238_7[0], Z_URAN_238_8[0], Z_URAN_238_9[0]])
-Z_BISMUT = np.array([Z_URAN_238_5[0], Z_URAN_238_6[0], Z_URAN_238_8[0]])
-Z_BLEI = np.array([Z_URAN_238_2[0], Z_URAN_238_3[0], Z_URAN_238_4[0]])
-Z_RADON = np.array([Z_URAN_238_1[0]])
+Z_URAN_238 = np.array([ufloat(Z_URAN_238_1[0], Z_URAN_238_1[1]), ufloat(Z_URAN_238_2[0], Z_URAN_238_2[1]), ufloat(Z_URAN_238_3[0], Z_URAN_238_3[1]), ufloat(Z_URAN_238_4[0], Z_URAN_238_4[1]), ufloat(Z_URAN_238_5[0], Z_URAN_238_5[1]), ufloat(Z_URAN_238_6[0], Z_URAN_238_6[1]), ufloat(Z_URAN_238_7[0], Z_URAN_238_7[1]), ufloat(Z_URAN_238_8[0], Z_URAN_238_8[1]), ufloat(Z_URAN_238_9[0], Z_URAN_238_9[1])])
+Z_BISMUT = np.array([ufloat(Z_URAN_238_5[0], Z_URAN_238_5[1]),ufloat(Z_URAN_238_6[0], Z_URAN_238_6[1]), ufloat(Z_URAN_238_8[0], Z_URAN_238_8[1])])
+Z_BLEI = np.array([ufloat(Z_URAN_238_2[0], Z_URAN_238_2[1]), ufloat(Z_URAN_238_3[0], Z_URAN_238_3[1]), ufloat(Z_URAN_238_4[0], Z_URAN_238_4[1])])
+Z_RADON = np.array([ufloat(Z_URAN_238_1[0], Z_URAN_238_1[1])])
+print("Linieninhalt Uran: ")
 print(Z_URAN_238)
 
+print("Vollenergiedingsda Uran: ")
+print(potenz((energy_uran[902]) , (a2), (b2)), potenz((energy_uran[1172]) , (a2), (b2)), potenz((energy_uran[1428]) , (a2), (b2)), potenz((energy_uran[1701]) , (a2), (b2)), potenz((energy_uran[2940]) , (a2), (b2)),potenz((energy_uran[3705]), (a2), (b2)) , potenz((energy_uran[4505]) , (a2), (b2)),potenz((energy_uran[5399]) , (a2), (b2)), potenz((energy_uran[5967]) , (a2), (b2)) )
 #def A(Z, Q, W, t, o):
 #    return (Z * 4 * np.pi)/(Q * W * t * o)
 
-A_BISMUT_214_1 = A(unp.nominal_values(Z_BISMUT[0]), potenz(unp.nominal_values(energy_uran[2940]) , unp.nominal_values(a2), unp.nominal_values(b2)), 0.4549, measuretime_uran, 0.5)
-A_BISMUT_214_2 = A(unp.nominal_values(Z_BISMUT[1]), potenz(unp.nominal_values(energy_uran[3705]) , unp.nominal_values(a2), unp.nominal_values(b2)), 0.0489, measuretime_uran, 0.5)
-A_BISMUT_214_3 = A(unp.nominal_values(Z_BISMUT[2]), potenz(unp.nominal_values(energy_uran[5399]) , unp.nominal_values(a2), unp.nominal_values(b2)), 0.1491, measuretime_uran, 0.5)
-A_BLEI_214_1 = A(unp.nominal_values(Z_BLEI[0]), potenz(unp.nominal_values(energy_uran[1172]) , unp.nominal_values(a2), unp.nominal_values(b2)), 0.0727, measuretime_uran, 0.5)
-A_BLEI_214_2 = A(unp.nominal_values(Z_BLEI[1]), potenz(unp.nominal_values(energy_uran[1428]) , unp.nominal_values(a2), unp.nominal_values(b2)), 0.1841, measuretime_uran, 0.5)
-A_BLEI_214_3 = A(unp.nominal_values(Z_BLEI[2]), potenz(unp.nominal_values(energy_uran[1701]) , unp.nominal_values(a2), unp.nominal_values(b2)), 0.356, measuretime_uran, 0.5)
-A_RADON_226 = A(unp.nominal_values(Z_RADON[0]), potenz(unp.nominal_values(energy_uran[902]) , unp.nominal_values(a2), unp.nominal_values(b2)), 0.0356, measuretime_uran, 0.5)
+A_BISMUT_214_1 = A((Z_BISMUT[0]), potenz((energy_uran[2940]) , (a2), (b2)), 0.4549, measuretime_uran, 0.5)
+A_BISMUT_214_2 = A((Z_BISMUT[1]), potenz((energy_uran[3705]) , (a2), (b2)), 0.0489, measuretime_uran, 0.5)
+A_BISMUT_214_3 = A((Z_BISMUT[2]), potenz((energy_uran[5399]) , (a2), (b2)), 0.1491, measuretime_uran, 0.5)
+A_BLEI_214_1 = A((Z_BLEI[0]), potenz((energy_uran[1172]) , (a2), (b2)), 0.0727, measuretime_uran, 0.5)
+A_BLEI_214_2 = A((Z_BLEI[1]), potenz((energy_uran[1428]) , (a2), (b2)), 0.1841, measuretime_uran, 0.5)
+A_BLEI_214_3 = A((Z_BLEI[2]), potenz((energy_uran[1701]) , (a2), (b2)), 0.356, measuretime_uran, 0.5)
+A_RADON_226 = A((Z_RADON[0]), potenz((energy_uran[902]) , (a2), (b2)), 0.0356, measuretime_uran, 0.5)
 
 Akt_Bi = np.array([A_BISMUT_214_1, A_BISMUT_214_2, A_BISMUT_214_3])
 Akt_Pb = np.array([A_BLEI_214_1, A_BLEI_214_2, A_BLEI_214_3])
+print("Aktivität Bi-214: ")
 
-print("Aktivität Bi-214: ", unp.nominal_values(Akt_Bi).mean())
-print(unp.nominal_values(Akt_Bi).std())
+print(Akt_Bi)
 
-print("Aktivität Pb-214: ", unp.nominal_values(Akt_Pb).mean())
-print(unp.nominal_values(Akt_Pb).std())
+print('{:.2f}'.format(Akt_Bi.mean()))
 
-print("Aktivität Ra-226: ", A_RADON_226)
+print("Aktivität Pb-214: ", '{:.2f}'.format(Akt_Pb.mean()))
+print(Akt_Pb)
+
+print("Aktivität Ra-226: ", '{:.2f}'.format(A_RADON_226))
+
