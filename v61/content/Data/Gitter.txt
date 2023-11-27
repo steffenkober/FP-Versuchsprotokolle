@@ -1,0 +1,7 @@
+1200 lines/mm:
+a = Abstand Gitter Wand = 21.3cm
+d = Abstand nullte zur ersten Ordnung = 24.4cm
+
+600 lines/mm:
+a = Abstand Gitter Wand = 21.3cm
+d = Abstand nullte zur ersten Ordnung = 8.9cm

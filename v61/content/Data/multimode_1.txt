@@ -1,0 +1,6 @@
+#Frequency/MHz Intensity/dBm || L=63cm
+ 240    2
+ 476    0
+ 716    -2.2
+ 953    -13
+1189    -30
