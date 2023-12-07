@@ -60,7 +60,7 @@ hochreflektierenden Spiegeln verwendet, welche jeweils an den Öffnungsfenstern 
 zylindrischen Behälter; Die Öffnungsfenster befinden sich jeweils an Boden und Deckel des Zylinders. Die verwendeten Spiegel bestehen aus einem hochreflektierenden
 Spiegel mit einem Reflektionsanteil von über $\qty{99}{\%}$ und einem Auskopplungsspiegel, welcher zwischen $\qty{1.5}{}-\qty{1.8}{\%}$ der Strahlungsintensität
 auskoppelt und für Untersuchungen der Lasereigenschaften bereitstellt.\\
-Die verwendeten Spiegel können entweder flach ($r = \infty\qty{}{\metre}$) sein oder eine Wölbung aufweisen. Je nach Anordnung und Abstand der Spiegel entsteht
+Die verwendeten Spiegel können entweder flach ($r = \infty$) sein oder eine Wölbung aufweisen. Je nach Anordnung und Abstand der Spiegel entsteht
 eine bestimmte Abschwächung der Strahlenintensität. Diese Abschwächung lässt sich über die Multiplikation der Resonatorparameter
 \begin{equation}
     g_i = 1 - \frac{L}{r_i}
@@ -72,8 +72,8 @@ bestimmen, wobei L der Abstand der zwei Spiegel (die Resonatorlänge) und $r_i$ 
 Die geringsten Verluste sind für eine Anordnung zu erwarten, bei der beide Spiegelbrennpunkte zusammenfallen. Ausschlaggebend für eine erfolgreiche Selbstverstärkung
 des Lasers ist, dass die Verluste innerhalb des Resonator geringer sein müssen, als die durch stimulierte Emission erreichte Verstärkung.\\
 Innerhalb des Resonators bilden sich elektromagnetische Moden, $\mathrm{TEM}_{lpq}$ genannt, aus. Diese Moden bilden sich durch eine Erfüllung der Resonanzbedingung aus.
-Hierbei wird zwischen drei Modenarten unterschieden. Die Indizes $l$ und $p$ stehen jeweils für die Transversalen Moden orthogonal zu der Ausbreitungsrichtung in x-
-und y-Richtung. $l$ steht für die Longitudinalen Moden in Ausbreitungsrichtung. Dabei bezeichnet ein Wert von $0$ die Grundmode und ein höherer Wert die höheren Moden.\\
+Hierbei wird zwischen drei Modenarten unterschieden. Die Indizes $l$ und $p$ stehen jeweils für die transversalen Moden orthogonal zu der Ausbreitungsrichtung in x-
+und y-Richtung. $l$ steht für die longitudinalen Moden in Ausbreitungsrichtung. Dabei bezeichnet ein Wert von $0$ die Grundmode und ein höherer Wert die höheren Moden.\\
 Die Feldverteilung des elektromagnetischen Feldes orthogonal zur Ausbreitungsrichtung ist durch
 \begin{equation}
     E_{lp}(x) \propto H_l(x) H_p(x) e^{\frac{x^2}{2}}
@@ -85,10 +85,10 @@ proportional zum Betragsquadrat der Feldverteilung:
 \end{equation}
 $I_0$ ist die maximal erreichbare Intesität in der Mitte des Strahls. Für höhere Moden werden auch höhere Hermite-Polynome verwendet, wodurch die Stärke der
 Abhängigkeit in x-Richtung zunimmt. Hierdurch haben Höhere Moden allgemein stärkere Verluste. Die verlustfreiste Mode ist also die Grundmode, gegeben durch $\mathrm{TEM}_{000}$.
-Das nullte Hermite-Polynom ist konstant und die Intensität ergibt sich somit zu
+Das nullte Hermite-Polynom ist konstant, wodurch sich die Intensität zu
 \begin{align}
     I_{00}(x) &\propto I_0 \lvert e^{x^2} \rvert ,\\
-    I_{00}(r) &\propto I_0 e^{\frac{2r^2}{\omega^2}}.
+    I_{00}(r) &\propto I_0 e^{\frac{2r^2}{\omega^2}}
 \end{align}
-Hierbei ist $r$ der radiale Abstand zum Strahlmittelpunkt und $omega(z) = \omega_0\sqrt{1+(\frac{\omega_d z}{\omega_0})^2}$ der Radius des Strahls in Abhängigkeit der z-Richtung.
-$\omega_0$ ist der Radius, bei $z=0$ und $\omega_d = \frac{\lambda\omega_0}{\pi}$ die Divergenz des Strahls.
+ergibt. Hier ist $r$ der radiale Abstand zum Strahlmittelpunkt und $\omega(z) = \omega_0\sqrt{1+(\frac{\omega_d z}{\omega_0})^2}$ der Radius des Strahls in Abhängigkeit der z-Richtung.
+$\omega_0$ ist dabei der Radius bei $z=0$ und $\omega_d = \frac{\lambda\omega_0}{\pi}$ die Divergenz des Strahls.
