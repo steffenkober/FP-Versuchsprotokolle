@@ -1,9 +1,215 @@
 \chapter{Auswertung}
 \label{cha:Auswertung}
 
+In diesem Kapitel werden die Messdaten ausgewertet. Die Stabilitätsbedingung wird für zwei verschiedene Resonatoren untersucht. Danach wird sich die analyse auf einen Resonator 
+fokussieren, welcher aus zwei konkaven Spiegeln besteht.
+
+\section{Stabilitätsbedingung}
+\label{sec:stabil}
+Zunächst wird die Stabilitätsbedingung für den Laserbetrieb untersucht. Dabei wurde als erstes der Resonator bestehend aus einem planaren Spiegel ($r_1 = \infty$) und einem
+konkaven Spiegel ($r_2 = \qty{1.4}{\metre}$) verwendet. 
+Aus Formel \ref{eqn:stabil} kann gefolgert werden, dass dieser Resonator eine maximale Länge $L_\text{max} = r_2$ haben darf. Dies bedeutet, dass sobald eine Länge von $L_\text{max}$
+überschritten wird ist dier Laser nicht mehr stabil und die Intensität sollte verschwinden. In Tabelle \ref{tab:stabil_plan} sind die aufgenommenen Messdaten dargestellt. 
+
+\begin{table}
+    \centering
+    
+    \begin{tabular}{c c}
+        \toprule
+        {$ L \mathbin{/} \unit{\centi\metre}$} & {$I \mathbin{/} \unit{\milli\watt}$}\\
+        \midrule
+        49.8 & 3.60 \\ 
+        60.3 & 2.29 \\
+        70.2 & 1.61 \\
+        80.2 & 1.21 \\
+        90.1 & 0.20 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Laserintensitäten in Abhängigkeit von der Resonatorlänge für einen plan/konkaven Resonator des Radius $r_2 = \qty{1.4}{\metre}$.}
+    \label{tab:stabil_plan}
+\end{table}
+
+Die Tabelle \ref{tab:stabil_plan} stellt lediglich Messdaten bis zu einer Resonatorlänge von $L = \qty{90.1}{\centi\metre}$ dar. In diesem Versuch ist es nicht gelungen ein stabiles 
+Signal oberhalb dieser Länge zu erzeugen. Dennoch zeigt sich für große Resonatorlänge auf, dass die Intensität sinkt. Daher ist die Annahme valide, dass sie ab Verletzung der 
+Stabilitätsbedingung vollkommen verschwindet.
+
+Weite wurde die Stabilitätsbedingung für einen konkav/konkaven Resonator, der Radien $r_1 = r_2 = \qty{1.4}{\metre}$, untersucht. Aus Formel \ref{eqn:stabil} ergibt sich für diesen 
+Resonator eine maximale Länge $L_\text{max} = \qty{2.4}{\metre}$. Die Messdaten für diesen Resonator sind in Tabelle \ref{tab:stabil_konkav} dargestellt. 
+
+\begin{table}
+    \centering
+
+    \begin{tabular}{c c}
+        \toprule
+        {$ L \mathbin{/} \unit{\centi\metre}$} & {$I \mathbin{/} \unit{\milli\watt}$}\\
+        \midrule
+        49.5  & 5.00 \\
+        58.3  & 4.79 \\
+        65.8  & 4.46 \\
+        77.1  & 4.63 \\
+        83.9  & 4.60 \\
+        91.6  & 4.20 \\
+        105.8 & 3.35 \\
+        119.9 & 2.65 \\
+        172.7 & 1.07 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Laserintensitäten in Abhängigkeit von der Resonatorlänge eines konkav/konkaven Resonators der Radien $r_1 = r_2 = \qty{1.4}{\metre}$.}
+    \label{tab:stabil_konkav}
+\end{table}
+
+Auch die Messdaten in Tabelle \ref{tab:stabil_konkav} reichen nicht über die maximale Länge hinaus, da die Länge der Schiene, auf welcher der Aufbau aufgebaut war, nicht ausreichte.
+Dennoch zeigen die Daten auch bei der letzten Länge noch ein signifikantes Signal. Ebenfalls sinken die Intensitäten kontinuierlich was darauf hindeutet, dass die Stabilität abnimmt.
+Dennoch ist für die Resonatorlängen aus Tabelle \ref{tab:stabil_konkav} nachgewiesen worden, dass ein stabiler Betrieb des Laser gewährleistet ist. Im folgendem wird ausschließlich die
+konkav/konave Spiegelkonfiguration verwendet.
+
+\section{TEM Moden}
+\label{sec:TEM}
+Als nächstes werden die Transversalmoden des HeNe-Lasers untersucht. Im Rahmen der zur Verfügung stehenden Mittel ist lediglich die Observierung der $\text{TEM}_{00}$ und der 
+$\text{TEM}_{01}$ möglich. Das Vorgehen hierzu wurde bereits im Abschnitt \ref{sec:TEM_durch} erklärt. 
+
+\subsection{$\text{TEM}_{00}$ Mode}
+\label{subsec:TEM00}
+Die allgemeine Intensitätsverteilung der $\text{TEM}_{nm}$ Moden wurde bereits im Abschnitt \ref{sec:resonator} hergeleitet. Für die Grundmode ergibt sich aus Gleichung \ref{eqn:intensity} eine 
+Intensitätsverteilung nach Gleichung \ref{eqn:I_00}.
+
+\begin{equation}
+    \label{eqn:I_00}
+    I_{\text{TEM}_{00}} = I_0e^{\frac{-(x-x_0)^2}{2w^2}} 
+\end{equation}
+
+Die Messdaten werden mittels Scipy \cite{scipy} an die Gleichung \ref{eqn:I_00} gefittet. Die daraus resultierenden Parameter lauten
+\begin{align*}
+    I_0 &= \qty{9.56 +- 0.078}{\micro\ampere}\\
+    x_0 &= \qty{3.78 +- 0.0038}{\milli\metre}\\
+    w   &=  \qty{0.82 +- 0.0078}{\milli\metre}.\\
+\end{align*}
+
+Der Fit mit den eben bestimmten Parametern, sowie die Messdaten werden in Abbildung \ref{fig:TEM00} dargestellt.
+
 \begin{figure}
     \centering
-    \includegraphics{plot.pdf}
-    \caption{Plot.}
-    \label{fig:plot}
+    \includegraphics[width = .8\textwidth]{build/TEM_00.pdf}
+    \caption{In dieser Abbildung werden die Messwerte sowie die gefittete Intensitätsverteilung in x-Richtung der $\text{TEM}_{00}$ dargestellt. $r$ beschreibt dabei die Drahtposition.}
+    \label{fig:TEM00}
 \end{figure}
+
+\subsection{$\text{TEM}_{01}$ Mode}
+\label{subsec:TEM01}
+Nun wird die Intensitätsverteilung der $\text{TEM}_{01}$ Mode bestimmt. Aus Gleichung \ref{eqn:intensity} ergibt sich die erwartete Intensitätsverteilung nach Gleichung \ref{eqn:I_01}.
+\begin{figure}
+    \centering
+    \includegraphics[width = .8\textwidth]{build/TEM_01.pdf}
+    \caption{In dieser Abbildung werden die Messwerte sowie die gefittete Intensitätsverteilung in x-Richtung der $\text{TEM}_{01}$ dargestellt. $r$ beschreibt dabei die Drahtposition.}
+    \label{fig:TEM01}
+\end{figure}
+\begin{equation}
+    \label{eqn:I_01}
+    I_{\text{TEM}_{01}} = I_0\frac{8(x-x_0)^2}{w^2}e^{\frac{-(x-x_1)^2}{2w^2}} 
+\end{equation}
+
+An dieses Modell werden die Messdaten mittels Scipy \cite{scipy} gefittet und Modellparameter bestimmt. Die Parameter für die aufgenommenen Daten lauten 
+
+\begin{align*}
+    I_0 &= \qty{0.84 +- 0.028}{\micro\ampere}\\
+    x_0 &= \qty{5.17 +- 0.008}{\milli\metre}\\
+    x_1 &= \qty{5.18 +- 0.009}{\milli\metre}\\
+    w   &= \qty{0.56 +- 0.011}{\milli\metre}\\
+\end{align*}
+
+Die Messdaten, sowie der Fit des Modells \ref{eqn:I_01} sind in Abbildung \ref{fig:TEM01} dargestellt.
+
+
+
+\section{Polarisation}
+\label{sec:Polarisation}
+Weiter wird die Polarisation des emmitierten Lichtes untersucht. Dazu wird die Intensität in Abhänigkeit der Winkeleinstellung $\Phi$ eines Polarisationsfilters gemessen. 
+Für linear polarisiertes Licht ist Winkelabhängigkeit der Intensität $I$ nach Gleichung \ref{eqn:intensity} zu erwarten. Dabei ist $I_0$ die Amplitude des Signals und $\Phi_0$ 
+eine beliebige Phase.
+
+\begin{equation}
+    \label{eqn:intensity}
+    I(\Phi) = I_0 \sin^2(\Phi - \Phi_0)
+\end{equation}
+
+Die Messdaten werden mittels Scipy \cite{scipy} an das Modell \ref{eqn:intensity} gefittet und somit Parameter für das Modell bestimmt. Die Parameter für die aufgenommenen Daten lauten 
+
+\begin{align*}
+    I_0 &= \qty{2.98 +- 0.005}{\milli\watt}\\
+    \Phi_0 &= \qty{-0.37 +- 0.0015}{rad}\\
+\end{align*}
+
+\begin{figure}
+    \centering
+    \includegraphics[width = .8\textwidth]{build/Polarisation.pdf}
+    \caption{In dieser Abbildung wird die gemessene Intensitätsverteilung, sowie das gefittete Modell in Abhängigkeit des Polarisationswinkles $\Phi$ dargestellt.}
+    \label{fig:Polarisation}
+\end{figure}
+
+Die Messdaten sowie der Fit werden in Abbildung \ref{fig:Polarisation} dargestellt.
+
+
+\section{Multimoden Betrieb}
+\label{sec:Multimoden}
+Nun soll der Multimoden Betrieb des Laser untersucht werden. Dafür wird das Signal des Laser an einem Oszilloskop dargestellt. Für verschiedene Resonatorlängen wird eine Vielzahl an 
+Frequenzpeaks im Oszilloskop observiert. Die mittlere Schwebungsfrequenz kann dabei aus dem mittleren Abstand zweier benachbarter Peaks zueinander berechnet werden. 
+Das Signal des HeNe-Lasers sollte eine gesamte Frequenzbreite von $\approx f_\text{HeNe} = \qty{1.5}{\giga\hertz}$ haben. Dies entspricht der Dopplerbreite, welcher der dominierende Effekt
+für das ausbreiten des Signals ist. Die Anzahl der Moden $N$ im Laser ist also korriliert zur Schwebungsfrequenz auf einen festen Wert beschränkt, jenachdem wie viele Schwebungsfrequenzen 
+in die Dopplerbreite passen. In Tabelle \ref{tab:multimoden} sind für verschiedene Resonatorlängen die gemessenen Frequenzen, sowie die berechnete Schwebungsfrequenz und die Anzahl der 
+Moden dargestellt.
+
+\begin{table}
+    \centering
+    \begin{tabular}{c c c c}
+        \toprule
+        {$ L \mathbin{/} \unit{\centi\metre}$} & {$f \mathbin{/} \unit{\mega\hertz}$} & {$\Delta f \mathbin{/} \unit{\mega\hertz}$} & {$N$}\\
+        \midrule
+         63.0  & 240,476,716,953,1189 & 237.25 & 8.80 \\
+         77.4  & 195,386,581,773,968,1163,1354 & 210.8 & 8.65 \\
+         87.0  & 173,345,518,690,863,1035,1208,1380 & 195.0 & 8.65 \\
+        105.8  & 143,285,428,570,713,851,994,1136,1279 & 178.04 & 8.87 \\
+        119.9  & 128,251,375,503,626,754,878,1001,1125,1253,1376 & 162.83 & 9.21 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Diese Tabell stellt die Frequenzpeaks im Oszilloskop in Abhängigkeit der Resonatorlänge dar.}
+    \label{tab:multimoden}
+\end{table}
+
+Aus Tabelle \ref{tab:multimoden} kann entnommen werden, dass Schwebungsfrequenz mit steigender Resonatorlänge abnimmt. Dieses Verhalten ist zu erwarten, da die Laufzeit der Photonen 
+steigt und somit die Frequenz sinkt. Ebenfalls kann entnommen werden, dass die Schwebungsfrequenz für alle Resonatorlängen sehr viel kleiner ist als die Dopplerbreite weshalb der 
+Multimoden Betrieb des Laser bestätigt und validiert wird. 
+
+\section{Wellenlänge}
+\label{sec:Wellenlänge}
+Zuletzt wird die Wellenlänge des HeNe-Laser untersucht. Dazu wird ein Gitter verwendet. Die Beugung am Gitter ist durch die Bragg-Bedingung beschrieben. Durch umstellen der 
+Bragg-Bedingung und Berechnung den Winkel zwischen der optischen Achse und der Verbindungsliene von Beugungsmaximum und dem Gitter kann die Wellenlänge nach Gleichung \ref{eqn:wellenlaenge}
+berechnet werden.
+
+\begin{equation}
+    \label{eqn:wellenlaenge}
+    \lambda = \frac{\sin\left(\tan^{-1}\left(\frac{s_n}{d}\right)\right)}{gn}
+\end{equation}
+
+In dieser Gleichung ist $s_n$ der minimale Abstand des $n$-ten Beugungsmaximum zur optischen Achse. $d$ ist der Abstand vom Gitter zum Schirm, $g$ die Gitterkonstante des verwendeten 
+Gitters und $n$ die Ordnung des Beugungsmaximums. Die Messwerte werden in Tabelle \ref{tab:wellenlaenge} dargestellt.  
+
+\begin{table}
+    \centering
+    \begin{tabular}{c c c c}
+        \toprule
+        {$n$} & {$s \mathbin{/} \unit{\centi\metre}$} & {$g \mathbin{/} \unit{\milli\metre}^{-1}$} & {$\lambda \mathbin{/} \unit{\nano\metre}$}\\
+        \midrule
+         1  &  8.9 &  600 & 642.56 \\
+         1  & 24.4 & 1200 & 627.78 \\
+
+        \bottomrule
+    \end{tabular}
+    \caption{Diese Tabelle stellt die Messdaten zur Bestimmung der Wellenlänge dar. Dabei ist $n$ die Beugungsordnung, $s$ der minimale Abstand des $n$-ten Beugungsmaximum zur optischen Achse,
+    $g$ die Gitterkonstante und $\lambda$ die Wellenlänge.}
+    \label{tab:wellenlaenge}
+\end{table}
+
+Der Mittelwert der errechneten Wellenlängen ergibt sich zu 
+\begin{equation*}
+    \lambda = \qty{635.17 +- 7.40}{\nano\metre}
+\end{equation*} 

@@ -51,9 +51,10 @@ Die Übergänge im Heliumatom sind in \autoref{fig:helium} schematisch gezeigt.
 \\Da die Gas Atome sich innerhalb des Laserrohrs mit einer bestimmten mittleren Geschwindigkeit bewegen, kommt es durch den Doppler-Effekt zu leicht unterschiedlichen
 Frequenzen der emittierten Photonen. Neon-Atome welche sich bei der Emission eines Photons sich in dessen Ausbreitungsrichtung bewegt hat, emittieren Photonen mit einer
 leicht höheren Frequenz als solche, die sich in die entgegengesetzte Richtung bewegt haben. Diese emittieren Photonen mit einer leicht niedrigeren Frequenz. Dadurch entsteht
-ein Frequenzspektrum, welches in etwa $\Delta f = \qty{1}{\giga\hertz}$\cite{Wikipedia_HeNe} breit ist.
+ein Frequenzspektrum, welches in etwa $\Delta f = \qty{1.5}{\giga\hertz}$\cite{Wikipedia_HeNe} breit ist.
 
 \section{Resonator}
+\label{sec:resonator}
 
 Damit ein Selbstverstärkender Effekt auftreten kann, muss das entstehende elektromagnetische Feld reflektiert werden. Hierfür wird ein System aus zwei
 hochreflektierenden Spiegeln verwendet, welche jeweils an den Öffnungsfenstern des Lasermediums angebracht werden. Das Lasermedium befindet sich in einem 
@@ -67,6 +68,7 @@ eine bestimmte Abschwächung der Strahlenintensität. Diese Abschwächung lässt
 \end{equation}
 bestimmen, wobei L der Abstand der zwei Spiegel (die Resonatorlänge) und $r_i$ der Radius des jeweiligen Spiegels ist. Die Stabilitätsbedingung ergibt sich somit zu 
 \begin{equation}
+    \label{eqn:stabil}
     0 \leq g_1 \cdot g_2 \leq 1.
 \end{equation}
 Die geringsten Verluste sind für eine Anordnung zu erwarten, bei der beide Spiegelbrennpunkte zusammenfallen. Ausschlaggebend für eine erfolgreiche Selbstverstärkung
@@ -76,19 +78,20 @@ Hierbei wird zwischen drei Modenarten unterschieden. Die Indizes $l$ und $p$ ste
 und y-Richtung. $l$ steht für die longitudinalen Moden in Ausbreitungsrichtung. Dabei bezeichnet ein Wert von $0$ die Grundmode und ein höherer Wert die höheren Moden.\\
 Die Feldverteilung des elektromagnetischen Feldes orthogonal zur Ausbreitungsrichtung ist durch
 \begin{equation}
-    E_{lp}(x) \propto H_l(x) H_p(x) e^{\frac{x^2}{2}}
+    E_{lp}(x) \propto H_l(x) H_p(x) e^{\frac{-x^2}{2}}
 \end{equation}
 gegeben, wobei $H_i(x)$ jeweils die Hermite-Polynome der entsprechenden Transversalmoden sind. Die Intensität des Strahl orthogonal zur Ausbreitungsrichtung ist hierbei
 proportional zum Betragsquadrat der Feldverteilung:
 \begin{equation}
-    I_{lp}(x) \propto I_0 \lvert E_{lp}(x) \rvert ^2 \propto I_0 \lvert H_l(x) H_p(x) e^{\frac{x^2}{2}} \rvert ^2.
+    \label{eqn:intensity}
+    I_{lp}(x) \propto I_0 \lvert E_{lp}(x) \rvert ^2 \propto I_0 \lvert H_l(x) H_p(x) e^{\frac{-x^2}{2}} \rvert ^2.
 \end{equation}
 $I_0$ ist die maximal erreichbare Intesität in der Mitte des Strahls. Für höhere Moden werden auch höhere Hermite-Polynome verwendet, wodurch die Stärke der
 Abhängigkeit in x-Richtung zunimmt. Hierdurch haben Höhere Moden allgemein stärkere Verluste. Die verlustfreiste Mode ist also die Grundmode, gegeben durch $\mathrm{TEM}_{000}$.
 Das nullte Hermite-Polynom ist konstant, wodurch sich die Intensität zu
 \begin{align}
-    I_{00}(x) &\propto I_0 \lvert e^{x^2} \rvert ,\\
-    I_{00}(r) &\propto I_0 e^{\frac{2r^2}{\omega^2}}
+    I_{00}(x) &\propto I_0 \lvert e^{-x^2} \rvert ,\\
+    I_{00}(r) &\propto I_0 e^{\frac{-2r^2}{\omega^2}}
 \end{align}
 ergibt. Hier ist $r$ der radiale Abstand zum Strahlmittelpunkt und $\omega(z) = \omega_0\sqrt{1+(\frac{\omega_d z}{\omega_0})^2}$ der Radius des Strahls in Abhängigkeit der z-Richtung.
 $\omega_0$ ist dabei der Radius bei $z=0$ und $\omega_d = \frac{\lambda\omega_0}{\pi}$ die Divergenz des Strahls.
