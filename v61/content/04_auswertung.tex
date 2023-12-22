@@ -160,15 +160,15 @@ Moden dargestellt.
 
 \begin{table}
     \centering
-    \begin{tabular}{c c c c}
+    \begin{tabular}{c c c c c}
         \toprule
-        {$ L \mathbin{/} \unit{\centi\metre}$} & {$f \mathbin{/} \unit{\mega\hertz}$} & {$\Delta f \mathbin{/} \unit{\mega\hertz}$} & {$N$}\\
+        {$ L \mathbin{/} \unit{\centi\metre}$} & {$f \mathbin{/} \unit{\mega\hertz}$} & {$\Delta f \mathbin{/} \unit{\mega\hertz}$} & {$N$} & {$\Delta f_\text{theo} \mathbin{/} \unit{\mega\hertz}$}\\
         \midrule
-         63.0  & 240,476,716,953,1189 & 237.25 & 8.80 \\
-         77.4  & 195,386,581,773,968,1163,1354 & 210.8 & 8.65 \\
-         87.0  & 173,345,518,690,863,1035,1208,1380 & 195.0 & 8.65 \\
-        105.8  & 143,285,428,570,713,851,994,1136,1279 & 178.04 & 8.87 \\
-        119.9  & 128,251,375,503,626,754,878,1001,1125,1253,1376 & 162.83 & 9.21 \\
+         63.0  & 240,476,716,953,1189 & 237.25 & 8.80 & 237.93\\
+         77.4  & 195,386,581,773,968,1163,1354 & 210.8 & 8.65 & 193.66\\
+         87.0  & 173,345,518,690,863,1035,1208,1380 & 195.0 & 8.65 & 172.29\\
+        105.8  & 143,285,428,570,713,851,994,1136,1279 & 178.04 & 8.87 & 141.68\\
+        119.9  & 128,251,375,503,626,754,878,1001,1125,1253,1376 & 162.83 & 9.21 & 125.02\\
         \bottomrule
     \end{tabular}
     \caption{Diese Tabell stellt die Frequenzpeaks im Oszilloskop in Abhängigkeit der Resonatorlänge dar.}
@@ -177,7 +177,16 @@ Moden dargestellt.
 
 Aus Tabelle \ref{tab:multimoden} kann entnommen werden, dass Schwebungsfrequenz mit steigender Resonatorlänge abnimmt. Dieses Verhalten ist zu erwarten, da die Laufzeit der Photonen 
 steigt und somit die Frequenz sinkt. Ebenfalls kann entnommen werden, dass die Schwebungsfrequenz für alle Resonatorlängen sehr viel kleiner ist als die Dopplerbreite weshalb der 
-Multimoden Betrieb des Laser bestätigt und validiert wird. 
+Multimoden Betrieb des Laser bestätigt und validiert wird. Außerdem können die theoretisch erwarteten Schwebungsfrequenzen $\Delta f_\text{theo}$ durch Gleichung \ref{eqn:schweb} berechnet werden.
+\begin{equation}
+    \label{eqn:schweb}
+    \Delta f_\text{theo} = \frac{c}{2L}
+\end{equation} 
+In Gleichung \ref{eqn:schweb} is $c$ die Lichtgeschwindigkeit und $L$ die eingestellte Resonatorlänge. Die berechneten Schwebungsfrequenzen werden ebenfalls in Tabelle \ref{tab:multimoden}
+dargestellt. Es fällt auf, dass die Abweichung der experimentellen Werte mit den Resonatolänge steigt. Dies ist ebenfalls auf die Stabilität zurückzuführen.
+
+
+
 
 \section{Wellenlänge}
 \label{sec:Wellenlänge}

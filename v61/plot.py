@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import scipy.optimize as op
+import scipy.constants as const
 
 ####################################################################################################################################################################################
 #########################                       TEM-00                  ############################################################################################################
@@ -145,6 +146,14 @@ print("MM3 Anzahl: ",delta_f_doppler/mittlere_abstaende(mm3_freq)[0])
 print("MM4 Anzahl: ",delta_f_doppler/mittlere_abstaende(mm4_freq)[0])
 print("MM5 Anzahl: ",delta_f_doppler/mittlere_abstaende(mm5_freq)[0])
 
+def F_theo(L):
+    return const.c/(2*L)
+
+print("Länge :",63,"f_theo",F_theo(63*10**(-2))/(10**6))
+print("Länge :",77.4,"f_theo",F_theo(77.4*10**(-2))/(10**6))
+print("Länge :",87,"f_theo",F_theo(87*10**(-2))/(10**6))
+print("Länge :",105.8,"f_theo",F_theo(105.8*10**(-2))/(10**6))
+print("Länge :",119.9,"f_theo",F_theo(119.9*10**(-2))/(10**6))
 
 ### Abw
 
@@ -154,3 +163,14 @@ print(np.mean(array))
 delta_lambda = abs(635.17 - lambda_theo)/lambda_theo*100
 
 print(delta_lambda)
+
+arrayy = [F_theo(63*10**(-2))/(10**6),F_theo(77.4*10**(-2))/(10**6),F_theo(87*10**(-2))/(10**6),F_theo(105.8*10**(-2))/(10**6),F_theo(119.9*10**(-2))/(10**6)]
+f_exp = [237.25,210.8,195.0,178.04,162.83]
+abw_fs = [0,0,0,0,0]
+for i in range(5):
+    abw_fs[i] = np.abs(f_exp[i]-arrayy[i])/arrayy[i]
+
+
+abw_f = np.mean(abw_fs)
+print("fs:",abw_fs)
+print("Abweichung schwebung:",abw_f)
