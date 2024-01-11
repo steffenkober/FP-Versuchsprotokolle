@@ -209,7 +209,7 @@ def parratt(a, delta2, delta3, b2, b3, d2, sigma1, sigma2):
 
     return np.abs(x1)**2
 
-# Fitbereich
+
 t_min = 0.35
 t_max = 0.75
 
@@ -238,16 +238,9 @@ x = np.linspace(0, 2.5, 1000)
 
 plt.plot(t, R_c, label = "gemessene Reflektivität (korrigiert)", c = "cornflowerblue")
 plt.plot(x, parratt(x, *params), color = "firebrick", alpha = .8, label = "Parrattalgorithmus")
-#plt.vlines(noms(a_c_Poly), 0, 10e3, label = r"$\alpha_c$ (Polysterol) = " + f"{a_c_Poly:.4f}°", color = "deeppink")
-#plt.vlines(noms(a_c_Si), 0, 10e3, label = r"$\alpha_c$ (Si) = " + f"{a_c_Si:.4f}°", color = "rebeccapurple")
 plt.legend()
 plt.yscale("log")
-#plt.xlim(0, 2.5)
-#plt.ylim(None, 10e3)
-#plt.xlabel(r"$\alpha \mathbin{/} \unit{\degree}$")
-#plt.ylabel(r"$R$")
 plt.tight_layout()
-#plt.show()
 plt.savefig("build/Reflek3.pdf")
 plt.close()
 
