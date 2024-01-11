@@ -240,6 +240,8 @@ plt.plot(t, R_c, label = "gemessene Reflektivität (korrigiert)", c = "cornflowe
 plt.plot(x, parratt(x, *params), color = "firebrick", alpha = .8, label = "Parrattalgorithmus")
 plt.legend()
 plt.yscale("log")
+plt.xlabel(r"$\theta \mathbin{/} \unit{\degree}$")
+plt.ylabel(r"$R$")
 plt.tight_layout()
 plt.savefig("build/Reflek3.pdf")
 plt.close()
