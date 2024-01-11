@@ -14,7 +14,7 @@ Organismen möglichst zu vermeiden. Neben nützlichen Anwendungen im medizinisch
 um Multischichtsysteme zu untersuchen, bei denen die Schichten nur wenige Nanometer breit sind.
 
 \subsection{Erzeugung von Röntgenstrahlung}
-Röntgenstrahlung wird in Röntgenröhren erzeugt. Diese evakuierte Röhren bestehen aus einer Kathode und einer Anode, wobei das Anodenmaterial aus einem Metall besteht. 
+Röntgenstrahlung wird in Röntgenröhren erzeugt. Diese evakuierten Röhren bestehen aus einer Kathode und einer Anode, wobei das Anodenmaterial aus einem Metall besteht. 
 Es wird an Kathode und Anode eine Spannung angelegt, woraufhin sich Elektronen aus der Kathode lösen und durch ein Feld zur Anode hin beschleunigt werden. Die 
 beschleunigten Elektronen treffen schließlich auf das Anodenmaterial, wo sie stark abgebremst werden. Hier treten zwei verschiedene Effekte auf, welche beide
 zum resultierenden Strahlungsspektrum beitragen.\\
@@ -62,13 +62,14 @@ Die Intensitätsanteile des reflektierten und transmittierten Strahlteile lassen
 Wenn ein Röntgenstrahl von Luft ($\eta = 1$) in ein optisch dünneres Medium tritt ($\eta_2 < \eta_1$), dann tritt unter einem Winkel der Totalreflexion
 keine Brechung des Strahls mehr auf. Dieser kritische Winkel lässt sich als
 \begin{equation}
-    \theta_k \approx \sqrt{2\delta} = \lambda \sqrt{\frac{r_e \rho}{\pi}}
+    \label{eqn:theta_total}
+    \theta_c \approx \sqrt{2\delta} = \lambda \sqrt{\frac{r_e \rho}{\pi}}
 \end{equation}
 nähern. 
-Die Reflektivität (beziehunsgweise Transmitivität) lässt sich durch das Betragsquadrat $R = |r|^2$ ($T= |t|^2$) bestimmen. Falls $\theta_1 > 3 \theta_k$,
+Die Reflektivität (beziehunsgweise Transmitivität) lässt sich durch das Betragsquadrat $R = |r|^2$ ($T= |t|^2$) bestimmen. Falls $\theta_1 > 3 \theta_c$,
 lässt sich die Reflektivität nähern mit:
 \begin{equation}
-    R = \left(\frac{\theta_k}{2\theta_1}\right)^4.
+    R = \left(\frac{\theta_c}{2\theta_1}\right)^4.
 \end{equation}
 
 \section{Multischichtsysteme}
@@ -83,6 +84,7 @@ abhängig von Einfallswinkel Oszillationen im Intensitätsspektrum der reflektie
 \end{figure}
 Da diese Interferenzen und somit Oszillationen stark von der in den Schichten zurückgelegten Strecke abhängen, lassen sich die Schichdicken anhand der lokalen Maxima der Oszillation berechnen:
 \begin{equation}
+    \label{eqn:Schichtdicke}
     d = \frac{\lambda}{2\Delta \theta}.
 \end{equation}
 Hierbei ist $\lambda$ die Wellenlänge des Röntgenstrahls und $\Delta \theta$ der Abstand zweier Extrema.\\
@@ -97,11 +99,13 @@ Der Parratt-Algorithmus nimmt an, dass alle Oberfläche perfekt glatt und gerade
 nicht der Fall, daher muss der Paratt-Algorithmus um eine gewisse Rauigkeit korrigiert werden. Für diee Rauigkeit wird angenommen, dass die Schichtdicken größer sind als die Unebenheiten, wodurch sie mit 
 einer root-mean-square-Funktion angenähert werden kann:
 \begin{equation}
+    \label{eqn:rauigkeit}
     \sigma_j^2 = \int (z-z_j)^2P_j(z)dz
 \end{equation}
 $P_j(z)$ bezeichnet hier die Wahrscheinlichkeit, dass die j-te Grenzschicht im Intervall [$z_j+z$, $z_j+z+dz$] befindet, wobei $z_j$ die exakte theoretische Position dieser Grenzschicht ist. Als Wahrscheinlichkeitsverteilung
 wird eine Normalverteilung mit der Breite $\sigma_j$ gewählt. Die Fresnel-koeffizienten werden dementsprechend um die eingeführte Rauigkeit ergänzt:
 \begin{align}
+    \label{eqn:fresnel_ref}
     \tilde{r}_{j,j+1} &= r_{j_j+1} \exp{(-2k_{z,j}k_{z,j+1}\sigma^2)},\\
     \tilde{t}_{j,j+1} &=  t_{j_j+1} \exp{(\frac{1}{2}(k_{z,j}-k_{z,j+1})^2\sigma^2)}.
 \end{align}
@@ -111,6 +115,7 @@ Diese korrigierten Koeffizienten werden im Parratt-Algorithmus verwendet.
 Ab einem gewissen Grenzwinkel $\theta_g$ ist die Strahlbreite größer, als die Projektion der Materialoberfläche auf die Wellenfront des Strahls, wodurch ein Teil der Strahl nicht mehr auf das Material trifft. Hier hat man also
 systematische Intensitätsverluste, die ausgeglichen werden. Dies wird durch die Korrektur um einen Geometriefaktor vorgenommen. Der Winkel, ab dem eine Korrektur stattfinden muss ist gegeben durch
 \begin{equation}
+    \label{eqn:Geometriewinkel}
     \theta_g = \arcsin{(\frac{d_0}{D})},
 \end{equation}
 wobei $d_0$ die Strahlbreite ist und $D$ die Länge der Materialoberfläche. Der Geometriefaktor um den korrigiert werden soll ergibt sich schließlich als

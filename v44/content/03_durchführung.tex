@@ -16,17 +16,17 @@ befindet sich hinter Sicherheitsglas, welches verhindert, dass ein Mensch in den
 Bevor mittels Röntgenreflektometrie die Dichte, Rauigkeit und die Dicke eines Polysterolfilms auf einem Siliziumwafer gemessen werden kann, muss die Messapparatur justiert werden. 
 Dafür werde eine Reihe an Scans durchgeführt um die Probe vernünftig zu positionieren und Störfaktoren zu berechnen. Zuerst muss ein Detektorscan durchgeführt werden. Für diesen 
 wird die Probe vollständig aus dem Strahlengang gefahren. Dann wird der Detektor relativ zur Röntgenröhre gedreht und dabei die Intensität vermessen. Dies ist notwendig, damit das 
-Signal im Detektor möglichst hoch ist. Daher speichert der Detektor nach dem Scan die Position mit der höchsten Intensität als standardwert ab. 
+Signal im Detektor möglichst hoch ist. Daher speichert der Detektor nach dem Scan die Position mit der höchsten Intensität als Standardwert ab. 
 
-Dann wird ein Z-Scan durchgeführt. Bei diesem wird die Probe langsam in den Strahlengang gefahren und es wird erneut die Intensität gemessen. Dieser Scan ist notwending um die 
-z-Position der Probe so zu wählen, dass diese soeben beschienen wird.
+Danach wird ein Z-Scan durchgeführt. Bei diesem wird die Probe langsam in den Strahlengang gefahren und es wird erneut die Intensität gemessen. Dieser Scan ist notwending, um die 
+z-Position der Probe so zu wählen, dass diese gerade so beschienen wird.
 
-Darauf hin wird ein X-Scan durchgeführt. Dieser gewährleistet, dass die Probe in der Korrekten x-Position liegt und eine maximale Beleuchtung verwendet wird. 
+Daraufhin wird ein X-Scan durchgeführt. Dieser gewährleistet, dass die Probe in der korrekten x-Position liegt und eine maximale Beleuchtung verwendet wird. 
 
-Weiter wird ein Rocking-Scan für den Winkel $2\Theta = \qty{0}{\degree}$ durchgeführt. Dieser passt nun die y-Position der Probe an in dem der Winkel auf das Maximum geeicht wird. 
+Weiter wird ein Rocking-Scan für den Winkel $2\theta = \qty{0}{\degree}$ durchgeführt. Dieser passt nun die y-Position der Probe an, indem der Winkel auf das Maximum geeicht wird. 
 
-Für eine qualitative Justage ist es notwendig noch einen weiteren Z-Scan, Rocking-Scan mit $2\Theta = \qty{0.3}{\degree}$, ein Z-Scan und einen letzten Rocking-Scan mit 
-$2\Theta = \qty{0.5}{\degree}$ durchzuführen. Die Messbereiche der verwendeten Scans sind in Tabelle \ref{tab:Messbereiche} zusammengefasst.
+Für eine qualitative Justage ist es notwendig noch einen weiteren Z-Scan, Rocking-Scan mit $2\theta = \qty{0.3}{\degree}$, noch einen Z-Scan und einen letzten Rocking-Scan mit 
+$2\theta = \qty{0.5}{\degree}$ durchzuführen. Die Messbereiche der verwendeten Scans sind in Tabelle \ref{tab:Messbereiche} zusammengefasst.
 
 \begin{table}
     \centering
@@ -48,7 +48,7 @@ $2\Theta = \qty{0.5}{\degree}$ durchzuführen. Die Messbereiche der verwendeten 
     \end{tabular}
 \end{table}
 
-Nach eine erfolgreichen Justage kann die Reflektivitätsmessung begonnen werden. Der Messbereich lautet $\qty{0}{\degree}$ bis $\qty{2.5}{\degree}$. Für eine ausreichende 
+Nach einer erfolgreichen Justage kann die Reflektivitätsmessung begonnen werden. Der Messbereich lautet $\qty{0}{\degree}$ bis $\qty{2.5}{\degree}$. Für eine ausreichende 
 Datenmenge sollte eine Schrittweite von $\qty{0.005}{\degree}$ mit jeweiliger Messdauer von $\qty{5}{\second}$ gewählt werden. Um Streueinflüsse zu verhindern muss außerdem ein 
 Diffuse-Scan durchgeführt werden. Dafür werden die Einstellungen bei behalten, allerdings wird der Detektor um $\qty{0.1}{\degree}$ verfahren, damit dieser nur gestreute Signale 
 misst. Mit dem Diffuse-Scan wird in der Auswertung die Reflektivität korrigert.
