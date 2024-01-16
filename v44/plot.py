@@ -172,15 +172,24 @@ plt.close()
 lam = 1.54e-10
 k = 2*np.pi/lam
 n1 = 1
-d1 = 0
+d1 = 10
+n = 1 - 7.6e-6 + 1.54e-8j*141/(4*np.pi)
 
-delta_Poly = 3.5e-6 # 1. Schicht Polysterol
-delta_Si = 7.6e-6 # 2. Schicht Silizium
-b_Poly = delta_Poly/40
-b_Si = delta_Si/40
-d_ = noms(d)
+#delta_Poly = 2.5e-6 # 1. Schicht Polysterol
+#delta_Si = 9.5e-6 # 2. Schicht Silizium
+#b_Poly = delta_Poly/40
+#b_Si = delta_Si/40
+#d_ = noms(d)
+#sigma_Poly = 4.2e-10
+#sigma_Si = 1e-10
+
+delta_Poly = 5e-6 # 1. Schicht Polysterol
+delta_Si = 0.7e-6 # 2. Schicht Silizium
+b_Poly = 2.7e-8
+b_Si = 9.8e-7
+d_ = 8.2e-8
 sigma_Poly = 4.2e-10
-sigma_Si = 1e-10
+sigma_Si = 3e-10
 
 #delta_Poly = 4.2e-6 # 1. Schicht Polysterol
 #delta_Si = 1.6e-5 # 2. Schicht Silizium
@@ -190,7 +199,7 @@ sigma_Si = 1e-10
 #sigma_Poly = 4e-10
 #sigma_Si = 3e-10
 
-params = [delta_Poly, delta_Si, b_Poly, b_Si, d_, sigma_Poly, sigma_Si] # Startwerte
+params = [9e-7, 7.5e-6, 9e-8, 1e-8, 8.46e-8, 4.2e-10, 3e-10] # Startwerte
 err = np.zeros(len(params))
 
 def parratt(a, delta2, delta3, b2, b3, d2, sigma1, sigma2):
@@ -209,12 +218,49 @@ def parratt(a, delta2, delta3, b2, b3, d2, sigma1, sigma2):
 
     return np.abs(x1)**2
 
+#z= 8.7e-8 
+#delta1=5.1e-6
+#delta2=5.7e-6
+#beta1=400 
+#beta2=500
+#sigma1=5.5e-10
+#sigma2=8e-10
+#n1=1
+#
+#
+#const_p = 1.54e-8j/(4*np.pi)
+#normal_p = 1.54e-8/(4*np.pi)
+#b1 = beta1*normal_p 
+#b2 = beta2*normal_p
 
-t_min = 0.35
+def parat(a,delta1,delta2,beta1,beta2,sigma1,sigma2):
+    a = np.deg2rad(a)
+    return np.abs(
+    (((k*np.sqrt(n1**2-np.cos(a)**2))-(k*np.sqrt((1- delta1 -beta1 * const_p)**2-np.cos(a)**2)))/ # r_{0,1} Zähler
+    ((k*np.sqrt(n1**2-np.cos(a)**2))+(k*np.sqrt((1-delta1-beta1*const_p)**2-np.cos(a)**2)))       # r_{0,1} Nenner
+    *np.exp(-2*(k*np.sqrt(n1**2-np.cos(a)**2))*(k*np.sqrt((1-delta1-beta1*const_p)**2-np.cos(a)**2))*sigma1**2) # Rauheit Korrektur e^{-2*k_{0}*k{1} *sigma1**2}
+    +np.exp(-2j*(k*np.sqrt((1-delta1-beta1*const_p)**2-np.cos(a)**2))*z) # + X_2 : e^{2i k_{1} z}
+    *((k*np.sqrt((1-delta1-beta1*const_p)**2-np.cos(a)**2)) -(k*np.sqrt((1-delta2-beta2*const_p)**2-np.cos(a)**2))) #r_{1,2} Zähler
+    /((k*np.sqrt((1-delta1-beta1*const_p)**2-np.cos(a)**2)) +(k*np.sqrt((1-delta2-beta2*const_p)**2-np.cos(a)**2))) # r_{1,2} Nenner
+    *np.exp(-2*(k*np.sqrt((1-delta1-beta1*const_p)**2-np.cos(a)**2))*(k*np.sqrt((1-delta2-beta2*const_p)**2-np.cos(a)**2))*sigma2**2))/ # Rauheit Korrektur e^{-2*k_{0}*k{1} *sigma2**2}
+    (1+((k*np.sqrt(n1**2-np.cos(a)**2))-(k*np.sqrt((1-delta1-beta1*const_p)**2-np.cos(a)**2))) # Nenner startet hier 1+ r_{0,1} Zähler
+    /((k*np.sqrt(n1**2-np.cos(a)**2))+(k*np.sqrt((1-delta1-beta1*const_p)**2-np.cos(a)**2)))    # r_{0,1} Nenner
+    *np.exp(-2*(k*np.sqrt(1**2-np.cos(a)**2))*(k*np.sqrt((1-delta1-beta1*const_p)**2-np.cos(a)**2))*sigma1**2) # Rauheit Korrektur e^{-2*k_{0}*k{1} *sigma1**2}
+    *np.exp(-2j*(k*np.sqrt((1-delta1-beta1*const_p)**-np.cos(a)**2))*z) # *X_2 : e^{2i k_{1} z}
+    *((k*np.sqrt((1-delta1-beta1*const_p)**2-np.cos(a)**2)) -(k*np.sqrt((1-delta2-beta2*const_p)**2-np.cos(a)**2)))/ #r_{1,2} Zähler
+    ((k*np.sqrt((1-delta1-beta1*const_p)**2-np.cos(a)**2))+(k*np.sqrt((1-delta2-beta2*const_p)**2-np.cos(a)**2))) # r_{1,2} Nenner
+    *np.exp(-2*(k*np.sqrt((1-delta1-beta1*const_p)**2-np.cos(a)**2))*(k*np.sqrt((1-delta2-beta2*const_p)**2-np.cos(a)**2))*sigma2**2)) # Rauheit Korrektur e^{-2*k_{0}*k{1} *sigma1**2}
+    )**2
+
+t_min = 0.2
 t_max = 0.75
+alpha_crit = 0.195
+R_c = R_c/R_c[25]
+bounds = ([1e-10, 1e-7, 1e-8, 1e-10,1e-8, 1e-12, 1e-12], [np.inf, 1e-4, np.inf, 1e-6,0.9e-7,9e-10, 9e-10]) # Limits der Parameter
+#params = [7e-6, 5e-6, 9e-8, 4e-8,8e-10, 5e-10]
+#params, pcov = op.curve_fit(parratt, t[(t>t_min) * (t<t_max)], R_c[(t>t_min) * (t<t_max)], p0 = params,maxfev=100000,bounds = bounds)# 
+params, pcov = op.curve_fit(parratt, t[25:-350], R_c[25:-350], p0=params,maxfev=100000,bounds = bounds)#
 
-bounds = ([1e-6, 1e-6, 1e-9, 1e-8, 1e-9, 5e-11, 5e-11], [5e-6, 5e-5, 1e-7, 1e-6, 1e-7, 1e-9, 1e-9]) # Limits der Parameter
-params, pcov = op.curve_fit(parratt, t[(t>t_min) * (t<t_max)], R_c[(t>t_min) * (t<t_max)], p0 = params, bounds = bounds,maxfev=10000)#
 err = np.sqrt(np.diag(pcov))
 
 delta_Si = ufloat(params[0], err[0])
@@ -234,10 +280,39 @@ print(f"alpha_c (Poly)  : {a_c_Poly:.4f} °")
 print(f"alpha_c (Si)    : {a_c_Si:.4f} °")
 print("-------------------------------------------------------")
 
+z= 8.46e-8 
+delta1=5.1e-6
+delta2=9e-6
+beta1=600 
+beta2=700
+sigma1=5.5e-10
+sigma2=8e-10
+n1=1
+
+
+const_p = 1.54e-8j/(4*np.pi)
+normal_p = 1.54e-8/(4*np.pi)
+b1 = beta1*normal_p 
+b2 = beta2*normal_p
+
 x = np.linspace(0, 2.5, 1000)
+paramss = [1.01e-6, 9e-6, 7e-8, 9e-7, 8.46e-8, 4.2e-10, 3e-10]
+paramsss = [0.61e-6, 7.32e-6, 2.81e-8, 9.54e-7, 7.9e-10, 7.3e-10]
+
+delta_Poly = 0.61e-6
+delta_Si = 7.32e-6
+
+a_c_Poly = unp.sqrt(2*delta_Poly)*180/np.pi
+a_c_Si = unp.sqrt(2*delta_Si)*180/np.pi
+print(f"alpha_cs (Poly)  : {a_c_Poly:.4f} °")
+print(f"alpha_cs (Si)    : {a_c_Si:.4f} °")
+print("-------------------------------------------------------")
 
 plt.plot(t, R_c, label = "gemessene Reflektivität (korrigiert)", c = "cornflowerblue")
-plt.plot(x, parratt(x, *params), color = "firebrick", alpha = .8, label = "Parrattalgorithmus")
+#plt.plot(x, parratt(x, *params), color = "firebrick", alpha = .8, label = "Parrattalgorithmus")
+#plt.plot(x, parratt(x, *paramss), color = "firebrick", alpha = .8, label = "Parrattalgorithmus test")
+plt.plot(x, parat(x, *paramsss), color = "firebrick", alpha = .8, label = "Parrattalgorithmus test2")
+#plt.vlines(t[-350], 10^-3, 10e3, label = r"$\theta_c$ (Silizium)", color = "deeppink")
 plt.legend()
 plt.yscale("log")
 plt.xlabel(r"$\theta \mathbin{/} \unit{\degree}$")
