@@ -1,6 +1,9 @@
 \chapter{Theorie}
 \label{cha:Theorie}
 
+In dem folgenden Abschnitt werden die für das Experiment nötigen theoretischen Grundlagen eingeführt, ein Analyseverfahren für Multischichtsysteme präsentiert, sowie 
+notwendige Korrekturen erläutert.
+
 \section{Röntgenstrahlung}
 
 Röntgenstrahlen sind elektromagnetische Wellen, welche eine Wellenlänge zwischen $\qty{5}{\pico\metre}$ und $\qty{10}{\nano\metre}$ aufweisen.
@@ -25,7 +28,7 @@ Diese charakteristischen Linien im Röntgenspektrum sind abhängig vom Anodenmat
 übereinstimmen. Ein Beispiel eines Röntgenspektrums ist in \autoref{fig:roentgenspektrum} dargestellt.
 \begin{figure}
     \centering
-    \includegraphics[width = 0.7\textwidth]{bilder/Röntgenspektrum.png}
+    \includegraphics[width = 0.5\textwidth]{bilder/Röntgenspektrum.png}
     \caption{Ein beispielhaftes Röntgenspektrum \cite{Uni_Goett}.}
     \label{fig:roentgenspektrum}
 \end{figure}
@@ -38,16 +41,23 @@ sowie der Reflexion lasen sich aus dem Snelliusschen Brechungsgesetz \autoref{eq
 \label{eq:Snell_Brech}
     \eta_1 \sin{\theta_1} &= \eta_2 \sin{\theta_2}\\
 \label{eq:Reflexionsgesetz}
-    \theta_1 &= \theta_2.
+    \theta_1 &= \theta_1'.
 \end{align}
-$\theta_1$ ist der Winkel des einfallenenden (beziehunsgweise ausfallenden $\theta_2$) zu dem Einfallslot, welches senkrecht auf dem Material steht. $\eta_1$ ist der komplexe Brechungsindex des Materials aus dem der Strahl kam und
-$\eta_2$ der komplexe Brechungsindex des Materials in das der Strahl reingebrochen wird.\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.6\textwidth]{bilder/Brechung_Beugung.png}
+    \caption{Schematische Darstellung der Brechung und der Beugung einer E-M-Welle an einer Grenzfläche \cite{Labster}. $n_i$,
+    $n_r$ entsprechen den Brechungsindezes $\eta_1$, $\eta_2$. $\theta_i$ entspricht dem Winkel des einlaufenden/ reflektierten Strahls $\theta_1$ und $\theta_r$ dem gebrochenen Strahl $\theta_2$.}
+    \label{fig:Brechung_Beugung}
+\end{figure}
+$\theta_1$ ist der Winkel des einfallenenden, $\theta_1'$ des reflektierten und $\theta_2$ des ausfallenden Strahls zu dem Einfallslot, welches senkrecht auf dem Material steht. $\eta_1$ ist der komplexe Brechungsindex des Materials aus dem der Strahl kam und
+$\eta_2$ der komplexe Brechungsindex des Materials in das der Strahl reingebrochen wird. Der Prozess der Brechung und Beugung ist schematisch in \autoref{fig:Brechung_Beugung} dargestellt.\\
 Der komplexe Brechungsindex ist materialspezifisch und kann für sehr kurzwellige Wellen wie die Röntgenstrahlung über
 \begin{equation}
     \label{eq:Brechungsindex}
     \eta = 1-\delta+iK
 \end{equation}
-bestimmt werden. $\delta$ ist ein Korrekturfaktor und stark abhängig von der Wellenlänge, Ordnungszahl und Dichte des Materials. Allgemein liegt er für das Röntgenspektrum zwischen $\qty{10e-9}{}$ und $\qty{10e-5}{}$.
+bestimmt werden. $\delta$ ist die Dispersion des Materials und stark abhängig von der Wellenlänge des Strahls, sowie Ordnungszahl und Dichte des Materials. Allgemein liegt er für das Röntgenspektrum zwischen $\qty{10e-9}{}$ und $\qty{10e-5}{}$.
 $K$ ist die Absorption des Mediums und ebenfalls materialabhängig. Die Größen lassen sich durch
 \begin{align}
     \delta &= \frac{\lambda^2}{2\pi}r_e\rho\\
@@ -71,6 +81,8 @@ lässt sich die Reflektivität nähern mit:
 \begin{equation}
     R = \left(\frac{\theta_c}{2\theta_1}\right)^4.
 \end{equation}
+Anhand der Gleichung ist abzulesen, dass die Reflektivität mit wachsenden einfallenden Winkel $\theta_1$ und $\theta_1 > \theta_c$ die Reflektivität stark abnimmt. Für den Fall
+$\theta_1 < \theta_c$ tritt keine Brechung des Strahls mehr auf und die gesamte Intensität wird reflektiert.
 
 \section{Multischichtsysteme}
 Wenn elektromagnetische Strahlung auf ein System trifft, das aus vielen verschiedenen geschichteten Materialien besteht, dann wird dieser Strahl an jeder Grenzschicht transmittierten und reflektiert. 
@@ -78,11 +90,11 @@ Bei jedem Grenzübergang wird der Anteil der transmittierten Strahlung geringer.
 abhängig von Einfallswinkel Oszillationen im Intensitätsspektrum der reflektierten Strahlung. Diese Oszillationen werden als Kiessig Oszillationen bezeichnet und sind in \autoref{fig:Oszillationen} dargestellt.
 \begin{figure}
     \centering
-    \includegraphics[width = 0.7\textwidth]{bilder/Oszillationen.jpg}
-    \caption{schematische Darstellung der Kiessig Oszillationen (farbig) und eine experimentelle Messung dieser Oszillationen (schwarz)\cite{Kiessig}.}
+    \includegraphics[width = 0.7\textwidth]{bilder/Oszillationen.png}
+    \caption{Schematische Darstellung der Kiessig Oszillationen \cite{Kiessig}.}
     \label{fig:Oszillationen}
 \end{figure}
-Da diese Interferenzen und somit Oszillationen stark von der in den Schichten zurückgelegten Strecke abhängen, lassen sich die Schichdicken anhand der lokalen Maxima der Oszillation berechnen:
+Da diese Interferenzen und somit Oszillationen stark von der in den Schichten zurückgelegten Strecke abhängen, lassen sich die Schichtdicken anhand der lokalen Maxima der Oszillation berechnen:
 \begin{equation}
     \label{eqn:Schichtdicke}
     d = \frac{\lambda}{2\Delta \theta}.
@@ -109,17 +121,19 @@ wird eine Normalverteilung mit der Breite $\sigma_j$ gewählt. Die Fresnel-koeff
     \tilde{r}_{j,j+1} &= r_{j_j+1} \exp{(-2k_{z,j}k_{z,j+1}\sigma^2)},\\
     \tilde{t}_{j,j+1} &=  t_{j_j+1} \exp{(\frac{1}{2}(k_{z,j}-k_{z,j+1})^2\sigma^2)}.
 \end{align}
-Diese korrigierten Koeffizienten werden im Parratt-Algorithmus verwendet.
+Diese korrigierten Koeffizienten werden im Parratt-Algorithmus verwendet. \\
+Falls die Rauigkeit größer als die Schichtdicke ist, kann dieses Modell nicht mehr verwendet werden. Hier muss auf das effektive Dichtemodell zurückgegriffen werden.
 
 \section{Korrekturen}
-Ab einem gewissen Grenzwinkel $\theta_g$ ist die Strahlbreite größer, als die Projektion der Materialoberfläche auf die Wellenfront des Strahls, wodurch ein Teil der Strahl nicht mehr auf das Material trifft. Hier hat man also
-systematische Intensitätsverluste, die ausgeglichen werden. Dies wird durch die Korrektur um einen Geometriefaktor vorgenommen. Der Winkel, ab dem eine Korrektur stattfinden muss ist gegeben durch
+Ab einem gewissen Grenzwinkel $\theta_g$ ist die Strahlbreite größer, als die Projektion der Materialoberfläche auf die Wellenfront des Strahls, wodurch ein Teil des Strahls nicht mehr auf das Material trifft. Hier treten
+systematische Intensitätsverluste auf, die ausgeglichen werden müssen. Dies wird durch die Korrektur um einen Geometriefaktor vorgenommen. Der Winkel, ab dem eine Korrektur stattfinden muss, ist gegeben durch
 \begin{equation}
     \label{eqn:Geometriewinkel}
     \theta_g = \arcsin{(\frac{d_0}{D})},
 \end{equation}
-wobei $d_0$ die Strahlbreite ist und $D$ die Länge der Materialoberfläche. Der Geometriefaktor um den korrigiert werden soll ergibt sich schließlich als
+wobei $d_0$ die Strahlbreite ist und $D$ die Länge der Materialoberfläche. Der Geometriefaktor, um den korrigiert werden soll, ergibt sich schließlich als
 \begin{empheq}[left={G =\empheqlbrace}]{alignat*=2}
+    \label{eqn:Geometriefaktor}
     & \frac{D \sin{\theta_1}}{d_0}                    && \text{für}\ \theta_1 < \theta_g \\
     & 1                && \text{für}\ \theta_1 \geq \theta_g.
 \end{empheq}

@@ -24,6 +24,7 @@ z-Position der Probe so zu wählen, dass diese gerade so beschienen wird.
 Daraufhin wird ein X-Scan durchgeführt. Dieser gewährleistet, dass die Probe in der korrekten x-Position liegt und eine maximale Beleuchtung verwendet wird. 
 
 Weiter wird ein Rocking-Scan für den Winkel $2\theta = \qty{0}{\degree}$ durchgeführt. Dieser passt nun die y-Position der Probe an, indem der Winkel auf das Maximum geeicht wird. 
+Hierdurch werden mögliche Verkippungen der Probe ausgeglichen.
 
 Für eine qualitative Justage ist es notwendig noch einen weiteren Z-Scan, Rocking-Scan mit $2\theta = \qty{0.3}{\degree}$, noch einen Z-Scan und einen letzten Rocking-Scan mit 
 $2\theta = \qty{0.5}{\degree}$ durchzuführen. Die Messbereiche der verwendeten Scans sind in Tabelle \ref{tab:Messbereiche} zusammengefasst.
@@ -50,5 +51,5 @@ $2\theta = \qty{0.5}{\degree}$ durchzuführen. Die Messbereiche der verwendeten 
 
 Nach einer erfolgreichen Justage kann die Reflektivitätsmessung begonnen werden. Der Messbereich lautet $\qty{0}{\degree}$ bis $\qty{2.5}{\degree}$. Für eine ausreichende 
 Datenmenge sollte eine Schrittweite von $\qty{0.005}{\degree}$ mit jeweiliger Messdauer von $\qty{5}{\second}$ gewählt werden. Um Streueinflüsse zu verhindern muss außerdem ein 
-Diffuse-Scan durchgeführt werden. Dafür werden die Einstellungen bei behalten, allerdings wird der Detektor um $\qty{0.1}{\degree}$ verfahren, damit dieser nur gestreute Signale 
-misst. Mit dem Diffuse-Scan wird in der Auswertung die Reflektivität korrigert.
+Difuse-Scan durchgeführt werden. Dafür werden die Einstellungen bei behalten, allerdings wird der Detektor um $\qty{0.1}{\degree}$ verfahren, damit dieser nur gestreute Signale 
+misst. Mit dem Difuse-Scan wird in der Auswertung die Reflektivität korrigert.
