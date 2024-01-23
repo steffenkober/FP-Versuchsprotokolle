@@ -180,24 +180,24 @@ z= 8.46e-8
 #sigma_Poly = 4.2e-10
 #sigma_Si = 3e-10
 
-delta2=5.1e-6
-delta3=9e-6
-beta2=600 
-beta3=700
-sigma1=5.5e-10
-sigma2=8e-10
+#delta2=5.1e-6
+#delta3=9e-6
+#beta2=600 
+#beta3=700
+#sigma1=5.5e-10
+#sigma2=8e-10
 n1=1
-
-const_p = 1.54e-8j/(4*np.pi)
-normal_p = 1.54e-8/(4*np.pi)
-b2 = beta2*normal_p 
-b3 = beta3*normal_p
-
+#1.54e-8/(4*np.pi)
+#const_p = j
+#normal_p = 1.54e-8/(4*np.pi)
+#b2 = beta2*normal_p 
+#b3 = beta3*normal_p
+import cmath as cm
 def parratt(a, delta2, delta3, beta2, beta3, sigma1, sigma2):
     a = np.deg2rad(a)                                                   #Winkel in Radianten umwandeln
     kd1 = (k*np.sqrt(n1**2-np.cos(a)**2))                               #Luft
-    kd2 = (k*np.sqrt((1-delta2-beta2*const_p)**2-np.cos(a)**2))         #Poly
-    kd3 = (k*np.sqrt((1-delta3-beta3*const_p)**2-np.cos(a)**2))         #Si
+    kd2 = (k*np.sqrt((1-delta2-beta2*1j)**2-np.cos(a)**2))         #Poly
+    kd3 = (k*np.sqrt((1-delta3-beta3*1j)**2-np.cos(a)**2))         #Si
 
     r01 = ((kd1 - kd2)/(kd1 + kd2))*np.exp(-2*kd1*kd2*sigma1**2) #r_0,1
     r12 = ((kd2 - kd3)/(kd2 + kd3))*np.exp(-2*kd2*kd3*sigma2**2) #r_1,2
@@ -207,13 +207,17 @@ def parratt(a, delta2, delta3, beta2, beta3, sigma1, sigma2):
 
     return np.abs(x1)**2
 
-paramsss = [4e-7, 9e-6, 400, 700,5.5e-10, 8e-10]
+paramsss = [4.6e-7, 9e-6, 450*1.54e-8/(4*np.pi), 700*1.54e-8/(4*np.pi),5.3e-10, 8e-10]
+#[9.7e-6, 9.8e-6, 55e-9, 200e-9,1e-10, 35e-10]
 t_min = 0.2
 t_max = 0.75
 alpha_crit = 0.195
 R_c = R_c/R_c[25] #Normierung
-bounds = ([1e-10, 1e-10, 1e-8, 1e-10, 1e-12, 1e-12], [np.inf, 1e-4, np.inf, 1000,10e-10, 10e-10]) # Limits der Parameter
-params, pcov = op.curve_fit(parratt, t[25:-90], R_c[25:-90], p0=paramsss,maxfev=100000000,bounds = bounds)#
+bounds = ([1e-10, 1e-10, 1e-8, 1e-10, 1e-12, 1e-12], [np.inf, 1e-4, np.inf, 1000*1.54e-8/(4*np.pi),10e-10, 10e-10]) # Limits der Parameter
+params2, pcov2 = op.curve_fit(parratt, t[25:-70], R_c[25:-70],p0=paramsss, maxfev=100000,bounds = bounds)#
+params1, pcov1 = op.curve_fit(parratt, t[25:-70], R_c[25:-70],p0=params2, maxfev=100000,bounds = bounds)#
+params, pcov = op.curve_fit(parratt, t[25:-70], R_c[25:-70],p0=params1, maxfev=100000,bounds = bounds)#
+
 #
 err = np.sqrt(np.diag(pcov))
 
@@ -227,9 +231,9 @@ print(f"delta_Poly  : {params[0]:.4e} +- {err[0]:.4e}")
 print(f"delta_Si    : {params[1]:.4e} +- {err[1]:.4e}")
 print(f"b_Poly      : {params[2]:.4e} +- {err[2]:.4e}")
 print(f"b_Si        : {params[3]:.4e} +- {err[3]:.4e}")
-print(f"d2          : {params[4]:.4e} +- {err[4]:.4e} m")
-print(f"sigma_Poly  : {params[5]:.4e} +- {err[5]:.4e}")
-#print(f"sigma_Si    : {params[6]:.4e} +- {err[6]:.4e}")
+print(f"sigma_Poly  : {params[4]:.4e} +- {err[4]:.4e}")
+print(f"sigma_Si    : {params[5]:.4e} +- {err[5]:.4e}")
+#print(f"    : {params[6]:.4e} +- {err[6]:.4e}")
 print(f"alpha_c (Poly)  : {a_c_Poly:.4f} °")
 print(f"alpha_c (Si)    : {a_c_Si:.4f} °")
 print("-------------------------------------------------------")
