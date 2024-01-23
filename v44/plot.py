@@ -218,6 +218,7 @@ params2, pcov2 = op.curve_fit(parratt, t[25:-70], R_c[25:-70],p0=paramsss, maxfe
 params1, pcov1 = op.curve_fit(parratt, t[25:-70], R_c[25:-70],p0=params2, maxfev=100000,bounds = bounds)#
 params, pcov = op.curve_fit(parratt, t[25:-70], R_c[25:-70],p0=params1, maxfev=100000,bounds = bounds)#
 
+#print("Test: ", np.sqrt(-3+2j))
 #
 err = np.sqrt(np.diag(pcov))
 
@@ -240,8 +241,8 @@ print("-------------------------------------------------------")
 
 x = np.linspace(0, 2.5, 1000)
 
-delta_Poly = 0.61e-6
-delta_Si = 7.32e-6
+#delta_Poly = 0.61e-6
+#delta_Si = 7.32e-6
 
 a_c_Poly = unp.sqrt(2*delta_Poly)*180/np.pi
 a_c_Si = unp.sqrt(2*delta_Si)*180/np.pi
