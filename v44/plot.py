@@ -212,11 +212,13 @@ paramsss = [4.6e-7, 9e-6, 450*1.54e-8/(4*np.pi), 700*1.54e-8/(4*np.pi),5.3e-10, 
 t_min = 0.2
 t_max = 0.75
 alpha_crit = 0.195
-R_c = R_c/R_c[25] #Normierung
+R_c1 = R_c/R_c[30] #Normierung
+t2 = t[25:-200]
+R_c2 = R_c1[25:-200]
 bounds = ([1e-10, 1e-10, 1e-8, 1e-10, 1e-12, 1e-12], [np.inf, 1e-4, np.inf, 1000*1.54e-8/(4*np.pi),10e-10, 10e-10]) # Limits der Parameter
-params2, pcov2 = op.curve_fit(parratt, t[25:-70], R_c[25:-70],p0=paramsss, maxfev=100000,bounds = bounds)#
-params1, pcov1 = op.curve_fit(parratt, t[25:-70], R_c[25:-70],p0=params2, maxfev=100000,bounds = bounds)#
-params, pcov = op.curve_fit(parratt, t[25:-70], R_c[25:-70],p0=params1, maxfev=100000,bounds = bounds)#
+params2, pcov2 = op.curve_fit(parratt, t2, R_c2,p0=paramsss, maxfev=100000,bounds = bounds)#
+params1, pcov1 = op.curve_fit(parratt, t2, R_c2,p0=params2, maxfev=100000,bounds = bounds)#
+params, pcov = op.curve_fit(parratt, t2, R_c2,p0=params1, maxfev=100000,bounds = bounds)#
 
 #print("Test: ", np.sqrt(-3+2j))
 #
@@ -250,11 +252,11 @@ print(f"alpha_cs (Poly)  : {a_c_Poly:.4f} °")
 print(f"alpha_cs (Si)    : {a_c_Si:.4f} °")
 print("-------------------------------------------------------")
 
-plt.plot(t, R_c, label = "gemessene Reflektivität (korrigiert)", c = "cornflowerblue")
+plt.plot(t, R_c1, label = "gemessene Reflektivität (korrigiert)", c = "cornflowerblue")
 #plt.plot(x, parratt(x, *params), color = "firebrick", alpha = .8, label = "Parrattalgorithmus")
 #plt.plot(x, parratt(x, *paramss), color = "firebrick", alpha = .8, label = "Parrattalgorithmus test")
 plt.plot(x, parratt(x, *params), color = "firebrick", alpha = .8, label = "Parrattalgorithmus")
-#plt.vlines(t[-90], 10^-3, 10e3, label = r"$\theta_c$ (Silizium)", color = "deeppink")
+plt.vlines(t[30], 10^-3, 10e3, label = r"$\theta_c$ (Silizium)", color = "deeppink")
 plt.legend()
 plt.yscale("log")
 plt.xlabel(r"$\theta \mathbin{/} \unit{\degree}$")
